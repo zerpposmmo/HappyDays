@@ -1,6 +1,4 @@
 package metier;
-import java.util.HashSet;
-import java.util.Set;
 
 
 
@@ -41,8 +39,9 @@ public class QteProduitsColis
 	 * @ordered
 	 */
 	 
-	@javax.persistence.ManyToMany(mappedBy = "colisProduits") 
-	protected Set<Produit> produit;
+	@javax.persistence.ManyToOne 
+	@javax.persistence.JoinColumn(nullable = false) 
+	protected Produit produit;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -62,6 +61,25 @@ public class QteProduitsColis
 	 */
 	public QteProduitsColis(){
 		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 * @ordered
+	 */
+	public void basicSetProduit(Produit myProduit) {
+		if (this.produit != myProduit) {
+			if (myProduit != null){
+				if (this.produit != myProduit) {
+					Produit oldproduit = this.produit;
+					this.produit = myProduit;
+					if (oldproduit != null)
+						oldproduit.removeColisProduits(this);
+				}
+			}
+		}
 	}
 
 	/**
@@ -109,11 +127,8 @@ public class QteProduitsColis
 	 * @generated
 	 * @ordered
 	 */
-	public Set<Produit> getProduit() {
-		if(this.produit == null) {
-				this.produit = new HashSet<Produit>();
-		}
-		return (Set<Produit>) this.produit;
+	public Produit getProduit() {
+		return this.produit;
 	}
 
 	/**
@@ -124,35 +139,6 @@ public class QteProduitsColis
 	 */
 	public Colis getColis() {
 		return this.colis;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	public void addAllProduit(Set<Produit> newProduit) {
-		if (this.produit == null) {
-			this.produit = new HashSet<Produit>();
-		}
-		for (Produit tmp : newProduit)
-			tmp.addColisProduits(this);
-		
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	public void removeAllProduit(Set<Produit> newProduit) {
-		if(this.produit == null) {
-			return;
-		}
-		
-		this.produit.removeAll(newProduit);
 	}
 
 	/**
@@ -181,13 +167,9 @@ public class QteProduitsColis
 	 * @generated
 	 * @ordered
 	 */
-	public void addProduit(Produit newProduit) {
-		if(this.produit == null) {
-			this.produit = new HashSet<Produit>();
-		}
-		
-		if (this.produit.add(newProduit))
-			newProduit.addColisProduits(this);
+	public void setProduit(Produit myProduit) {
+		this.basicSetProduit(myProduit);
+		myProduit.addColisProduits(this);
 	}
 
 	/**
@@ -227,13 +209,12 @@ public class QteProduitsColis
 	 * @generated
 	 * @ordered
 	 */
-	public void removeProduit(Produit oldProduit) {
-		if(this.produit == null)
+	public void unsetProduit() {
+		if (this.produit == null)
 			return;
-		
-		if (this.produit.remove(oldProduit))
-			oldProduit.removeColisProduits(this);
-		
+		Produit oldproduit = this.produit;
+		this.produit = null;
+		oldproduit.removeColisProduits(this);
 	}
 
 	/**

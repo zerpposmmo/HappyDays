@@ -72,7 +72,7 @@ public class Produit
 	 * @ordered
 	 */
 	 
-	@javax.persistence.ManyToMany 
+	@javax.persistence.OneToMany(mappedBy = "produit") 
 	protected Set<QteProduitsColis> colisProduits;
 
 	/**
@@ -235,7 +235,7 @@ public class Produit
 			this.colisProduits = new HashSet<QteProduitsColis>();
 		}
 		for (QteProduitsColis tmp : newColisProduits)
-			tmp.addProduit(this);
+			tmp.setProduit(this);
 		
 	}
 
@@ -335,7 +335,7 @@ public class Produit
 		}
 		
 		if (this.colisProduits.add(newColisProduits))
-			newColisProduits.addProduit(this);
+			newColisProduits.basicSetProduit(this);
 	}
 
 	/**
@@ -419,7 +419,7 @@ public class Produit
 			return;
 		
 		if (this.colisProduits.remove(oldColisProduits))
-			oldColisProduits.removeProduit(this);
+			oldColisProduits.unsetProduit();
 		
 	}
 

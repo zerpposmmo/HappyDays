@@ -51,8 +51,9 @@ public class Colis
 	 * @ordered
 	 */
 	 
-	@javax.persistence.OneToMany(mappedBy = "tournee") 
-	protected Set<Commande> commande;
+	@javax.persistence.ManyToOne 
+	@javax.persistence.JoinColumn(nullable = false) 
+	protected Commande commande;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -82,6 +83,25 @@ public class Colis
 	 */
 	public Colis(){
 		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!--  end-user-doc  -->
+	 * @generated
+	 * @ordered
+	 */
+	public void basicSetCommande(Commande myCommande) {
+		if (this.commande != myCommande) {
+			if (myCommande != null){
+				if (this.commande != myCommande) {
+					Commande oldcommande = this.commande;
+					this.commande = myCommande;
+					if (oldcommande != null)
+						oldcommande.removeColis(this);
+				}
+			}
+		}
 	}
 
 	/**
@@ -139,11 +159,8 @@ public class Colis
 	 * @generated
 	 * @ordered
 	 */
-	public Set<Commande> getCommande() {
-		if(this.commande == null) {
-				this.commande = new HashSet<Commande>();
-		}
-		return (Set<Commande>) this.commande;
+	public Commande getCommande() {
+		return this.commande;
 	}
 
 	/**
@@ -175,21 +192,6 @@ public class Colis
 	 * @generated
 	 * @ordered
 	 */
-	public void addAllCommande(Set<Commande> newCommande) {
-		if (this.commande == null) {
-			this.commande = new HashSet<Commande>();
-		}
-		for (Commande tmp : newCommande)
-			tmp.setTournee(this);
-		
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
 	public void addAllColisProduits(Set<QteProduitsColis> newColisProduits) {
 		if (this.colisProduits == null) {
 			this.colisProduits = new HashSet<QteProduitsColis>();
@@ -197,20 +199,6 @@ public class Colis
 		for (QteProduitsColis tmp : newColisProduits)
 			tmp.setColis(this);
 		
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	public void removeAllCommande(Set<Commande> newCommande) {
-		if(this.commande == null) {
-			return;
-		}
-		
-		this.commande.removeAll(newCommande);
 	}
 
 	/**
@@ -263,13 +251,9 @@ public class Colis
 	 * @generated
 	 * @ordered
 	 */
-	public void addCommande(Commande newCommande) {
-		if(this.commande == null) {
-			this.commande = new HashSet<Commande>();
-		}
-		
-		if (this.commande.add(newCommande))
-			newCommande.basicSetTournee(this);
+	public void setCommande(Commande myCommande) {
+		this.basicSetCommande(myCommande);
+		myCommande.addColis(this);
 	}
 
 	/**
@@ -334,13 +318,12 @@ public class Colis
 	 * @generated
 	 * @ordered
 	 */
-	public void removeCommande(Commande oldCommande) {
-		if(this.commande == null)
+	public void unsetCommande() {
+		if (this.commande == null)
 			return;
-		
-		if (this.commande.remove(oldCommande))
-			oldCommande.unsetTournee();
-		
+		Commande oldcommande = this.commande;
+		this.commande = null;
+		oldcommande.removeColis(this);
 	}
 
 	/**
