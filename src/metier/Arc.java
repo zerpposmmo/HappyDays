@@ -6,8 +6,8 @@ import javax.persistence.GenerationType;
 
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
+ * Classe Arc
+ * @author Arnaud
  * @generated
  */
  
@@ -15,8 +15,7 @@ import javax.persistence.GenerationType;
 public class Arc
 {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Identifiant
 	 * @generated
 	 * @ordered
 	 */
@@ -27,8 +26,7 @@ public class Arc
 	protected Long id;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Localisation de l'arrivée de l'arc
 	 * @generated
 	 * @ordered
 	 */
@@ -37,8 +35,7 @@ public class Arc
 	protected Localisation arrivee;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Distance entre le départ et l'arrivée de l'arc
 	 * @generated
 	 * @ordered
 	 */
@@ -47,8 +44,7 @@ public class Arc
 	protected int distance;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Localisation du départ de l'arc
 	 * @generated
 	 * @ordered
 	 */
@@ -58,8 +54,7 @@ public class Arc
 	protected Localisation depart;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Constructeur par défaut
 	 * @generated
 	 */
 	public Arc(){
@@ -68,21 +63,27 @@ public class Arc
             this.depart = new Localisation();
 	}
 
-        public Arc(Localisation arrivee, int distance, Localisation localisation) {
+        /**
+         * Constructeur par arrivée, distance et départ
+         * @param arrivee
+         * @param distance
+         * @param depart 
+         */
+        public Arc(Localisation arrivee, int distance, Localisation depart) {
             this.arrivee = arrivee;
             this.distance = distance;
-            this.depart = localisation;
+            this.depart = depart;
         }
         
         
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Verifie le parametre localisation et le met en départ de l'arc
 	 * @generated
 	 * @ordered
+         * @param myLocalisation localisation de départ
 	 */
-	private void basicSetLocalisation(Localisation myLocalisation) {
+	private void basicSetDepart(Localisation myLocalisation) {
 		if (this.depart != myLocalisation) {
 			if (myLocalisation != null){
 				if (this.depart != myLocalisation) {
@@ -96,8 +97,7 @@ public class Arc
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Renvoie l'id de l'arc
 	 * @generated
 	 * @ordered
 	 */
@@ -106,8 +106,7 @@ public class Arc
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Renvoie la localisation d'arrivée de l'arc
 	 * @generated
 	 * @ordered
 	 */
@@ -116,8 +115,7 @@ public class Arc
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Renvoie la distance de l'arc
 	 * @generated
 	 * @ordered
 	 */
@@ -126,8 +124,7 @@ public class Arc
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Renvoie la localisation du départ de l'arc
 	 * @generated
 	 * @ordered
 	 */
@@ -136,52 +133,50 @@ public class Arc
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Set l'id de l'arc
 	 * @generated
 	 * @ordered
+         * @param myId identifiant
 	 */
 	public void setId(long myId) {
 		this.id = myId;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Set la localisation de l'arrivée de l'arc
 	 * @generated
 	 * @ordered
+         * @param myArrivee localisation d'arrivée
 	 */
 	private void setArrivee(Localisation myArrivee) {
 		this.arrivee = myArrivee;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Set la distance entre le départ et l'arrivée de l'arc
 	 * @generated
 	 * @ordered
+         * @param myDistance distance
 	 */
 	private void setDistance(int myDistance) {
 		this.distance = myDistance;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Set la localisation du départ de l'arc
 	 * @generated
 	 * @ordered
          * @param myLocalisation Localisation de départ
 	 */
 	public void setDepart(Localisation myLocalisation) {
-		this.basicSetLocalisation(myLocalisation);
+		this.basicSetDepart(myLocalisation);
                 if(!myLocalisation.arcMap.containsKey(this.arrivee)) { 
                     myLocalisation.addArc(this);
                 }
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Unset l'id de l'arc
 	 * @generated
 	 * @ordered
 	 */
@@ -190,8 +185,7 @@ public class Arc
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Unset la localisation de l'arrivée de l'arc
 	 * @generated
 	 * @ordered
 	 */
@@ -200,8 +194,7 @@ public class Arc
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Unset la distance de l'arc
 	 * @generated
 	 * @ordered
 	 */
@@ -210,8 +203,7 @@ public class Arc
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Unset la localisation de départ de l'arc
 	 * @generated
 	 * @ordered
 	 */
