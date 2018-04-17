@@ -6,15 +6,16 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  --> @generated
+ * Classe Localisation
+ * @generated
  */
 @javax.persistence.Entity
 public class Localisation {
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated @ordered
+     * ID de la localisation
+     * @generated 
+     * @ordered
      */
 
     @javax.persistence.Id
@@ -22,44 +23,49 @@ public class Localisation {
     protected Long id;
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated @ordered
+     * Coordonnée X de la localisation
+     * @generated 
+     * @ordered
      */
     @javax.persistence.Column(nullable = false)
     protected int x;
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated @ordered
+     * Coordonnée Y de la localisation
+     * @generated 
+     * @ordered
      */
     @javax.persistence.Column(nullable = false)
     protected int y;
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated @ordered
+     * Ensemble d'arc de la localisation
+     * @generated 
+     * @ordered
      */
     @javax.persistence.OneToMany(mappedBy = "localisation")
     protected Map<Localisation, Arc> arcMap;
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated @ordered
+     * Ensemble de produit de la localisation
+     * @generated 
+     * @ordered
      */
     @javax.persistence.OneToMany(mappedBy = "localisation")
     protected Set<Produit> produitSet;
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated @ordered
+     * Entrepôt à laquelle la localisation est liée
+     * @generated 
+     * @ordered
      */
     @javax.persistence.ManyToOne
     @javax.persistence.JoinColumn(nullable = false)
     protected Entrepot entrepot;
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated
+     * Constructeur par défaut de la localisation
+     * @generated
      */
     public Localisation() {
         super();
@@ -68,8 +74,9 @@ public class Localisation {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated @ordered
+     * Ajout basique d'un entrepôt à la localisation
+     * @generated 
+     * @ordered
      */
     public void basicSetEntrepot(Entrepot myEntrepot) {
         if (this.entrepot != myEntrepot) {
@@ -86,32 +93,36 @@ public class Localisation {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated @ordered
+     * Récupère l'ID de la localisation
+     * @generated 
+     * @ordered
      */
     public long getId() {
         return this.id;
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated @ordered
+     * Récupère la coordonnée X de la localisation
+     * @generated 
+     * @ordered
      */
     private int getX() {
         return this.x;
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated @ordered
+     * Récupère la coordonnée Y de la localisation
+     * @generated 
+     * @ordered
      */
     private int getY() {
         return this.y;
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated @ordered
+     * Récupère l'ensenble des arcs lié à la localisation
+     * @generated 
+     * @ordered
      */
     public Map<Localisation, Arc> getArc() {
         if (this.arcMap == null) {
@@ -121,8 +132,9 @@ public class Localisation {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated @ordered
+     * Récupère l'ensemble des produits lié à la localisation 
+     * @generated 
+     * @ordered
      */
     public Set<Produit> getProduitSet() {
         if (this.produitSet == null) {
@@ -132,17 +144,19 @@ public class Localisation {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated @ordered
+     * Récupère l'entrepôt auquel la localisation est liée
+     * @generated 
+     * @ordered
      */
     public Entrepot getEntrepot() {
         return this.entrepot;
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated @ordered @param newArc Set d'arc à
-     * ajouter à la localisation
+     * Ajoute l'ensemble d'arc donné
+     * @generated 
+     * @ordered 
+     * @param newArc Set d'arc à ajouter à la localisation
      */
     public void addAllArc(Set<Arc> newArc) {
         if (this.arcMap == null) {
@@ -155,8 +169,8 @@ public class Localisation {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @param newProduit
+     * Ajoute l'ensemble de produit donné à la localisation
+     * @param newProduit
      * @generated
      * @ordered
      */
@@ -170,8 +184,9 @@ public class Localisation {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated @ordered
+     * Retire l'ensemble d'arc de la localisation
+     * @generated 
+     * @ordered
      */
     private void removeAllArc() {
         if (this.arcMap == null) {
@@ -181,8 +196,9 @@ public class Localisation {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated @ordered
+     * Retire l'ensemble de produits donné
+     * @generated 
+     * @ordered
      */
     public void removeAllProduit(Set<Produit> newProduit) {
         if (this.produitSet == null) {
@@ -193,32 +209,36 @@ public class Localisation {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated @ordered
+     * Définit l'ID
+     * @generated 
+     * @ordered
      */
     public void setId(long myId) {
         this.id = myId;
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated @ordered
+     * Définit la coordonnée X de la localisation
+     * @generated 
+     * @ordered
      */
     private void setX(int myX) {
         this.x = myX;
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated @ordered
+     * Définit la coordonnée X de la localisation 
+     * @generated 
+     * @ordered
      */
     private void setY(int myY) {
         this.y = myY;
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated @ordered
+     * Ajoute un arc donné à la localisation 
+     * @generated 
+     * @ordered
      */
     public void addArc(Arc newArc) {
         if (this.arcMap == null) {
@@ -229,8 +249,9 @@ public class Localisation {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated @ordered
+     * Ajoute un produit donné à la localisation
+     * @generated 
+     * @ordered
      */
     public void addProduit(Produit newProduit) {
         if (this.produitSet == null) {
@@ -243,8 +264,9 @@ public class Localisation {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated @ordered
+     * Définit l'entrepôt auquel la localisation est liée
+     * @generated 
+     * @ordered
      */
     public void setEntrepot(Entrepot myEntrepot) {
         this.basicSetEntrepot(myEntrepot);
@@ -252,32 +274,36 @@ public class Localisation {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated @ordered
+     * Retire l'ID de la localisation
+     * @generated 
+     * @ordered
      */
     public void unsetId() {
         this.id = 0L;
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated @ordered
+     * Retire la coordonnée X de la localisation
+     * @generated 
+     * @ordered
      */
     private void unsetX() {
         this.x = 0;
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated @ordered
+     * Retire la coordonnée Y de la localisation 
+     * @generated 
+     * @ordered
      */
     private void unsetY() {
         this.y = 0;
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated @ordered
+     * Retire un arc donné de l'ensemble d'arcs
+     * @generated 
+     * @ordered
      */
     public void removeArc(Arc oldArc) {
         if (this.arcMap == null) {
@@ -288,8 +314,9 @@ public class Localisation {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated @ordered
+     * Retire le produit donné de l'ensemble des produits
+     * @generated 
+     * @ordered
      */
     public void removeProduit(Produit oldProduit) {
         if (this.produitSet == null) {
@@ -303,8 +330,9 @@ public class Localisation {
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!--  end-user-doc  --> @generated @ordered
+     * Retire l'entrepôt donné auquel la localisation est liée
+     * @generated 
+     * @ordered
      */
     public void unsetEntrepot() {
         if (this.entrepot == null) {

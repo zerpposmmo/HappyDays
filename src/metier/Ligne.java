@@ -3,8 +3,7 @@ package metier;
 
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
+ * Classe ligne 
  * @generated
  */
  
@@ -12,8 +11,7 @@ package metier;
 public class Ligne
 {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * ID de la ligne
 	 * @generated
 	 * @ordered
 	 */
@@ -23,8 +21,7 @@ public class Ligne
 	protected Long id;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Quantité de produit dans la ligne
 	 * @generated
 	 * @ordered
 	 */
@@ -33,8 +30,7 @@ public class Ligne
 	protected int quantite;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Produit concerné par la ligne 
 	 * @generated
 	 * @ordered
 	 */
@@ -44,8 +40,7 @@ public class Ligne
 	protected Produit produit;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Commande concernée par la ligne 
 	 * @generated
 	 * @ordered
 	 */
@@ -55,8 +50,7 @@ public class Ligne
 	protected Commande commande;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Constructeur par défaut de la ligne
 	 * @generated
 	 */
 	public Ligne(){
@@ -64,8 +58,7 @@ public class Ligne
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ajout basique d'un produit
 	 * @generated
 	 * @ordered
 	 */
@@ -83,8 +76,7 @@ public class Ligne
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ajout d'une commande à la ligne
 	 * @generated
 	 * @ordered
 	 */
@@ -102,8 +94,7 @@ public class Ligne
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère l'ID de la ligne
 	 * @generated
 	 * @ordered
 	 */
@@ -112,8 +103,7 @@ public class Ligne
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère la quantité de produit de la ligne
 	 * @generated
 	 * @ordered
 	 */
@@ -122,8 +112,7 @@ public class Ligne
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère le produit de la ligne
 	 * @generated
 	 * @ordered
 	 */
@@ -132,8 +121,7 @@ public class Ligne
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère la commande liée à la ligne
 	 * @generated
 	 * @ordered
 	 */
@@ -142,8 +130,7 @@ public class Ligne
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Définit l'ID de la ligne
 	 * @generated
 	 * @ordered
 	 */
@@ -152,8 +139,7 @@ public class Ligne
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Définit la quantité de produit dans la ligne
 	 * @generated
 	 * @ordered
 	 */
@@ -162,8 +148,7 @@ public class Ligne
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Définit un produit donné dans la ligne
 	 * @generated
 	 * @ordered
 	 */
@@ -173,8 +158,7 @@ public class Ligne
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Définit une commande donnée dans la ligne
 	 * @generated
 	 * @ordered
 	 */
@@ -184,8 +168,7 @@ public class Ligne
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire l'ID de la ligne
 	 * @generated
 	 * @ordered
 	 */
@@ -194,8 +177,7 @@ public class Ligne
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire la quantité dans la ligne
 	 * @generated
 	 * @ordered
 	 */
@@ -204,8 +186,7 @@ public class Ligne
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire le produit lié à la ligne
 	 * @generated
 	 * @ordered
 	 */
@@ -218,8 +199,7 @@ public class Ligne
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire la commande liée à la ligne
 	 * @generated
 	 * @ordered
 	 */

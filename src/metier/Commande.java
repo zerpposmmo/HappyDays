@@ -5,8 +5,7 @@ import java.util.Set;
 
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
+ * Classe Commande
  * @generated
  */
  
@@ -15,8 +14,7 @@ public class Commande
 {
     
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * ID de la commande
 	 * @generated
 	 * @ordered
 	 */
@@ -26,8 +24,7 @@ public class Commande
 	protected Long id;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * ColisMax : Nombre maximum de colis dans une commande
 	 * @generated
 	 * @ordered
 	 */
@@ -36,8 +33,7 @@ public class Commande
 	protected int colisMax;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ensemble de lignes dans la commande représentant un produit donné
 	 * @generated
 	 * @ordered
 	 */
@@ -46,8 +42,7 @@ public class Commande
 	protected Set<Ligne> ligneSet;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ensemble de colis composant la commande
 	 * @generated
 	 * @ordered
 	 */
@@ -56,8 +51,7 @@ public class Commande
 	protected Set<Colis> colisSet;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Constructeur par défaut
 	 * @generated
 	 */
 	public Commande(){
@@ -67,8 +61,7 @@ public class Commande
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère l'ID de la commande
 	 * @generated
 	 * @ordered
 	 */
@@ -77,8 +70,7 @@ public class Commande
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère la quantité de colis maximum de la commande
 	 * @generated
 	 * @ordered
 	 */
@@ -87,8 +79,7 @@ public class Commande
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère l'ensemble des lignes de produit de la commande
 	 * @generated
 	 * @ordered
 	 */
@@ -100,8 +91,7 @@ public class Commande
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère l'ensemble des colis de la commande
 	 * @generated
 	 * @ordered
 	 */
@@ -113,8 +103,7 @@ public class Commande
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ajouter un ensemble de lignes de produits à la commande actuelle
 	 * @generated
 	 * @ordered
 	 */
@@ -128,8 +117,7 @@ public class Commande
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ajoute un ensemble de colis à la commande actuelle
 	 * @generated
 	 * @ordered
 	 */
@@ -143,8 +131,7 @@ public class Commande
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire l'ensemble des lignes de produits de la commande
 	 * @generated
 	 * @ordered
 	 */
@@ -157,8 +144,7 @@ public class Commande
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire l'ensemble des colis de la commande
 	 * @generated
 	 * @ordered
 	 */
@@ -171,8 +157,7 @@ public class Commande
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Permet de définir l'ID d'une commande
 	 * @generated
 	 * @ordered
 	 */
@@ -181,8 +166,7 @@ public class Commande
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Permet de définir l'ID d'une commande
 	 * @generated
 	 * @ordered
 	 */
@@ -191,8 +175,7 @@ public class Commande
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ajoute une ligne donnée à l'ensemble des lignes de produits dans la commande
 	 * @generated
 	 * @ordered
 	 */
@@ -206,8 +189,7 @@ public class Commande
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ajoute un colis donné à l'ensemble des colis dans la commande
 	 * @generated
 	 * @ordered
 	 */
@@ -221,8 +203,7 @@ public class Commande
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire l'ID de la commande
 	 * @generated
 	 * @ordered
 	 */
@@ -231,8 +212,7 @@ public class Commande
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire le nombre de colis max de la commande
 	 * @generated
 	 * @ordered
 	 */
@@ -241,8 +221,7 @@ public class Commande
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire une ligne de produit à l'ensemble de lignes de produits de la commande
 	 * @generated
 	 * @ordered
 	 */
@@ -256,8 +235,7 @@ public class Commande
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire un colis à l'ensemble des colis
 	 * @generated
 	 * @ordered
 	 */

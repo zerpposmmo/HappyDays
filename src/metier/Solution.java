@@ -5,8 +5,7 @@ import java.util.Set;
 
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
+ * Classe solution
  * @generated
  */
  
@@ -14,8 +13,7 @@ import java.util.Set;
 public class Solution
 {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * ID de la solution
 	 * @generated
 	 * @ordered
 	 */
@@ -25,8 +23,7 @@ public class Solution
 	protected Long id;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Nom de la solution
 	 * @generated
 	 * @ordered
 	 */
@@ -35,8 +32,7 @@ public class Solution
 	protected String nom;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ensemble des tournées de la solution
 	 * @generated
 	 * @ordered
 	 */
@@ -45,8 +41,7 @@ public class Solution
 	protected Set<Tournee> tourneeSet;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Instance de la solution
 	 * @generated
 	 * @ordered
 	 */
@@ -56,8 +51,7 @@ public class Solution
 	protected Instance instance;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Constructeur de la solution
 	 * @generated
 	 */
 	public Solution(){
@@ -65,8 +59,8 @@ public class Solution
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ajout basique d'une instance à la solution
+         * @param myInstance Instance à ajouter à la solution
 	 * @generated
 	 * @ordered
 	 */
@@ -84,8 +78,7 @@ public class Solution
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère l'ID de la solution
 	 * @generated
 	 * @ordered
 	 */
@@ -94,8 +87,7 @@ public class Solution
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère le nom de la solution
 	 * @generated
 	 * @ordered
 	 */
@@ -104,8 +96,7 @@ public class Solution
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère l'ensemble de tournées de la solution
 	 * @generated
 	 * @ordered
 	 */
@@ -117,8 +108,7 @@ public class Solution
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère l'instance de la solution
 	 * @generated
 	 * @ordered
 	 */
@@ -127,8 +117,8 @@ public class Solution
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ajoute l'ensemble des tournées donnée à la solution
+         * @param newTournee L'ensemble des tounrées à ajouter à la solution
 	 * @generated
 	 * @ordered
 	 */
@@ -142,8 +132,8 @@ public class Solution
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire l'ensemble des tournées données de la solution
+         * @param newTournee L'ensemble des tournées que l'on souhaite retirer
 	 * @generated
 	 * @ordered
 	 */
@@ -156,8 +146,8 @@ public class Solution
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Définit l'ID de la solution
+         * @param myId ID que l'on veut ajouter
 	 * @generated
 	 * @ordered
 	 */
@@ -166,8 +156,8 @@ public class Solution
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Définit le nom de la solution
+         * @param myNom Nom que l'on veut ajouter
 	 * @generated
 	 * @ordered
 	 */
@@ -176,8 +166,8 @@ public class Solution
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ajouter une tournée donnée à l'ensemble des tournées de la solution
+         * @param newTournee La tournée de que l'on souhaite ajouter à l'ensemble des tournées
 	 * @generated
 	 * @ordered
 	 */
@@ -191,8 +181,8 @@ public class Solution
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Définit l'instance de la solution
+         * @param myInstance Instance que l'on veut ajouter 
 	 * @generated
 	 * @ordered
 	 */
@@ -202,8 +192,7 @@ public class Solution
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire l'ID de la solution
 	 * @generated
 	 * @ordered
 	 */
@@ -212,8 +201,7 @@ public class Solution
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire le nom de la solution
 	 * @generated
 	 * @ordered
 	 */
@@ -222,8 +210,8 @@ public class Solution
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire la tournée donnée de la solution
+         * @param oldTournee La tournée que l'on souhaite retirer de la solution
 	 * @generated
 	 * @ordered
 	 */
@@ -237,8 +225,7 @@ public class Solution
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire l'instance de la solution
 	 * @generated
 	 * @ordered
 	 */

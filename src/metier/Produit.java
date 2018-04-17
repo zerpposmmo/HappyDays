@@ -5,8 +5,7 @@ import java.util.Set;
 
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
+ * Classe produit
  * @generated
  */
  
@@ -14,8 +13,7 @@ import java.util.Set;
 public class Produit
 {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * ID du produit
 	 * @generated
 	 * @ordered
 	 */
@@ -25,8 +23,7 @@ public class Produit
 	protected Long id;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Poids du produit
 	 * @generated
 	 * @ordered
 	 */
@@ -35,8 +32,7 @@ public class Produit
 	protected int poids;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Volume du produit
 	 * @generated
 	 * @ordered
 	 */
@@ -45,8 +41,7 @@ public class Produit
 	protected int volume;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ensemble de lignes dans lesquelles figurent le produit
 	 * @generated
 	 * @ordered
 	 */
@@ -55,8 +50,7 @@ public class Produit
 	protected Set<Ligne> ligne;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Localisation du produit
 	 * @generated
 	 * @ordered
 	 */
@@ -66,8 +60,7 @@ public class Produit
 	protected Localisation localisation;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ensemble de quantité de produit dans un colis
 	 * @generated
 	 * @ordered
 	 */
@@ -76,8 +69,7 @@ public class Produit
 	protected Set<QteProduitsColis> colisProduits;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Instance à laquelle le produit est lié
 	 * @generated
 	 * @ordered
 	 */
@@ -87,8 +79,7 @@ public class Produit
 	protected Instance instance;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Constructeur par défaut du produit
 	 * @generated
 	 */
 	public Produit(){
@@ -97,8 +88,7 @@ public class Produit
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ajout basique d'une localisation au produit
 	 * @generated
 	 * @ordered
 	 */
@@ -116,8 +106,7 @@ public class Produit
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ajout basique d'une instance dans le produit
 	 * @generated
 	 * @ordered
 	 */
@@ -135,8 +124,7 @@ public class Produit
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère l'ID du produit
 	 * @generated
 	 * @ordered
 	 */
@@ -145,8 +133,7 @@ public class Produit
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère le poids du produit
 	 * @generated
 	 * @ordered
 	 */
@@ -155,8 +142,7 @@ public class Produit
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère le volume du produit
 	 * @generated
 	 * @ordered
 	 */
@@ -165,8 +151,7 @@ public class Produit
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère l'ensemble des lignes de produit lié au produit
 	 * @generated
 	 * @ordered
 	 */
@@ -178,8 +163,7 @@ public class Produit
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère la localisation
 	 * @generated
 	 * @ordered
 	 */
@@ -188,8 +172,7 @@ public class Produit
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère l'ensemble des colis lié au produit
 	 * @generated
 	 * @ordered
 	 */
@@ -201,8 +184,7 @@ public class Produit
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère l'instance lié au produit
 	 * @generated
 	 * @ordered
 	 */
@@ -211,8 +193,7 @@ public class Produit
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ajoute l'ensemble de ligne donné au produit
 	 * @generated
 	 * @ordered
 	 */
@@ -226,8 +207,7 @@ public class Produit
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ajoute l'ensemble des quantité de produit dans un colis dans le produit
 	 * @generated
 	 * @ordered
 	 */
@@ -241,8 +221,7 @@ public class Produit
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire l'ensemble des lignes du produit
 	 * @generated
 	 * @ordered
 	 */
@@ -255,8 +234,7 @@ public class Produit
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire l'ensemble des quantités de produit dans un colis du produit
 	 * @generated
 	 * @ordered
 	 */
@@ -269,8 +247,7 @@ public class Produit
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Définit l'ID du produit
 	 * @generated
 	 * @ordered
 	 */
@@ -279,8 +256,7 @@ public class Produit
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Définit le poids du produit
 	 * @generated
 	 * @ordered
 	 */
@@ -289,8 +265,8 @@ public class Produit
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ajoute le volume à un produit
+         * @param myVolume Volume à ajouter au produit
 	 * @generated
 	 * @ordered
 	 */
@@ -299,8 +275,8 @@ public class Produit
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ajout eune ligne donnée au produit
+         * @param newLigne La ligne à ajouter
 	 * @generated
 	 * @ordered
 	 */
@@ -314,8 +290,8 @@ public class Produit
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Définit la localisation du produit
+         * @param myLocalisation La localisation que l'on veut ajouter au produit
 	 * @generated
 	 * @ordered
 	 */
@@ -325,8 +301,8 @@ public class Produit
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ajouter la quantité de produit d'un colis dans le produit
+         * @param newColisProduits La quantité de produit d'un colis que l'on veut rajouter
 	 * @generated
 	 * @ordered
 	 */
@@ -340,8 +316,8 @@ public class Produit
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Définit l'instance du produit
+         * @param myInstance l'instance que l'on veut ajouter
 	 * @generated
 	 * @ordered
 	 */
@@ -351,8 +327,7 @@ public class Produit
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire l'ID du produit
 	 * @generated
 	 * @ordered
 	 */
@@ -361,8 +336,7 @@ public class Produit
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire le poids du produit
 	 * @generated
 	 * @ordered
 	 */
@@ -371,8 +345,7 @@ public class Produit
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire le volume du produit
 	 * @generated
 	 * @ordered
 	 */
@@ -381,8 +354,8 @@ public class Produit
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire une ligne donnée de l'ensemble des lignes du produit
+         * @param oldLigne La ligne à retirer de l'ensemble
 	 * @generated
 	 * @ordered
 	 */
@@ -396,8 +369,7 @@ public class Produit
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire la localisation du produit
 	 * @generated
 	 * @ordered
 	 */
@@ -410,8 +382,8 @@ public class Produit
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire la quantité de produit dans un colis du produit
+         * @param oldColisProduits La quantité de produit dans un colis à retirer du produit
 	 * @generated
 	 * @ordered
 	 */
@@ -425,8 +397,7 @@ public class Produit
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire l'instance du produit
 	 * @generated
 	 * @ordered
 	 */

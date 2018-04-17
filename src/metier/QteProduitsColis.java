@@ -3,8 +3,7 @@ package metier;
 
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
+ * Classe quantité de produit par colis (Nommée QPC)
  * @generated
  */
  
@@ -12,8 +11,7 @@ package metier;
 public class QteProduitsColis
 {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * ID de la QPC
 	 * @generated
 	 * @ordered
 	 */
@@ -23,8 +21,7 @@ public class QteProduitsColis
 	protected Long id;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Quantité de la QPC
 	 * @generated
 	 * @ordered
 	 */
@@ -33,8 +30,7 @@ public class QteProduitsColis
 	protected int quantite;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Produit lié à la QPC
 	 * @generated
 	 * @ordered
 	 */
@@ -44,8 +40,7 @@ public class QteProduitsColis
 	protected Produit produit;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Colis de la QPC
 	 * @generated
 	 * @ordered
 	 */
@@ -55,8 +50,7 @@ public class QteProduitsColis
 	protected Colis colis;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Constructeur par défaut de la QPC
 	 * @generated
 	 */
 	public QteProduitsColis(){
@@ -64,8 +58,8 @@ public class QteProduitsColis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ajout basique d'un produit à la QPC
+         * @param myProduct Le produit à ajouter à la QPC
 	 * @generated
 	 * @ordered
 	 */
@@ -83,8 +77,8 @@ public class QteProduitsColis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ajout basique d'un colis à la QPC
+         * @param myColis Colis à ajouter à la QPC
 	 * @generated
 	 * @ordered
 	 */
@@ -102,8 +96,7 @@ public class QteProduitsColis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère l'ID de la QPC
 	 * @generated
 	 * @ordered
 	 */
@@ -112,8 +105,7 @@ public class QteProduitsColis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère la quantité de la QPC
 	 * @generated
 	 * @ordered
 	 */
@@ -122,8 +114,7 @@ public class QteProduitsColis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère le produit de la QPC
 	 * @generated
 	 * @ordered
 	 */
@@ -132,8 +123,7 @@ public class QteProduitsColis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère le colis lié à la QPC
 	 * @generated
 	 * @ordered
 	 */
@@ -142,8 +132,8 @@ public class QteProduitsColis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Définit l'ID de la QPC
+         * @param myId ID à définir 
 	 * @generated
 	 * @ordered
 	 */
@@ -152,8 +142,8 @@ public class QteProduitsColis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Définit la quantité de la QPC
+         * @param myQuantite Quantité à ajouter
 	 * @generated
 	 * @ordered
 	 */
@@ -162,8 +152,8 @@ public class QteProduitsColis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Définit le produit lié à la QPC
+         * @param myProduit Produit que l'on veut ajouter
 	 * @generated
 	 * @ordered
 	 */
@@ -173,8 +163,8 @@ public class QteProduitsColis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Définit un colis à la QPC
+         * @param myColis Le colis que l'on veut ajouter
 	 * @generated
 	 * @ordered
 	 */
@@ -184,8 +174,7 @@ public class QteProduitsColis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire l'ID de la QPC
 	 * @generated
 	 * @ordered
 	 */
@@ -194,8 +183,7 @@ public class QteProduitsColis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire la quantité de la QPC
 	 * @generated
 	 * @ordered
 	 */
@@ -204,8 +192,7 @@ public class QteProduitsColis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire le produit de la QPC
 	 * @generated
 	 * @ordered
 	 */
@@ -218,8 +205,7 @@ public class QteProduitsColis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire le colis de la QPC
 	 * @generated
 	 * @ordered
 	 */
