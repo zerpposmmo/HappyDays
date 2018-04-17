@@ -42,7 +42,7 @@ public class Solution
 	 */
 	 
 	@javax.persistence.OneToMany(mappedBy = "solution") 
-	protected Set<Tournee> tournee;
+	protected Set<Tournee> tourneeSet;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -61,7 +61,7 @@ public class Solution
 	 * @generated
 	 */
 	public Solution(){
-		super();
+                this.tourneeSet = new HashSet();
 	}
 
 	/**
@@ -110,10 +110,10 @@ public class Solution
 	 * @ordered
 	 */
 	public Set<Tournee> getTournee() {
-		if(this.tournee == null) {
-				this.tournee = new HashSet<Tournee>();
+		if(this.tourneeSet == null) {
+				this.tourneeSet = new HashSet<Tournee>();
 		}
-		return (Set<Tournee>) this.tournee;
+		return (Set<Tournee>) this.tourneeSet;
 	}
 
 	/**
@@ -133,8 +133,8 @@ public class Solution
 	 * @ordered
 	 */
 	public void addAllTournee(Set<Tournee> newTournee) {
-		if (this.tournee == null) {
-			this.tournee = new HashSet<Tournee>();
+		if (this.tourneeSet == null) {
+			this.tourneeSet = new HashSet<Tournee>();
 		}
 		for (Tournee tmp : newTournee)
 			tmp.setSolution(this);
@@ -148,11 +148,11 @@ public class Solution
 	 * @ordered
 	 */
 	public void removeAllTournee(Set<Tournee> newTournee) {
-		if(this.tournee == null) {
+		if(this.tourneeSet == null) {
 			return;
 		}
 		
-		this.tournee.removeAll(newTournee);
+		this.tourneeSet.removeAll(newTournee);
 	}
 
 	/**
@@ -182,11 +182,11 @@ public class Solution
 	 * @ordered
 	 */
 	public void addTournee(Tournee newTournee) {
-		if(this.tournee == null) {
-			this.tournee = new HashSet<Tournee>();
+		if(this.tourneeSet == null) {
+			this.tourneeSet = new HashSet<Tournee>();
 		}
 		
-		if (this.tournee.add(newTournee))
+		if (this.tourneeSet.add(newTournee))
 			newTournee.basicSetSolution(this);
 	}
 
@@ -228,10 +228,10 @@ public class Solution
 	 * @ordered
 	 */
 	public void removeTournee(Tournee oldTournee) {
-		if(this.tournee == null)
+		if(this.tourneeSet == null)
 			return;
 		
-		if (this.tournee.remove(oldTournee))
+		if (this.tourneeSet.remove(oldTournee))
 			oldTournee.unsetSolution();
 		
 	}

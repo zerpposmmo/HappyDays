@@ -1,5 +1,8 @@
 package metier;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 
 
 /**
@@ -18,7 +21,8 @@ public class Arc
 	 * @ordered
 	 */
 	 
-	@javax.persistence.Id 
+	@javax.persistence.Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@javax.persistence.Column(nullable = false) 
 	protected Long id;
 
@@ -51,7 +55,7 @@ public class Arc
 	 
 	@javax.persistence.ManyToOne 
 	@javax.persistence.JoinColumn(nullable = false) 
-	protected Localisation localisation;
+	protected Localisation depart;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -59,8 +63,18 @@ public class Arc
 	 * @generated
 	 */
 	public Arc(){
-		super();
+            this.distance = 0;
+            this.arrivee = new Localisation();
+            this.depart = new Localisation();
 	}
+
+        public Arc(Localisation arrivee, int distance, Localisation localisation) {
+            this.arrivee = arrivee;
+            this.distance = distance;
+            this.depart = localisation;
+        }
+        
+        
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -68,12 +82,12 @@ public class Arc
 	 * @generated
 	 * @ordered
 	 */
-	public void basicSetLocalisation(Localisation myLocalisation) {
-		if (this.localisation != myLocalisation) {
+	private void basicSetLocalisation(Localisation myLocalisation) {
+		if (this.depart != myLocalisation) {
 			if (myLocalisation != null){
-				if (this.localisation != myLocalisation) {
-					Localisation oldlocalisation = this.localisation;
-					this.localisation = myLocalisation;
+				if (this.depart != myLocalisation) {
+					Localisation oldlocalisation = this.depart;
+					this.depart = myLocalisation;
 					if (oldlocalisation != null)
 						oldlocalisation.removeArc(this);
 				}
@@ -117,8 +131,8 @@ public class Arc
 	 * @generated
 	 * @ordered
 	 */
-	public Localisation getLocalisation() {
-		return this.localisation;
+	public Localisation getDepart() {
+		return this.depart;
 	}
 
 	/**
@@ -156,10 +170,13 @@ public class Arc
 	 * <!--  end-user-doc  -->
 	 * @generated
 	 * @ordered
+         * @param myLocalisation Localisation de départ
 	 */
-	public void setLocalisation(Localisation myLocalisation) {
+	public void setDepart(Localisation myLocalisation) {
 		this.basicSetLocalisation(myLocalisation);
-		myLocalisation.addArc(this);
+                if(!myLocalisation.arcMap.containsKey(this.arrivee)) { 
+                    myLocalisation.addArc(this);
+                }
 	}
 
 	/**
@@ -198,11 +215,11 @@ public class Arc
 	 * @generated
 	 * @ordered
 	 */
-	public void unsetLocalisation() {
-		if (this.localisation == null)
+	public void unsetDepart() {
+		if (this.depart == null)
 			return;
-		Localisation oldlocalisation = this.localisation;
-		this.localisation = null;
+		Localisation oldlocalisation = this.depart;
+		this.depart = null;
 		oldlocalisation.removeArc(this);
 	}
 

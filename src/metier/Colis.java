@@ -1,4 +1,5 @@
 package metier;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -74,7 +75,7 @@ public class Colis
 	 */
 	 
 	@javax.persistence.OneToMany(mappedBy = "colis") 
-	protected Set<QteProduitsColis> colisProduits;
+	protected Collection<QteProduitsColis> colisProduits;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -82,7 +83,9 @@ public class Colis
 	 * @generated
 	 */
 	public Colis(){
-		super();
+		this.colisProduits = new HashSet<>();
+                poidsMax = 0;
+                volumeMax = 0;
 	}
 
 	/**

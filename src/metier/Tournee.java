@@ -51,7 +51,7 @@ public class Tournee
 	 * @generated
 	 */
 	public Tournee(){
-		super();
+		this.colis = new HashSet();
 	}
 
 	/**

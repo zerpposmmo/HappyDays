@@ -1,4 +1,5 @@
 package metier;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -32,7 +33,7 @@ public class Instance
 	 */
 	 
 	@javax.persistence.OneToMany(mappedBy = "instance") 
-	protected Set<Solution> solution;
+	protected Set<Solution> solutionSet;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -42,7 +43,7 @@ public class Instance
 	 */
 	 
 	@javax.persistence.OneToMany(mappedBy = "instance") 
-	protected Set<Produit> produit;
+	protected Set<Produit> produitSet;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -50,7 +51,8 @@ public class Instance
 	 * @generated
 	 */
 	public Instance(){
-		super();
+                this.produitSet = new HashSet();
+                this.solutionSet = new HashSet();
 	}
 
 	/**
@@ -69,11 +71,11 @@ public class Instance
 	 * @generated
 	 * @ordered
 	 */
-	public Set<Solution> getSolution() {
-		if(this.solution == null) {
-				this.solution = new HashSet<Solution>();
+	public Set<Solution> getSolutionSet() {
+		if(this.solutionSet == null) {
+				this.solutionSet = new HashSet<Solution>();
 		}
-		return (Set<Solution>) this.solution;
+		return (Set<Solution>) this.solutionSet;
 	}
 
 	/**
@@ -82,11 +84,11 @@ public class Instance
 	 * @generated
 	 * @ordered
 	 */
-	public Set<Produit> getProduit() {
-		if(this.produit == null) {
-				this.produit = new HashSet<Produit>();
+	public Set<Produit> getProduitSet() {
+		if(this.produitSet == null) {
+				this.produitSet = new HashSet<Produit>();
 		}
-		return (Set<Produit>) this.produit;
+		return (Set<Produit>) this.produitSet;
 	}
 
 	/**
@@ -96,8 +98,8 @@ public class Instance
 	 * @ordered
 	 */
 	public void addAllSolution(Set<Solution> newSolution) {
-		if (this.solution == null) {
-			this.solution = new HashSet<Solution>();
+		if (this.solutionSet == null) {
+			this.solutionSet = new HashSet<Solution>();
 		}
 		for (Solution tmp : newSolution)
 			tmp.setInstance(this);
@@ -111,8 +113,8 @@ public class Instance
 	 * @ordered
 	 */
 	public void addAllProduit(Set<Produit> newProduit) {
-		if (this.produit == null) {
-			this.produit = new HashSet<Produit>();
+		if (this.produitSet == null) {
+			this.produitSet = new HashSet<Produit>();
 		}
 		for (Produit tmp : newProduit)
 			tmp.setInstance(this);
@@ -126,11 +128,11 @@ public class Instance
 	 * @ordered
 	 */
 	public void removeAllSolution(Set<Solution> newSolution) {
-		if(this.solution == null) {
+		if(this.solutionSet == null) {
 			return;
 		}
 		
-		this.solution.removeAll(newSolution);
+		this.solutionSet.removeAll(newSolution);
 	}
 
 	/**
@@ -140,11 +142,11 @@ public class Instance
 	 * @ordered
 	 */
 	public void removeAllProduit(Set<Produit> newProduit) {
-		if(this.produit == null) {
+		if(this.produitSet == null) {
 			return;
 		}
 		
-		this.produit.removeAll(newProduit);
+		this.produitSet.removeAll(newProduit);
 	}
 
 	/**
@@ -164,11 +166,11 @@ public class Instance
 	 * @ordered
 	 */
 	public void addSolution(Solution newSolution) {
-		if(this.solution == null) {
-			this.solution = new HashSet<Solution>();
+		if(this.solutionSet == null) {
+			this.solutionSet = new HashSet<Solution>();
 		}
 		
-		if (this.solution.add(newSolution))
+		if (this.solutionSet.add(newSolution))
 			newSolution.basicSetInstance(this);
 	}
 
@@ -179,11 +181,11 @@ public class Instance
 	 * @ordered
 	 */
 	public void addProduit(Produit newProduit) {
-		if(this.produit == null) {
-			this.produit = new HashSet<Produit>();
+		if(this.produitSet == null) {
+			this.produitSet = new HashSet<Produit>();
 		}
 		
-		if (this.produit.add(newProduit))
+		if (this.produitSet.add(newProduit))
 			newProduit.basicSetInstance(this);
 	}
 
@@ -204,10 +206,10 @@ public class Instance
 	 * @ordered
 	 */
 	public void removeSolution(Solution oldSolution) {
-		if(this.solution == null)
+		if(this.solutionSet == null)
 			return;
 		
-		if (this.solution.remove(oldSolution))
+		if (this.solutionSet.remove(oldSolution))
 			oldSolution.unsetInstance();
 		
 	}
@@ -219,10 +221,10 @@ public class Instance
 	 * @ordered
 	 */
 	public void removeProduit(Produit oldProduit) {
-		if(this.produit == null)
+		if(this.produitSet == null)
 			return;
 		
-		if (this.produit.remove(oldProduit))
+		if (this.produitSet.remove(oldProduit))
 			oldProduit.unsetInstance();
 		
 	}

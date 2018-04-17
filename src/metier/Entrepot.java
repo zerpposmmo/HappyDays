@@ -32,7 +32,7 @@ public class Entrepot
 	 */
 	 
 	@javax.persistence.OneToMany(mappedBy = "entrepot") 
-	protected Set<Localisation> localisation;
+	protected Set<Localisation> localisationSet;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -40,7 +40,7 @@ public class Entrepot
 	 * @generated
 	 */
 	public Entrepot(){
-		super();
+		this.localisationSet = new HashSet();
 	}
 
 	/**
@@ -59,11 +59,11 @@ public class Entrepot
 	 * @generated
 	 * @ordered
 	 */
-	public Set<Localisation> getLocalisation() {
-		if(this.localisation == null) {
-				this.localisation = new HashSet<Localisation>();
+	public Set<Localisation> getLocalisationSet() {
+		if(this.localisationSet == null) {
+				this.localisationSet = new HashSet<Localisation>();
 		}
-		return (Set<Localisation>) this.localisation;
+		return (Set<Localisation>) this.localisationSet;
 	}
 
 	/**
@@ -73,8 +73,8 @@ public class Entrepot
 	 * @ordered
 	 */
 	public void addAllLocalisation(Set<Localisation> newLocalisation) {
-		if (this.localisation == null) {
-			this.localisation = new HashSet<Localisation>();
+		if (this.localisationSet == null) {
+			this.localisationSet = new HashSet<Localisation>();
 		}
 		for (Localisation tmp : newLocalisation)
 			tmp.setEntrepot(this);
@@ -88,11 +88,11 @@ public class Entrepot
 	 * @ordered
 	 */
 	public void removeAllLocalisation(Set<Localisation> newLocalisation) {
-		if(this.localisation == null) {
+		if(this.localisationSet == null) {
 			return;
 		}
 		
-		this.localisation.removeAll(newLocalisation);
+		this.localisationSet.removeAll(newLocalisation);
 	}
 
 	/**
@@ -112,11 +112,11 @@ public class Entrepot
 	 * @ordered
 	 */
 	public void addLocalisation(Localisation newLocalisation) {
-		if(this.localisation == null) {
-			this.localisation = new HashSet<Localisation>();
+		if(this.localisationSet == null) {
+			this.localisationSet = new HashSet<Localisation>();
 		}
 		
-		if (this.localisation.add(newLocalisation))
+		if (this.localisationSet.add(newLocalisation))
 			newLocalisation.basicSetEntrepot(this);
 	}
 
@@ -137,10 +137,10 @@ public class Entrepot
 	 * @ordered
 	 */
 	public void removeLocalisation(Localisation oldLocalisation) {
-		if(this.localisation == null)
+		if(this.localisationSet == null)
 			return;
 		
-		if (this.localisation.remove(oldLocalisation))
+		if (this.localisationSet.remove(oldLocalisation))
 			oldLocalisation.unsetEntrepot();
 		
 	}

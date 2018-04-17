@@ -92,7 +92,8 @@ public class Produit
 	 * @generated
 	 */
 	public Produit(){
-		super();
+            this.ligne = new HashSet<>();
+            this.colisProduits = new HashSet<>();
 	}
 
 	/**
@@ -169,11 +170,11 @@ public class Produit
 	 * @generated
 	 * @ordered
 	 */
-	public Set<Ligne> getLigne() {
+	public HashSet<Ligne> getLigne() {
 		if(this.ligne == null) {
 				this.ligne = new HashSet<Ligne>();
 		}
-		return (Set<Ligne>) this.ligne;
+		return (HashSet<Ligne>) this.ligne;
 	}
 
 	/**
@@ -192,11 +193,11 @@ public class Produit
 	 * @generated
 	 * @ordered
 	 */
-	public Set<QteProduitsColis> getColisProduits() {
+	public HashSet<QteProduitsColis> getColisProduits() {
 		if(this.colisProduits == null) {
 				this.colisProduits = new HashSet<QteProduitsColis>();
 		}
-		return (Set<QteProduitsColis>) this.colisProduits;
+		return (HashSet<QteProduitsColis>) this.colisProduits;
 	}
 
 	/**

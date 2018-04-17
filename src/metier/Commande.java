@@ -13,6 +13,7 @@ import java.util.Set;
 @javax.persistence.Entity 
 public class Commande
 {
+    
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!--  end-user-doc  -->
@@ -42,7 +43,7 @@ public class Commande
 	 */
 	 
 	@javax.persistence.OneToMany(mappedBy = "commande") 
-	protected Set<Ligne> ligne;
+	protected Set<Ligne> ligneSet;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -52,7 +53,7 @@ public class Commande
 	 */
 	 
 	@javax.persistence.OneToMany(mappedBy = "commande") 
-	protected Set<Colis> colis;
+	protected Set<Colis> colisSet;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -61,6 +62,8 @@ public class Commande
 	 */
 	public Commande(){
 		super();
+                this.colisSet = new HashSet();
+                this.ligneSet = new HashSet(); 
 	}
 
 	/**
@@ -89,11 +92,11 @@ public class Commande
 	 * @generated
 	 * @ordered
 	 */
-	public Set<Ligne> getLigne() {
-		if(this.ligne == null) {
-				this.ligne = new HashSet<Ligne>();
+	public Set<Ligne> getLigneSet() {
+		if(this.ligneSet == null) {
+				this.ligneSet = new HashSet<Ligne>();
 		}
-		return (Set<Ligne>) this.ligne;
+		return (Set<Ligne>) this.ligneSet;
 	}
 
 	/**
@@ -102,11 +105,11 @@ public class Commande
 	 * @generated
 	 * @ordered
 	 */
-	public Set<Colis> getColis() {
-		if(this.colis == null) {
-				this.colis = new HashSet<Colis>();
+	public Set<Colis> getColisSet() {
+		if(this.colisSet == null) {
+				this.colisSet = new HashSet<Colis>();
 		}
-		return (Set<Colis>) this.colis;
+		return (Set<Colis>) this.colisSet;
 	}
 
 	/**
@@ -116,8 +119,8 @@ public class Commande
 	 * @ordered
 	 */
 	public void addAllLigne(Set<Ligne> newLigne) {
-		if (this.ligne == null) {
-			this.ligne = new HashSet<Ligne>();
+		if (this.ligneSet == null) {
+			this.ligneSet = new HashSet<Ligne>();
 		}
 		for (Ligne tmp : newLigne)
 			tmp.setCommande(this);
@@ -131,8 +134,8 @@ public class Commande
 	 * @ordered
 	 */
 	public void addAllColis(Set<Colis> newColis) {
-		if (this.colis == null) {
-			this.colis = new HashSet<Colis>();
+		if (this.colisSet == null) {
+			this.colisSet = new HashSet<Colis>();
 		}
 		for (Colis tmp : newColis)
 			tmp.setCommande(this);
@@ -146,11 +149,11 @@ public class Commande
 	 * @ordered
 	 */
 	public void removeAllLigne(Set<Ligne> newLigne) {
-		if(this.ligne == null) {
+		if(this.ligneSet == null) {
 			return;
 		}
 		
-		this.ligne.removeAll(newLigne);
+		this.ligneSet.removeAll(newLigne);
 	}
 
 	/**
@@ -160,11 +163,11 @@ public class Commande
 	 * @ordered
 	 */
 	public void removeAllColis(Set<Colis> newColis) {
-		if(this.colis == null) {
+		if(this.colisSet == null) {
 			return;
 		}
 		
-		this.colis.removeAll(newColis);
+		this.colisSet.removeAll(newColis);
 	}
 
 	/**
@@ -194,11 +197,11 @@ public class Commande
 	 * @ordered
 	 */
 	public void addLigne(Ligne newLigne) {
-		if(this.ligne == null) {
-			this.ligne = new HashSet<Ligne>();
+		if(this.ligneSet == null) {
+			this.ligneSet = new HashSet<Ligne>();
 		}
 		
-		if (this.ligne.add(newLigne))
+		if (this.ligneSet.add(newLigne))
 			newLigne.basicSetCommande(this);
 	}
 
@@ -209,11 +212,11 @@ public class Commande
 	 * @ordered
 	 */
 	public void addColis(Colis newColis) {
-		if(this.colis == null) {
-			this.colis = new HashSet<Colis>();
+		if(this.colisSet == null) {
+			this.colisSet = new HashSet<Colis>();
 		}
 		
-		if (this.colis.add(newColis))
+		if (this.colisSet.add(newColis))
 			newColis.basicSetCommande(this);
 	}
 
@@ -244,10 +247,10 @@ public class Commande
 	 * @ordered
 	 */
 	public void removeLigne(Ligne oldLigne) {
-		if(this.ligne == null)
+		if(this.ligneSet == null)
 			return;
 		
-		if (this.ligne.remove(oldLigne))
+		if (this.ligneSet.remove(oldLigne))
 			oldLigne.unsetCommande();
 		
 	}
@@ -259,10 +262,10 @@ public class Commande
 	 * @ordered
 	 */
 	public void removeColis(Colis oldColis) {
-		if(this.colis == null)
+		if(this.colisSet == null)
 			return;
 		
-		if (this.colis.remove(oldColis))
+		if (this.colisSet.remove(oldColis))
 			oldColis.unsetCommande();
 		
 	}
