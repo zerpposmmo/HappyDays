@@ -95,6 +95,14 @@ public class Produit
             this.ligne = new HashSet<>();
             this.colisProduits = new HashSet<>();
 	}
+        
+        public Produit(long id, Localisation l, int poids, int volume){
+            this();
+            this.id = id;
+            // Récupérer la location avec la location id
+            this.poids = poids;
+            this.volume = volume;
+        }
 
 	/**
 	 * <!-- begin-user-doc -->

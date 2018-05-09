@@ -68,10 +68,10 @@ public class Arc
             this.depart = new Localisation();
 	}
 
-        public Arc(Localisation arrivee, int distance, Localisation localisation) {
+        public Arc(Localisation arrivee, int distance, Localisation depart) {
             this.arrivee = arrivee;
             this.distance = distance;
-            this.depart = localisation;
+            this.depart = depart;
         }
         
         

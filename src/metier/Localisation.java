@@ -66,6 +66,13 @@ public class Localisation {
         this.arcMap = new HashMap<>();
         this.produitSet = new HashSet();
     }
+    
+    public Localisation(long id,int x, int y) {
+        this();
+        this.id = id;
+        this.x = x;
+        this.y = y;
+    }
 
     /**
      * <!-- begin-user-doc -->
