@@ -239,6 +239,7 @@ public class TestRead {
             result.setNbProduits(nbProduits);
             result.setProduits(produits);
             result.setEntrepot(newEntrepot);
+            result.setInstance(newInstance);
             /* TEST AFFICHAGE OBJETS */
             System.out.println(commandes);
             System.out.println(arcs);
