@@ -31,7 +31,6 @@ public class LocalisationBrute {
 
     public int getY() {
         return y;
-    }
-    
+    }    
     
 }

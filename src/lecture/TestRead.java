@@ -23,6 +23,7 @@ import java.util.Set;
 import java.util.function.Predicate;
 import metier.Arc;
 import metier.Commande;
+import metier.Entrepot;
 import metier.Ligne;
 import metier.Localisation;
 import metier.Produit;
@@ -33,26 +34,8 @@ import metier.Produit;
  */
 public class TestRead {
     
-    private List<Localisation> getDepartArrivee(long departId, long arriveeId, List<Localisation> localisations) {
-        List<Localisation> departArrivee = new ArrayList();
-        Localisation depart = new Localisation();
-        Localisation arrivee = new Localisation();
-        
-        for(Localisation l : localisations){
-            if(l.getId() == departId){
-                depart = l;
-            }else if(l.getId() == arriveeId){
-                arrivee = l;
-            }
-        }
-        
-        departArrivee.add(depart);
-        departArrivee.add(arrivee);
-        
-        return departArrivee;
-    }
-    
-    public static void main(String[] args) throws FileNotFoundException, IOException {
+    public static Result getCreatedObjects(String filePath) throws IOException{
+        Result result = new Result();
         
         /* LISTES BRUTES SERVANT A CREER LES OBJETS */
         Set<ProduitBrut> produitsBruts = new HashSet();
@@ -66,6 +49,7 @@ public class TestRead {
         Set<Arc> arcs = new HashSet();
         Map<Long, Localisation> localisations = new HashMap<>();
         Map<Long, Commande> commandes = new HashMap();
+        Entrepot newEntrepot = new Entrepot();
         
         /* VARIABLES */
         int nbLocalisations = 0;
@@ -75,16 +59,13 @@ public class TestRead {
         int capaBox = 0;
         int nbCommandes = 0;
         int nbIntersections = 0;
-        long departingDepot;
-        long arrivalDepot;
+        long departingDepot = 0;
+        long arrivalDepot = 0;
         
+        File file = new File(filePath);
         
-        
-        File dir = new File("C:\\Users\\Xtree\\Documents\\NetBeansProjects\\HappyDays\\src\\test\\");
-        
-        for (File file : dir.listFiles()) {
-            try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-                String line;
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+        String line;
                 int i=0;
                 while ((line = br.readLine()) != null) {
                     i++;
@@ -128,12 +109,12 @@ public class TestRead {
                             break;
                         case "//Orders ":
                             List<QuantiteProduit> quantiteProduits = new ArrayList();
-                            
+                            i=0;
                             while(!(line = br.readLine()).equals(" ")){
-                                i=0;
                                 if(!line.startsWith("//")){
                                     if(i==0){
                                         //nbCommandes = Integer.parseInt(line.replace(" ", ""));
+                                        i++;
                                     }
                                     else{
                                         String[] w = line.split(" ");
@@ -144,9 +125,10 @@ public class TestRead {
                                         i++;
                                         int nbLignes = Integer.parseInt(w[i]);
                                         i++;
-                                        while(i<w.length){
+                                        while(i<w.length - 1){
                                             QuantiteProduit q = new QuantiteProduit(Long.parseLong(w[i]), Integer.parseInt(w[i+1]));
                                             quantiteProduits.add(q);
+                                            i++;
                                         }
                                         CommandeBrute cB = new CommandeBrute(id,colisMax,nbLignes,quantiteProduits);
                                         commandesBrutes.add(cB);
@@ -214,11 +196,15 @@ public class TestRead {
                 
                 /* CREATION DES ARCS */
                 for(ArcBrut arcB : arcsBruts){
-                    arcs.add(new Arc(localisations.get(arcB.getArriveeId()), arcB.getDistance(), localisations.get(arcB.getDepartId())));
+                    Arc newArc = new Arc(localisations.get(arcB.getArriveeId()), arcB.getDistance(), localisations.get(arcB.getDepartId()));
+                    arcs.add(newArc);
+                    localisations.get(arcB.getDepartId()).addArc(newArc);
                 }
                 /* CREATION DES PRODUITS */
                 for(ProduitBrut prodB : produitsBruts){
-                    produits.put(prodB.getId(), new Produit(prodB.getId(), localisations.get(prodB.getLocalisationId()), prodB.getPoids(), prodB.getVolume()));
+                    Produit newProduit = new Produit(prodB.getId(), localisations.get(prodB.getLocalisationId()), prodB.getPoids(), prodB.getVolume());
+                    produits.put(prodB.getId(), newProduit);
+                    localisations.get(prodB.getLocalisationId()).addProduit(newProduit);
                 }
                 /* CREATION DES COMMANDES */
                 i = 0;
@@ -232,11 +218,40 @@ public class TestRead {
                     commandes.put(commB.getCommandeId(), new Commande(commB.getCommandeId(), commB.getColisMax(), lignes));
                 }
                 
-                /* TEST AFFICHAGE OBJETS */
-                System.out.println(commandes);
-                System.out.println(arcs);
-                System.out.println(produits);
+                for(Localisation loc : localisations.values()){
+                    newEntrepot.addLocalisation(loc);
+                }
             }
-        }
+            result.setArcs(arcs);
+            result.setArrivalDepot(arrivalDepot);
+            result.setCapaBox(capaBox);
+            result.setCommandes(commandes);
+            result.setDepartingDepot(departingDepot);
+            result.setLocalisations(localisations);
+            result.setNbBoxesTrolley(nbBoxesTrolley);
+            result.setNbCommandes(nbCommandes);
+            result.setNbDimensionsCapacity(nbDimensionsCapacity);
+            result.setNbIntersections(nbIntersections);
+            result.setNbLocalisations(nbLocalisations);
+            result.setNbProduits(nbProduits);
+            result.setProduits(produits);
+            result.setEntrepot(newEntrepot);
+            /* TEST AFFICHAGE OBJETS */
+            System.out.println(commandes);
+            System.out.println(arcs);
+            System.out.println(produits);
+
+            /* TESTS VARIABLES */
+            //System.out.println(nbLocalisations);
+            //System.out.println(localisations.size());
+            //System.out.println(nbProduits);
+            //System.out.println(produits.size());
+
+            return result;
+    }
+    
+    public static void main(String[] args) throws FileNotFoundException, IOException {
+        Result result = new Result();
+        result = getCreatedObjects("C:\\Users\\Xtree\\Desktop\\test.txt");
     }
 }
