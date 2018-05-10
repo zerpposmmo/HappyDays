@@ -278,7 +278,7 @@ public class Commande
 
     @Override
     public String toString() {
-        return "Commande{" + "id=" + id + ", colisMax=" + colisMax + ", ligneSet=" + ligneSet + '}';
+        return "Commande{" + "id=" + id + ", colisMax=" + colisMax + ", ligneSet=" + ligneSet + "} \n";
     }
 
 	

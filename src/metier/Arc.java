@@ -223,6 +223,11 @@ public class Arc
 		oldlocalisation.removeArc(this);
 	}
 
+    @Override
+    public String toString() {
+        return "Arc{" + "id=" + id + ", arrivee=" + arrivee + ", distance=" + distance + ", depart=" + depart + "} \n";
+    }
+
 	
 }
 

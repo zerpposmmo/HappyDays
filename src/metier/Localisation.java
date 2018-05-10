@@ -322,4 +322,10 @@ public class Localisation {
         oldentrepot.removeLocalisation(this);
     }
 
+    @Override
+    public String toString() {
+        return "Localisation{" + "id=" + id + ", x=" + x + ", y=" + y + ", arcMap=" + arcMap.size() + ", produitSet=" + produitSet.size() + ", entrepot=" + entrepot + "} \n";
+    }
+
+    
 }

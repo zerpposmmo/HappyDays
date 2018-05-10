@@ -99,7 +99,7 @@ public class Produit
         public Produit(long id, Localisation l, int poids, int volume){
             this();
             this.id = id;
-            // Récupérer la location avec la location id
+            this.localisation = l;
             this.poids = poids;
             this.volume = volume;
         }
@@ -445,6 +445,11 @@ public class Produit
 		this.instance = null;
 		oldinstance.removeProduit(this);
 	}
+
+    @Override
+    public String toString() {
+        return "Produit{" + "id=" + id + ", poids=" + poids + ", volume=" + volume + ", localisation=" + localisation + ", instance=" + instance + '}';
+    }
 
 	
 }
