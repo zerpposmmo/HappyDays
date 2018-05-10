@@ -146,6 +146,11 @@ public class Entrepot
 		
 	}
 
+    @Override
+    public String toString() {
+        return "Entrepot{" + "id=" + id + '}';
+    }
+
 	
 }
 

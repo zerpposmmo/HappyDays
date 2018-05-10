@@ -218,7 +218,9 @@ public class TestRead {
                     commandes.put(commB.getCommandeId(), new Commande(commB.getCommandeId(), commB.getColisMax(), lignes));
                 }
                 
-                newEntrepot.addAllLocalisation((Set<Localisation>) localisations.values());
+                for(Localisation loc : localisations.values()){
+                    newEntrepot.addLocalisation(loc);
+                }
             }
             result.setArcs(arcs);
             result.setArrivalDepot(arrivalDepot);
