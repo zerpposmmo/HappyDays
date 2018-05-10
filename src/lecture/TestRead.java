@@ -27,6 +27,7 @@ import metier.Entrepot;
 import metier.Ligne;
 import metier.Localisation;
 import metier.Produit;
+import metier.Instance;
 
 /**
  *
@@ -50,7 +51,7 @@ public class TestRead {
         Map<Long, Localisation> localisations = new HashMap<>();
         Map<Long, Commande> commandes = new HashMap();
         Entrepot newEntrepot = new Entrepot();
-        
+        Instance newInstance = new Instance();
         /* VARIABLES */
         int nbLocalisations = 0;
         int nbProduits = 0;
@@ -203,8 +204,10 @@ public class TestRead {
                 /* CREATION DES PRODUITS */
                 for(ProduitBrut prodB : produitsBruts){
                     Produit newProduit = new Produit(prodB.getId(), localisations.get(prodB.getLocalisationId()), prodB.getPoids(), prodB.getVolume());
+                    newProduit.setInstance(newInstance);
                     produits.put(prodB.getId(), newProduit);
                     localisations.get(prodB.getLocalisationId()).addProduit(newProduit);
+                    
                 }
                 /* CREATION DES COMMANDES */
                 i = 0;
@@ -236,6 +239,7 @@ public class TestRead {
             result.setNbProduits(nbProduits);
             result.setProduits(produits);
             result.setEntrepot(newEntrepot);
+            result.setInstance(newInstance);
             /* TEST AFFICHAGE OBJETS */
             System.out.println(commandes);
             System.out.println(arcs);
@@ -252,6 +256,6 @@ public class TestRead {
     
     public static void main(String[] args) throws FileNotFoundException, IOException {
         Result result = new Result();
-        result = getCreatedObjects("C:\\Users\\Xtree\\Desktop\\test.txt");
+        result = getCreatedObjects("src/test/test.txt");
     }
 }
