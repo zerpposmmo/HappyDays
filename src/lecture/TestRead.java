@@ -118,6 +118,7 @@ public class TestRead {
                                         i++;
                                     }
                                     else{
+                                        quantiteProduits.clear();
                                         String[] w = line.split(" ");
                                         i = 0;
                                         long id = Long.parseLong(w[i]);
@@ -129,9 +130,9 @@ public class TestRead {
                                         while(i<w.length - 1){
                                             QuantiteProduit q = new QuantiteProduit(Long.parseLong(w[i]), Integer.parseInt(w[i+1]));
                                             quantiteProduits.add(q);
-                                            i++;
+                                            i = i + 2;
                                         }
-                                        CommandeBrute cB = new CommandeBrute(id,colisMax,nbLignes,quantiteProduits);
+                                        CommandeBrute cB = new CommandeBrute(id,colisMax,nbLignes, new ArrayList<>(quantiteProduits));
                                         commandesBrutes.add(cB);
                                     }
                                 }
@@ -245,7 +246,8 @@ public class TestRead {
             result.setEntrepot(newEntrepot);
             result.setInstance(newInstance);
             /* TEST AFFICHAGE OBJETS */
-            //System.out.println(commandes);
+            //System.out.println(commandesBrutes);
+            System.out.println(commandes);
             //System.out.println(arcs);
             //System.out.println(produits);
 
