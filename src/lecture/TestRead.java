@@ -57,7 +57,7 @@ public class TestRead {
         int nbProduits = 0;
         int nbBoxesTrolley = 0;
         int nbDimensionsCapacity = 0;
-        int capaBox = 0;
+        Capacite capaBox = null;
         int nbCommandes = 0;
         int nbIntersections = 0;
         long departingDepot = 0;
@@ -114,7 +114,7 @@ public class TestRead {
                             while(!(line = br.readLine()).equals(" ")){
                                 if(!line.startsWith("//")){
                                     if(i==0){
-                                        //nbCommandes = Integer.parseInt(line.replace(" ", ""));
+                                        nbCommandes = Integer.parseInt(line.replace(" ", ""));
                                         i++;
                                     }
                                     else{
@@ -163,7 +163,12 @@ public class TestRead {
                         case "//B: CapaBox ":
                             while(!(line = br.readLine()).equals(" ")){
                                 if(!line.startsWith("//")){
-                                    capaBox = Integer.parseInt(line.replaceAll(" ",""));
+                                    String[] w = line.split(" ");
+                                    i = 0;
+                                    int poids = Integer.parseInt(w[i]);
+                                    i++;
+                                    int volume = Integer.parseInt(w[i]);
+                                    capaBox = new Capacite(poids, volume);
                                 }
                             }
                             break;
@@ -174,14 +179,14 @@ public class TestRead {
                                 }
                             }
                             break;
-                        case "//ArrivalDepot":
+                        case "//ArrivalDepot ":
                             while(!(line = br.readLine()).equals(" ")){
                                 if(!line.startsWith("//")){
                                     arrivalDepot = Long.parseLong(line.replaceAll(" ",""));
                                 }
                             }
                             break;
-                        case "NbVerticesIntersections ":
+                        case "//NbVerticesIntersections ":
                             while(!(line = br.readLine()).equals(" ")){
                                 if(!line.startsWith("//")){
                                     nbIntersections = Integer.parseInt(line.replaceAll(" ",""));
@@ -247,7 +252,7 @@ public class TestRead {
             result.setInstance(newInstance);
             /* TEST AFFICHAGE OBJETS */
             //System.out.println(commandesBrutes);
-            System.out.println(commandes);
+            //System.out.println(commandes);
             //System.out.println(arcs);
             //System.out.println(produits);
 
