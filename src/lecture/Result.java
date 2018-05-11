@@ -12,6 +12,7 @@ import java.util.Set;
 import metier.Arc;
 import metier.Commande;
 import metier.Entrepot;
+import metier.Instance;
 import metier.Localisation;
 import metier.Produit;
 
@@ -27,7 +28,7 @@ public class Result {
     private Map<Long, Localisation> localisations;
     private Map<Long, Commande> commandes;
     private Entrepot entrepot;
-    
+    private Instance instance;
     /* VARIABLES */
     private int nbLocalisations;
     private int nbProduits;
@@ -164,5 +165,15 @@ public class Result {
     public void setEntrepot(Entrepot entrepot) {
         this.entrepot = entrepot;
     }
+
+    public Instance getInstance() {
+        return instance;
+    }
+
+    public void setInstance(Instance instance) {
+        this.instance = instance;
+    }
+    
+    
 
 }
