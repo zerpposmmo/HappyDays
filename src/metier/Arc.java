@@ -63,6 +63,7 @@ public class Arc
             this.depart = new Localisation();
 	}
 
+
         /**
          * Constructeur par arrivée, distance et départ
          * @param arrivee
@@ -214,6 +215,11 @@ public class Arc
 		this.depart = null;
 		oldlocalisation.removeArc(this);
 	}
+
+    @Override
+    public String toString() {
+        return "Arc{" + "id=" + id + ", arrivee=" + arrivee + ", distance=" + distance + ", depart=" + depart + "} \n";
+    }
 
 	
 }

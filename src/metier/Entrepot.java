@@ -1,5 +1,6 @@
 package metier;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 
@@ -132,6 +133,11 @@ public class Entrepot
 			oldLocalisation.unsetEntrepot();
 		
 	}
+
+    @Override
+    public String toString() {
+        return "Entrepot{" + "id=" + id + '}';
+    }
 
 	
 }

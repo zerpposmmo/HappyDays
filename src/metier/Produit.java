@@ -86,6 +86,14 @@ public class Produit
             this.ligne = new HashSet<>();
             this.colisProduits = new HashSet<>();
 	}
+        
+        public Produit(long id, Localisation l, int poids, int volume){
+            this();
+            this.id = id;
+            this.localisation = l;
+            this.poids = poids;
+            this.volume = volume;
+        }
 
 	/**
 	 * Ajout basique d'une localisation au produit
@@ -408,6 +416,11 @@ public class Produit
 		this.instance = null;
 		oldinstance.removeProduit(this);
 	}
+
+    @Override
+    public String toString() {
+        return "Produit{" + "id=" + id + ", poids=" + poids + ", volume=" + volume + ", localisation=" + localisation + ", instance=" + instance + '}';
+    }
 
 	
 }

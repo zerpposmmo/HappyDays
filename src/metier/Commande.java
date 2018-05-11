@@ -60,6 +60,12 @@ public class Commande
                 this.ligneSet = new HashSet(); 
 	}
 
+    public Commande(Long id, int colisMax, Set<Ligne> ligneSet) {
+        this.id = id;
+        this.colisMax = colisMax;
+        this.ligneSet = ligneSet;
+    }
+
 	/**
 	 * Récupère l'ID de la commande
 	 * @generated
@@ -247,6 +253,11 @@ public class Commande
 			oldColis.unsetCommande();
 		
 	}
+
+    @Override
+    public String toString() {
+        return "Commande{" + "id=" + id + ", colisMax=" + colisMax + ", ligneSet=" + ligneSet + "} \n";
+    }
 
 	
 }

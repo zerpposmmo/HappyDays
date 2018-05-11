@@ -57,6 +57,11 @@ public class Ligne
 		super();
 	}
 
+        public Ligne(long id, int quantite, Produit produit){
+            this.id = id;
+            this.quantite = quantite;
+            this.produit = produit;
+        }
 	/**
 	 * Ajout basique d'un produit
 	 * @generated
@@ -211,6 +216,12 @@ public class Ligne
 		oldcommande.removeLigne(this);
 	}
 
+    @Override
+    public String toString() {
+        return "Ligne{" + "id=" + id + ", quantite=" + quantite + ", produit=" + produit + '}';
+    }
+
+        
 	
 }
 

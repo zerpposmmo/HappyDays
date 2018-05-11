@@ -72,6 +72,13 @@ public class Localisation {
         this.arcMap = new HashMap<>();
         this.produitSet = new HashSet();
     }
+    
+    public Localisation(long id,int x, int y) {
+        this();
+        this.id = id;
+        this.x = x;
+        this.y = y;
+    }
 
     /**
      * Ajout basique d'un entrepôt à la localisation
@@ -343,4 +350,10 @@ public class Localisation {
         oldentrepot.removeLocalisation(this);
     }
 
+    @Override
+    public String toString() {
+        return "Localisation{" + "id=" + id + ", x=" + x + ", y=" + y + ", arcMap=" + arcMap.size() + ", produitSet=" + produitSet.size() + ", entrepot=" + entrepot + "} \n";
+    }
+
+    
 }
