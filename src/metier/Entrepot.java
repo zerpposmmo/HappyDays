@@ -6,8 +6,7 @@ import java.util.Set;
 
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
+ * Classe entrepôt
  * @generated
  */
  
@@ -15,8 +14,7 @@ import java.util.Set;
 public class Entrepot
 {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * ID de l'entrepot
 	 * @generated
 	 * @ordered
 	 */
@@ -26,8 +24,7 @@ public class Entrepot
 	protected Long id;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ensemble de localisation de l'entrepot
 	 * @generated
 	 * @ordered
 	 */
@@ -36,8 +33,7 @@ public class Entrepot
 	protected Set<Localisation> localisationSet;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Constructeur par défaut de l'entrepôt
 	 * @generated
 	 */
 	public Entrepot(){
@@ -45,8 +41,7 @@ public class Entrepot
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère l'ID de l'entrepôt
 	 * @generated
 	 * @ordered
 	 */
@@ -55,8 +50,7 @@ public class Entrepot
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Definis l'ensemble des localisations de l'entrepôt
 	 * @generated
 	 * @ordered
 	 */
@@ -68,8 +62,7 @@ public class Entrepot
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ajoute un ensemble de localisation donnée à un entrepôt
 	 * @generated
 	 * @ordered
 	 */
@@ -83,8 +76,7 @@ public class Entrepot
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire toutes les localisations dans l'entrepôt
 	 * @generated
 	 * @ordered
 	 */
@@ -97,8 +89,7 @@ public class Entrepot
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Définit l'ID de l'entrepôt
 	 * @generated
 	 * @ordered
 	 */
@@ -107,8 +98,7 @@ public class Entrepot
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ajoute la localisation donnée à l'ensemble de localisation de l'entrepôt
 	 * @generated
 	 * @ordered
 	 */
@@ -122,8 +112,7 @@ public class Entrepot
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire l'ID de l'entrepôt
 	 * @generated
 	 * @ordered
 	 */
@@ -132,8 +121,7 @@ public class Entrepot
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire la localisation de l'entrepôt
 	 * @generated
 	 * @ordered
 	 */
