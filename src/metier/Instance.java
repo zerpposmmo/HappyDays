@@ -6,8 +6,7 @@ import java.util.Set;
 
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
+ * Classe Instance
  * @generated
  */
  
@@ -15,8 +14,7 @@ import java.util.Set;
 public class Instance
 {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * ID de l'instance
 	 * @generated
 	 * @ordered
 	 */
@@ -26,8 +24,7 @@ public class Instance
 	protected Long id;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ensemble de solutions
 	 * @generated
 	 * @ordered
 	 */
@@ -36,8 +33,7 @@ public class Instance
 	protected Set<Solution> solutionSet;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ensemble de produit
 	 * @generated
 	 * @ordered
 	 */
@@ -46,8 +42,7 @@ public class Instance
 	protected Set<Produit> produitSet;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Constructeur par défaut de l'instance
 	 * @generated
 	 */
 	public Instance(){
@@ -56,8 +51,7 @@ public class Instance
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère l'ID
 	 * @generated
 	 * @ordered
 	 */
@@ -66,8 +60,7 @@ public class Instance
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère l'ensemble des solutions de l'instance
 	 * @generated
 	 * @ordered
 	 */
@@ -79,8 +72,7 @@ public class Instance
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère l'ensemble des produits
 	 * @generated
 	 * @ordered
 	 */
@@ -92,8 +84,7 @@ public class Instance
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ajouter un ensemble de solution à l'instance
 	 * @generated
 	 * @ordered
 	 */
@@ -107,8 +98,7 @@ public class Instance
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ajoute un ensemble de produits à l'instance
 	 * @generated
 	 * @ordered
 	 */
@@ -122,8 +112,7 @@ public class Instance
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire l'ensemble des solutions donnée de l'instance
 	 * @generated
 	 * @ordered
 	 */
@@ -136,8 +125,7 @@ public class Instance
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire l'ensemble de produits donné de l'instance
 	 * @generated
 	 * @ordered
 	 */
@@ -150,8 +138,7 @@ public class Instance
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Définit un ID à l'instance
 	 * @generated
 	 * @ordered
 	 */
@@ -160,8 +147,7 @@ public class Instance
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ajoute une solution à l'instance
 	 * @generated
 	 * @ordered
 	 */
@@ -175,8 +161,7 @@ public class Instance
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ajoute un produit à l'instance
 	 * @generated
 	 * @ordered
 	 */
@@ -190,8 +175,7 @@ public class Instance
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire l'ID de l'instance
 	 * @generated
 	 * @ordered
 	 */
@@ -200,8 +184,7 @@ public class Instance
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire une solution donnée de l'ensemble des solutions de l'instance
 	 * @generated
 	 * @ordered
 	 */
@@ -215,8 +198,7 @@ public class Instance
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire un produit donné de l'ensemble de produits de l'instance
 	 * @generated
 	 * @ordered
 	 */
