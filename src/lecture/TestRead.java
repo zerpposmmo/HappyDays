@@ -212,13 +212,17 @@ public class TestRead {
                 /* CREATION DES COMMANDES */
                 i = 0;
                 for(CommandeBrute commB : commandesBrutes){
+                    
                     Set<Ligne> lignes = new HashSet();
+                    Commande newCommande = new Commande(commB.getCommandeId(), commB.getColisMax(), lignes);
                     for(QuantiteProduit qP : commB.getqP()){
                         Ligne l = new Ligne(i, qP.getQuantite(), produits.get(qP.getProduitId()));
+                        l.setCommande(newCommande);
+                        produits.get(qP.getProduitId()).addLigne(l);
                         lignes.add(l);
                         i++;
                     }
-                    commandes.put(commB.getCommandeId(), new Commande(commB.getCommandeId(), commB.getColisMax(), lignes));
+                    commandes.put(commB.getCommandeId(), newCommande );
                 }
                 
                 for(Localisation loc : localisations.values()){
@@ -241,9 +245,9 @@ public class TestRead {
             result.setEntrepot(newEntrepot);
             result.setInstance(newInstance);
             /* TEST AFFICHAGE OBJETS */
-            System.out.println(commandes);
-            System.out.println(arcs);
-            System.out.println(produits);
+            //System.out.println(commandes);
+            //System.out.println(arcs);
+            //System.out.println(produits);
 
             /* TESTS VARIABLES */
             //System.out.println(nbLocalisations);
@@ -257,5 +261,6 @@ public class TestRead {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         Result result = new Result();
         result = getCreatedObjects("src/test/test.txt");
+        System.out.println(result.toString());
     }
 }
