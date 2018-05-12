@@ -153,7 +153,7 @@ public class Produit {
      * @generated
      * @ordered
      */
-    private int getPoids() {
+    public int getPoids() {
         return this.poids;
     }
 
@@ -163,7 +163,7 @@ public class Produit {
      * @generated
      * @ordered
      */
-    private int getVolume() {
+    public int getVolume() {
         return this.volume;
     }
 
