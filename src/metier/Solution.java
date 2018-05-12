@@ -60,9 +60,9 @@ public class Solution
 
 	/**
 	 * Ajout basique d'une instance à la solution
-         * @param myInstance Instance à ajouter à la solution
 	 * @generated
 	 * @ordered
+         * @param myInstance Instance à ajouter à la solution
 	 */
 	public void basicSetInstance(Instance myInstance) {
 		if (this.instance != myInstance) {
@@ -118,9 +118,10 @@ public class Solution
 
 	/**
 	 * Ajoute l'ensemble des tournées donnée à la solution
+         * @generated
+	 * @ordered* 
          * @param newTournee L'ensemble des tounrées à ajouter à la solution
-	 * @generated
-	 * @ordered
+	 
 	 */
 	public void addAllTournee(Set<Tournee> newTournee) {
 		if (this.tourneeSet == null) {
@@ -133,9 +134,9 @@ public class Solution
 
 	/**
 	 * Retire l'ensemble des tournées données de la solution
-         * @param newTournee L'ensemble des tournées que l'on souhaite retirer
 	 * @generated
 	 * @ordered
+         * * @param newTournee L'ensemble des tournées que l'on souhaite retirer
 	 */
 	public void removeAllTournee(Set<Tournee> newTournee) {
 		if(this.tourneeSet == null) {
@@ -147,9 +148,9 @@ public class Solution
 
 	/**
 	 * Définit l'ID de la solution
-         * @param myId ID que l'on veut ajouter
 	 * @generated
 	 * @ordered
+         * @param myId ID que l'on veut ajouter
 	 */
 	public void setId(long myId) {
 		this.id = myId;
@@ -157,9 +158,9 @@ public class Solution
 
 	/**
 	 * Définit le nom de la solution
-         * @param myNom Nom que l'on veut ajouter
 	 * @generated
 	 * @ordered
+         * @param myNom Nom que l'on veut ajouter
 	 */
 	private void setNom(String myNom) {
 		this.nom = myNom;
@@ -167,9 +168,9 @@ public class Solution
 
 	/**
 	 * Ajouter une tournée donnée à l'ensemble des tournées de la solution
-         * @param newTournee La tournée de que l'on souhaite ajouter à l'ensemble des tournées
 	 * @generated
 	 * @ordered
+         * @param newTournee La tournée de que l'on souhaite ajouter à l'ensemble des tournées
 	 */
 	public void addTournee(Tournee newTournee) {
 		if(this.tourneeSet == null) {
@@ -182,9 +183,9 @@ public class Solution
 
 	/**
 	 * Définit l'instance de la solution
-         * @param myInstance Instance que l'on veut ajouter 
 	 * @generated
 	 * @ordered
+         * @param myInstance Instance que l'on veut ajouter 
 	 */
 	public void setInstance(Instance myInstance) {
 		this.basicSetInstance(myInstance);
@@ -211,9 +212,9 @@ public class Solution
 
 	/**
 	 * Retire la tournée donnée de la solution
-         * @param oldTournee La tournée que l'on souhaite retirer de la solution
 	 * @generated
 	 * @ordered
+         * @param oldTournee La tournée que l'on souhaite retirer de la solution
 	 */
 	public void removeTournee(Tournee oldTournee) {
 		if(this.tourneeSet == null)

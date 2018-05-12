@@ -60,6 +60,13 @@ public class Commande {
         this.ligneSet = new HashSet();
     }
 
+    /**
+     * Constructeur par données
+     *
+     * @param id ID de la commande
+     * @param colisMax Nombre de colis Max de la commande
+     * @param ligneSet Ensemble de ligne de produits
+     */
     public Commande(Long id, int colisMax, Set<Ligne> ligneSet) {
         this.id = id;
         this.colisMax = colisMax;
@@ -117,6 +124,7 @@ public class Commande {
      *
      * @generated
      * @ordered
+     * @param newLigne Ensemble de lignes à ajouter
      */
     public void addAllLigne(Set<Ligne> newLigne) {
         if (this.ligneSet == null) {
@@ -133,6 +141,7 @@ public class Commande {
      *
      * @generated
      * @ordered
+     * @param newColis Ensemble de colis à rajouter
      */
     public void addAllColis(Set<Colis> newColis) {
         if (this.colisSet == null) {
@@ -149,6 +158,7 @@ public class Commande {
      *
      * @generated
      * @ordered
+     * @param newLigne Ensemble de ligne à retirer
      */
     public void removeAllLigne(Set<Ligne> newLigne) {
         if (this.ligneSet == null) {
@@ -163,6 +173,7 @@ public class Commande {
      *
      * @generated
      * @ordered
+     * @param newColis Ensemble de colis à retirer
      */
     public void removeAllColis(Set<Colis> newColis) {
         if (this.colisSet == null) {
@@ -177,16 +188,18 @@ public class Commande {
      *
      * @generated
      * @ordered
+     * @param myId ID à fixer
      */
     public void setId(long myId) {
         this.id = myId;
     }
 
     /**
-     * Permet de définir l'ID d'une commande
+     * Permet de définir le nombre maximal de colis d'une commande
      *
      * @generated
      * @ordered
+     * @param myColisMax nombre maximale de colis à fixer
      */
     private void setColisMax(int myColisMax) {
         this.colisMax = myColisMax;
@@ -198,6 +211,7 @@ public class Commande {
      *
      * @generated
      * @ordered
+     * @param newLigne Ligne de produit à ajouter
      */
     public void addLigne(Ligne newLigne) {
         if (this.ligneSet == null) {
@@ -214,6 +228,7 @@ public class Commande {
      *
      * @generated
      * @ordered
+     * @param newColis Colis à ajouter
      */
     public void addColis(Colis newColis) {
         if (this.colisSet == null) {
@@ -251,6 +266,7 @@ public class Commande {
      *
      * @generated
      * @ordered
+     * @param oldLigne Ligne de produit à retirer
      */
     public void removeLigne(Ligne oldLigne) {
         if (this.ligneSet == null) {
@@ -268,6 +284,7 @@ public class Commande {
      *
      * @generated
      * @ordered
+     * @param oldColis Colis à retirer
      */
     public void removeColis(Colis oldColis) {
         if (this.colisSet == null) {
@@ -309,8 +326,6 @@ public class Commande {
         return true;
     }
 
-    
-    
     @Override
     public String toString() {
         return "Commande{" + "id=" + id + ", colisMax=" + colisMax + ", ligneSet=" + ligneSet + "} \n";

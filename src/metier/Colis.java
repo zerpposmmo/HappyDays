@@ -179,6 +179,7 @@ public class Colis
 	 * Ajoute un ensemble de colisProduits au colisProduits du colis
 	 * @generated
 	 * @ordered
+         * @param newColisProduits Ensemble de produits du colis à ajouter
 	 */
 	public void addAllColisProduits(Set<QteProduitsColis> newColisProduits) {
 		if (this.colisProduits == null) {
@@ -193,6 +194,7 @@ public class Colis
 	 * Retire un ensemble de colisProduits au colisProduits du colis
 	 * @generated
 	 * @ordered
+         * @param newColisProduits Ensemble de produits du colis à retirer
 	 */
 	public void removeAllColisProduits(Set<QteProduitsColis> newColisProduits) {
 		if(this.colisProduits == null) {
@@ -206,7 +208,7 @@ public class Colis
 	 * Set l'identifiant du colis
 	 * @generated
 	 * @ordered
-         * @param myId identifiant
+         * @param myId identifiant 
 	 */
 	public void setId(long myId) {
 		this.id = myId;

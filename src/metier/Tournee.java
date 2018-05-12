@@ -56,6 +56,7 @@ public class Tournee
          * en maintenant une cohérence avec les variable de Solution
 	 * @generated
 	 * @ordered
+         * @param mySolution Solution à définir
 	 */
 	public void basicSetSolution(Solution mySolution) {
 		if (this.solution != mySolution) {
@@ -104,6 +105,7 @@ public class Tournee
 	 * Permet d'ajouter un groupe de colis a la collection de colis de la tournée
 	 * @generated
 	 * @ordered
+         * @param newColis Ensemble de colis à ajouter
 	 */
 	public void addAllColis(Set<Colis> newColis) {
 		if (this.colisSet == null) {
@@ -118,6 +120,7 @@ public class Tournee
 	 * Permet de supprimer un ensemble de colis
 	 * @generated
 	 * @ordered
+         * @param newColis Ensemble de colis à supprimer
 	 */
 	public void removeAllColis(Set<Colis> newColis) {
 		if(this.colisSet == null) {
@@ -135,6 +138,7 @@ public class Tournee
 	 * Setter  id
 	 * @generated
 	 * @ordered
+         * @param myId ID à définir
 	 */
 	public void setId(long myId) {
 		this.id = myId;
@@ -144,6 +148,7 @@ public class Tournee
 	 * Setter Solution
 	 * @generated
 	 * @ordered
+         * @param mySolution Solution à définir
 	 */
 	public void setSolution(Solution mySolution) {
 		this.basicSetSolution(mySolution);
@@ -154,6 +159,7 @@ public class Tournee
 	 * Permet d'ajouter un colis
 	 * @generated
 	 * @ordered
+         * @param newColis Colis à ajouter
 	 */
 	public void addColis(Colis newColis) {
 		if(this.colisSet == null) {
@@ -190,6 +196,7 @@ public class Tournee
 	 * Permet de supprimer un colis de la collection de colis
 	 * @generated
 	 * @ordered
+         * @param oldColis Colis à retirer
 	 */
 	public void removeColis(Colis oldColis) {
 		if(this.colisSet == null)
