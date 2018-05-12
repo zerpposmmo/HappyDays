@@ -3,6 +3,7 @@ package metier;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -349,11 +350,82 @@ public class Localisation {
         this.entrepot = null;
         oldentrepot.removeLocalisation(this);
     }
+    
+    /**
+     * Permet de savoir si le chemin entre les 2 localisations existe 
+     * @param localisation
+     * @return boolean true si existe false sinon
+     */
+    boolean existPath(Localisation localisation) {
+        if(this.arcMap.containsKey(localisation)){
+            return true;
+        }
+        else if(this.equals(localisation)){
+            return true;
+        }
+        return false;
+    }
+    
+    /**
+     * Permet d'obtenir la distance entre 2 localisation
+     * @param key
+     * @return double distance entre les 2 localisations ou + l'infini si n'existe pas
+     */
+    public double getDistanceTo(Localisation key){
+        Arc r = this.arcMap.get(key);
+        if( r == null)
+        {
+            //Same place
+            if(this.equals(key)){
+                return 0;
+            }
+            return Double.POSITIVE_INFINITY;
+        }
+        return r.getDistance();
+    }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.id);
+        hash = 67 * hash + this.x;
+        hash = 67 * hash + this.y;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Localisation other = (Localisation) obj;
+        if (this.x != other.x) {
+            return false;
+        }
+        if (this.y != other.y) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+    
+    
+    
     @Override
     public String toString() {
         return "Localisation{" + "id=" + id + ", x=" + x + ", y=" + y + ", arcMap=" + arcMap.size() + ", produitSet=" + produitSet.size() + ", entrepot=" + entrepot + "} \n";
     }
+
+    
 
     
 }

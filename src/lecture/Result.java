@@ -34,7 +34,7 @@ public class Result {
     private int nbProduits;
     private int nbBoxesTrolley;
     private int nbDimensionsCapacity;
-    private int capaBox;
+    private Capacite capaBox;
     private int nbCommandes;
     private int nbIntersections;
     private long departingDepot;
@@ -49,7 +49,7 @@ public class Result {
         nbProduits = 0;
         nbBoxesTrolley = 0;
         nbDimensionsCapacity = 0;
-        capaBox = 0;
+        capaBox=new Capacite(0,0);
         nbCommandes = 0;
         nbIntersections = 0;
     }
@@ -118,11 +118,11 @@ public class Result {
         this.nbDimensionsCapacity = nbDimensionsCapacity;
     }
 
-    public int getCapaBox() {
+    public Capacite getCapaBox() {
         return capaBox;
     }
 
-    public void setCapaBox(int capaBox) {
+    public void setCapaBox(Capacite capaBox) {
         this.capaBox = capaBox;
     }
 
