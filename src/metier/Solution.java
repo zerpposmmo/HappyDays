@@ -5,8 +5,7 @@ import java.util.Set;
 
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
+ * Classe solution
  * @generated
  */
  
@@ -14,8 +13,7 @@ import java.util.Set;
 public class Solution
 {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * ID de la solution
 	 * @generated
 	 * @ordered
 	 */
@@ -25,8 +23,7 @@ public class Solution
 	protected Long id;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Nom de la solution
 	 * @generated
 	 * @ordered
 	 */
@@ -35,8 +32,7 @@ public class Solution
 	protected String nom;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ensemble des tournées de la solution
 	 * @generated
 	 * @ordered
 	 */
@@ -45,8 +41,7 @@ public class Solution
 	protected Set<Tournee> tourneeSet;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Instance de la solution
 	 * @generated
 	 * @ordered
 	 */
@@ -56,8 +51,7 @@ public class Solution
 	protected Instance instance;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Constructeur de la solution
 	 * @generated
 	 */
 	public Solution(){
@@ -65,10 +59,10 @@ public class Solution
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ajout basique d'une instance à la solution
 	 * @generated
 	 * @ordered
+         * @param myInstance Instance à ajouter à la solution
 	 */
 	public void basicSetInstance(Instance myInstance) {
 		if (this.instance != myInstance) {
@@ -84,8 +78,7 @@ public class Solution
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère l'ID de la solution
 	 * @generated
 	 * @ordered
 	 */
@@ -94,8 +87,7 @@ public class Solution
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère le nom de la solution
 	 * @generated
 	 * @ordered
 	 */
@@ -104,8 +96,7 @@ public class Solution
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère l'ensemble de tournées de la solution
 	 * @generated
 	 * @ordered
 	 */
@@ -117,8 +108,7 @@ public class Solution
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Récupère l'instance de la solution
 	 * @generated
 	 * @ordered
 	 */
@@ -127,10 +117,11 @@ public class Solution
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
+	 * Ajoute l'ensemble des tournées donnée à la solution
+         * @generated
+	 * @ordered* 
+         * @param newTournee L'ensemble des tounrées à ajouter à la solution
+	 
 	 */
 	public void addAllTournee(Set<Tournee> newTournee) {
 		if (this.tourneeSet == null) {
@@ -142,10 +133,10 @@ public class Solution
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire l'ensemble des tournées données de la solution
 	 * @generated
 	 * @ordered
+         * * @param newTournee L'ensemble des tournées que l'on souhaite retirer
 	 */
 	public void removeAllTournee(Set<Tournee> newTournee) {
 		if(this.tourneeSet == null) {
@@ -156,30 +147,30 @@ public class Solution
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Définit l'ID de la solution
 	 * @generated
 	 * @ordered
+         * @param myId ID que l'on veut ajouter
 	 */
 	public void setId(long myId) {
 		this.id = myId;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Définit le nom de la solution
 	 * @generated
 	 * @ordered
+         * @param myNom Nom que l'on veut ajouter
 	 */
 	private void setNom(String myNom) {
 		this.nom = myNom;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ajouter une tournée donnée à l'ensemble des tournées de la solution
 	 * @generated
 	 * @ordered
+         * @param newTournee La tournée de que l'on souhaite ajouter à l'ensemble des tournées
 	 */
 	public void addTournee(Tournee newTournee) {
 		if(this.tourneeSet == null) {
@@ -191,10 +182,10 @@ public class Solution
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Définit l'instance de la solution
 	 * @generated
 	 * @ordered
+         * @param myInstance Instance que l'on veut ajouter 
 	 */
 	public void setInstance(Instance myInstance) {
 		this.basicSetInstance(myInstance);
@@ -202,8 +193,7 @@ public class Solution
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire l'ID de la solution
 	 * @generated
 	 * @ordered
 	 */
@@ -212,8 +202,7 @@ public class Solution
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire le nom de la solution
 	 * @generated
 	 * @ordered
 	 */
@@ -222,10 +211,10 @@ public class Solution
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire la tournée donnée de la solution
 	 * @generated
 	 * @ordered
+         * @param oldTournee La tournée que l'on souhaite retirer de la solution
 	 */
 	public void removeTournee(Tournee oldTournee) {
 		if(this.tourneeSet == null)
@@ -237,8 +226,7 @@ public class Solution
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire l'instance de la solution
 	 * @generated
 	 * @ordered
 	 */

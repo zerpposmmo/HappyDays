@@ -57,7 +57,7 @@ public class TestRead {
         int nbProduits = 0;
         int nbBoxesTrolley = 0;
         int nbDimensionsCapacity = 0;
-        int capaBox = 0;
+        Capacite capaBox = null;
         int nbCommandes = 0;
         int nbIntersections = 0;
         long departingDepot = 0;
@@ -114,10 +114,11 @@ public class TestRead {
                             while(!(line = br.readLine()).equals(" ")){
                                 if(!line.startsWith("//")){
                                     if(i==0){
-                                        //nbCommandes = Integer.parseInt(line.replace(" ", ""));
+                                        nbCommandes = Integer.parseInt(line.replace(" ", ""));
                                         i++;
                                     }
                                     else{
+                                        quantiteProduits.clear();
                                         String[] w = line.split(" ");
                                         i = 0;
                                         long id = Long.parseLong(w[i]);
@@ -129,9 +130,9 @@ public class TestRead {
                                         while(i<w.length - 1){
                                             QuantiteProduit q = new QuantiteProduit(Long.parseLong(w[i]), Integer.parseInt(w[i+1]));
                                             quantiteProduits.add(q);
-                                            i++;
+                                            i = i + 2;
                                         }
-                                        CommandeBrute cB = new CommandeBrute(id,colisMax,nbLignes,quantiteProduits);
+                                        CommandeBrute cB = new CommandeBrute(id,colisMax,nbLignes, new ArrayList<>(quantiteProduits));
                                         commandesBrutes.add(cB);
                                     }
                                 }
@@ -162,7 +163,12 @@ public class TestRead {
                         case "//B: CapaBox ":
                             while(!(line = br.readLine()).equals(" ")){
                                 if(!line.startsWith("//")){
-                                    capaBox = Integer.parseInt(line.replaceAll(" ",""));
+                                    String[] w = line.split(" ");
+                                    i = 0;
+                                    int poids = Integer.parseInt(w[i]);
+                                    i++;
+                                    int volume = Integer.parseInt(w[i]);
+                                    capaBox = new Capacite(poids, volume);
                                 }
                             }
                             break;
@@ -173,14 +179,14 @@ public class TestRead {
                                 }
                             }
                             break;
-                        case "//ArrivalDepot":
+                        case "//ArrivalDepot ":
                             while(!(line = br.readLine()).equals(" ")){
                                 if(!line.startsWith("//")){
                                     arrivalDepot = Long.parseLong(line.replaceAll(" ",""));
                                 }
                             }
                             break;
-                        case "NbVerticesIntersections ":
+                        case "//NbVerticesIntersections ":
                             while(!(line = br.readLine()).equals(" ")){
                                 if(!line.startsWith("//")){
                                     nbIntersections = Integer.parseInt(line.replaceAll(" ",""));
@@ -212,13 +218,17 @@ public class TestRead {
                 /* CREATION DES COMMANDES */
                 i = 0;
                 for(CommandeBrute commB : commandesBrutes){
+                    
                     Set<Ligne> lignes = new HashSet();
+                    Commande newCommande = new Commande(commB.getCommandeId(), commB.getColisMax(), lignes);
                     for(QuantiteProduit qP : commB.getqP()){
                         Ligne l = new Ligne(i, qP.getQuantite(), produits.get(qP.getProduitId()));
+                        l.setCommande(newCommande);
+                        produits.get(qP.getProduitId()).addLigne(l);
                         lignes.add(l);
                         i++;
                     }
-                    commandes.put(commB.getCommandeId(), new Commande(commB.getCommandeId(), commB.getColisMax(), lignes));
+                    commandes.put(commB.getCommandeId(), newCommande );
                 }
                 
                 for(Localisation loc : localisations.values()){
@@ -241,9 +251,10 @@ public class TestRead {
             result.setEntrepot(newEntrepot);
             result.setInstance(newInstance);
             /* TEST AFFICHAGE OBJETS */
-            System.out.println(commandes);
-            System.out.println(arcs);
-            System.out.println(produits);
+            //System.out.println(commandesBrutes);
+            //System.out.println(commandes);
+            //System.out.println(arcs);
+            //System.out.println(produits);
 
             /* TESTS VARIABLES */
             //System.out.println(nbLocalisations);
@@ -257,5 +268,6 @@ public class TestRead {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         Result result = new Result();
         result = getCreatedObjects("src/test/test.txt");
+        System.out.println(result.toString());
     }
 }

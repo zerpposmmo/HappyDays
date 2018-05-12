@@ -5,8 +5,9 @@ import java.util.Set;
 
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
+ * Class Tournee
+ * Posséde une collection d'objet Colis et une collection d'objet Solution
+ * @author Samuel
  * @generated
  */
  
@@ -14,8 +15,7 @@ import java.util.Set;
 public class Tournee
 {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Identifiant
 	 * @generated
 	 * @ordered
 	 */
@@ -25,8 +25,7 @@ public class Tournee
 	protected Long id;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Solution de la tournée
 	 * @generated
 	 * @ordered
 	 */
@@ -36,29 +35,28 @@ public class Tournee
 	protected Solution solution;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Colis qui seront livrés par la tournée
 	 * @generated
 	 * @ordered
 	 */
 	 
 	@javax.persistence.OneToMany(mappedBy = "tournee") 
-	protected Set<Colis> colis;
+	protected Set<Colis> colisSet;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Constructeur par défaut
 	 * @generated
 	 */
 	public Tournee(){
-		this.colis = new HashSet();
+		this.colisSet = new HashSet();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Permet de set la solution de la tournée 
+         * en maintenant une cohérence avec les variable de Solution
 	 * @generated
 	 * @ordered
+         * @param mySolution Solution à définir
 	 */
 	public void basicSetSolution(Solution mySolution) {
 		if (this.solution != mySolution) {
@@ -74,8 +72,7 @@ public class Tournee
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Getter de l'identifiant de la tournée
 	 * @generated
 	 * @ordered
 	 */
@@ -84,8 +81,7 @@ public class Tournee
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Getter de la solution de la tournée
 	 * @generated
 	 * @ordered
 	 */
@@ -94,27 +90,26 @@ public class Tournee
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Getter du HashSet des colis
 	 * @generated
 	 * @ordered
 	 */
-	public Set<Colis> getColis() {
-		if(this.colis == null) {
-				this.colis = new HashSet<Colis>();
+	public Set<Colis> getColisSet() {
+		if(this.colisSet == null) {
+				this.colisSet = new HashSet<Colis>();
 		}
-		return (Set<Colis>) this.colis;
+		return (Set<Colis>) this.colisSet;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Permet d'ajouter un groupe de colis a la collection de colis de la tournée
 	 * @generated
 	 * @ordered
+         * @param newColis Ensemble de colis à ajouter
 	 */
 	public void addAllColis(Set<Colis> newColis) {
-		if (this.colis == null) {
-			this.colis = new HashSet<Colis>();
+		if (this.colisSet == null) {
+			this.colisSet = new HashSet<Colis>();
 		}
 		for (Colis tmp : newColis)
 			tmp.setTournee(this);
@@ -122,34 +117,38 @@ public class Tournee
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Permet de supprimer un ensemble de colis
 	 * @generated
 	 * @ordered
+         * @param newColis Ensemble de colis à supprimer
 	 */
 	public void removeAllColis(Set<Colis> newColis) {
-		if(this.colis == null) {
+		if(this.colisSet == null) {
 			return;
 		}
 		
-		this.colis.removeAll(newColis);
+		this.colisSet.removeAll(newColis);
 	}
 
+        
+        
+        
+        
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Setter  id
 	 * @generated
 	 * @ordered
+         * @param myId ID à définir
 	 */
 	public void setId(long myId) {
 		this.id = myId;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Setter Solution
 	 * @generated
 	 * @ordered
+         * @param mySolution Solution à définir
 	 */
 	public void setSolution(Solution mySolution) {
 		this.basicSetSolution(mySolution);
@@ -157,23 +156,22 @@ public class Tournee
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Permet d'ajouter un colis
 	 * @generated
 	 * @ordered
+         * @param newColis Colis à ajouter
 	 */
 	public void addColis(Colis newColis) {
-		if(this.colis == null) {
-			this.colis = new HashSet<Colis>();
+		if(this.colisSet == null) {
+			this.colisSet = new HashSet<Colis>();
 		}
 		
-		if (this.colis.add(newColis))
+		if (this.colisSet.add(newColis))
 			newColis.basicSetTournee(this);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Unsetter Id
 	 * @generated
 	 * @ordered
 	 */
@@ -182,8 +180,7 @@ public class Tournee
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Unsetter Solution
 	 * @generated
 	 * @ordered
 	 */
@@ -196,16 +193,16 @@ public class Tournee
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Permet de supprimer un colis de la collection de colis
 	 * @generated
 	 * @ordered
+         * @param oldColis Colis à retirer
 	 */
 	public void removeColis(Colis oldColis) {
-		if(this.colis == null)
+		if(this.colisSet == null)
 			return;
 		
-		if (this.colis.remove(oldColis))
+		if (this.colisSet.remove(oldColis))
 			oldColis.unsetTournee();
 		
 	}

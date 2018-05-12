@@ -6,8 +6,7 @@ import java.util.Set;
 
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
+ * Classe Colis
  * @generated
  */
  
@@ -15,8 +14,7 @@ import java.util.Set;
 public class Colis
 {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Identifiant
 	 * @generated
 	 * @ordered
 	 */
@@ -26,8 +24,7 @@ public class Colis
 	protected Long id;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Poids maximum du colis
 	 * @generated
 	 * @ordered
 	 */
@@ -36,8 +33,7 @@ public class Colis
 	protected int poidsMax;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Volume maximum du colis
 	 * @generated
 	 * @ordered
 	 */
@@ -46,8 +42,7 @@ public class Colis
 	protected int volumeMax;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Commande liée au colis
 	 * @generated
 	 * @ordered
 	 */
@@ -57,8 +52,7 @@ public class Colis
 	protected Commande commande;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Tournée liée au colis
 	 * @generated
 	 * @ordered
 	 */
@@ -68,8 +62,7 @@ public class Colis
 	protected Tournee tournee;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Collection de produits liés au colis
 	 * @generated
 	 * @ordered
 	 */
@@ -78,8 +71,7 @@ public class Colis
 	protected Collection<QteProduitsColis> colisProduits;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Constructeur par défaut
 	 * @generated
 	 */
 	public Colis(){
@@ -89,10 +81,10 @@ public class Colis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Verifie le parametre commande et le set au colis
 	 * @generated
 	 * @ordered
+         * @param myCommande commande
 	 */
 	public void basicSetCommande(Commande myCommande) {
 		if (this.commande != myCommande) {
@@ -108,10 +100,10 @@ public class Colis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Verifie le parametre tournée et le set au colis
 	 * @generated
 	 * @ordered
+         * @param myTournee tournée
 	 */
 	public void basicSetTournee(Tournee myTournee) {
 		if (this.tournee != myTournee) {
@@ -127,8 +119,7 @@ public class Colis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retourne l'id du colis
 	 * @generated
 	 * @ordered
 	 */
@@ -137,8 +128,7 @@ public class Colis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retourne le poids max du colis
 	 * @generated
 	 * @ordered
 	 */
@@ -147,8 +137,7 @@ public class Colis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retourne le volume max du colis
 	 * @generated
 	 * @ordered
 	 */
@@ -157,8 +146,7 @@ public class Colis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retourne la commande du colis
 	 * @generated
 	 * @ordered
 	 */
@@ -167,8 +155,7 @@ public class Colis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retourne la tournée du colis
 	 * @generated
 	 * @ordered
 	 */
@@ -177,8 +164,7 @@ public class Colis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retourne l'ensemble de produits du colis
 	 * @generated
 	 * @ordered
 	 */
@@ -190,10 +176,10 @@ public class Colis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ajoute un ensemble de colisProduits au colisProduits du colis
 	 * @generated
 	 * @ordered
+         * @param newColisProduits Ensemble de produits du colis à ajouter
 	 */
 	public void addAllColisProduits(Set<QteProduitsColis> newColisProduits) {
 		if (this.colisProduits == null) {
@@ -205,10 +191,10 @@ public class Colis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire un ensemble de colisProduits au colisProduits du colis
 	 * @generated
 	 * @ordered
+         * @param newColisProduits Ensemble de produits du colis à retirer
 	 */
 	public void removeAllColisProduits(Set<QteProduitsColis> newColisProduits) {
 		if(this.colisProduits == null) {
@@ -219,40 +205,40 @@ public class Colis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Set l'identifiant du colis
 	 * @generated
 	 * @ordered
+         * @param myId identifiant 
 	 */
 	public void setId(long myId) {
 		this.id = myId;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Set le poids maximum du colis
 	 * @generated
 	 * @ordered
+         * @param myPoidsMax poids maximum
 	 */
 	private void setPoidsMax(int myPoidsMax) {
 		this.poidsMax = myPoidsMax;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Set le volume maximum du colis
 	 * @generated
 	 * @ordered
+         * @param myVolumeMax volume maximum
 	 */
 	private void setVolumeMax(int myVolumeMax) {
 		this.volumeMax = myVolumeMax;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Set la commande du colis
 	 * @generated
 	 * @ordered
+         * @param myCommande commande
 	 */
 	public void setCommande(Commande myCommande) {
 		this.basicSetCommande(myCommande);
@@ -260,10 +246,10 @@ public class Colis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Set la tournée du colis
 	 * @generated
 	 * @ordered
+         * @param myTournee tournée
 	 */
 	public void setTournee(Tournee myTournee) {
 		this.basicSetTournee(myTournee);
@@ -271,10 +257,10 @@ public class Colis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Ajoute un colisProduits au colis
 	 * @generated
 	 * @ordered
+         * @param newColisProduits colisProduits
 	 */
 	public void addColisProduits(QteProduitsColis newColisProduits) {
 		if(this.colisProduits == null) {
@@ -286,8 +272,7 @@ public class Colis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Unset l'identifiant du colis
 	 * @generated
 	 * @ordered
 	 */
@@ -296,8 +281,7 @@ public class Colis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Unset le poids maximum du colis
 	 * @generated
 	 * @ordered
 	 */
@@ -306,8 +290,7 @@ public class Colis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Unset le volume maximum du colis
 	 * @generated
 	 * @ordered
 	 */
@@ -316,8 +299,7 @@ public class Colis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Unset la commande du colis
 	 * @generated
 	 * @ordered
 	 */
@@ -330,8 +312,7 @@ public class Colis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Unset la tournée du colis
 	 * @generated
 	 * @ordered
 	 */
@@ -344,10 +325,10 @@ public class Colis
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
+	 * Retire le colisProduits du colis
 	 * @generated
 	 * @ordered
+         * @param oldColisProduits colisProduits
 	 */
 	public void removeColisProduits(QteProduitsColis oldColisProduits) {
 		if(this.colisProduits == null)

@@ -1,236 +1,238 @@
 package metier;
 
-
-
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
+ * Classe quantité de produit par colis (Nommée QPC)
+ *
  * @generated
  */
- 
-@javax.persistence.Entity 
-public class QteProduitsColis
-{
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	 
-	@javax.persistence.Id 
-	@javax.persistence.Column(nullable = false) 
-	protected Long id;
+@javax.persistence.Entity
+public class QteProduitsColis {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	 
-	@javax.persistence.Column(nullable = false) 
-	protected int quantite;
+    /**
+     * ID de la QPC
+     *
+     * @generated
+     * @ordered
+     */
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	 
-	@javax.persistence.ManyToOne 
-	@javax.persistence.JoinColumn(nullable = false) 
-	protected Produit produit;
+    @javax.persistence.Id
+    @javax.persistence.Column(nullable = false)
+    protected Long id;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	 
-	@javax.persistence.ManyToOne 
-	@javax.persistence.JoinColumn(nullable = false) 
-	protected Colis colis;
+    /**
+     * Quantité de la QPC
+     *
+     * @generated
+     * @ordered
+     */
+    @javax.persistence.Column(nullable = false)
+    protected int quantite;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 */
-	public QteProduitsColis(){
-		super();
-	}
+    /**
+     * Produit lié à la QPC
+     *
+     * @generated
+     * @ordered
+     */
+    @javax.persistence.ManyToOne
+    @javax.persistence.JoinColumn(nullable = false)
+    protected Produit produit;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	public void basicSetProduit(Produit myProduit) {
-		if (this.produit != myProduit) {
-			if (myProduit != null){
-				if (this.produit != myProduit) {
-					Produit oldproduit = this.produit;
-					this.produit = myProduit;
-					if (oldproduit != null)
-						oldproduit.removeColisProduits(this);
-				}
-			}
-		}
-	}
+    /**
+     * Colis de la QPC
+     *
+     * @generated
+     * @ordered
+     */
+    @javax.persistence.ManyToOne
+    @javax.persistence.JoinColumn(nullable = false)
+    protected Colis colis;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	public void basicSetColis(Colis myColis) {
-		if (this.colis != myColis) {
-			if (myColis != null){
-				if (this.colis != myColis) {
-					Colis oldcolis = this.colis;
-					this.colis = myColis;
-					if (oldcolis != null)
-						oldcolis.removeColisProduits(this);
-				}
-			}
-		}
-	}
+    /**
+     * Constructeur par défaut de la QPC
+     *
+     * @generated
+     */
+    public QteProduitsColis() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	public long getId() {
-		return this.id;
-	}
+    /**
+     * Ajout basique d'un produit à la QPC
+     *
+     * @generated
+     * @ordered
+     * @param myProduct Le produit à ajouter à la QPC
+     */
+    public void basicSetProduit(Produit myProduit) {
+        if (this.produit != myProduit) {
+            if (myProduit != null) {
+                if (this.produit != myProduit) {
+                    Produit oldproduit = this.produit;
+                    this.produit = myProduit;
+                    if (oldproduit != null) {
+                        oldproduit.removeColisProduits(this);
+                    }
+                }
+            }
+        }
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	private int getQuantite() {
-		return this.quantite;
-	}
+    /**
+     * Ajout basique d'un colis à la QPC
+     *
+     * @generated
+     * @ordered
+     * @param myColis Colis à ajouter à la QPC
+     */
+    public void basicSetColis(Colis myColis) {
+        if (this.colis != myColis) {
+            if (myColis != null) {
+                if (this.colis != myColis) {
+                    Colis oldcolis = this.colis;
+                    this.colis = myColis;
+                    if (oldcolis != null) {
+                        oldcolis.removeColisProduits(this);
+                    }
+                }
+            }
+        }
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	public Produit getProduit() {
-		return this.produit;
-	}
+    /**
+     * Récupère l'ID de la QPC
+     *
+     * @generated
+     * @ordered
+     */
+    public long getId() {
+        return this.id;
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	public Colis getColis() {
-		return this.colis;
-	}
+    /**
+     * Récupère la quantité de la QPC
+     *
+     * @generated
+     * @ordered
+     */
+    private int getQuantite() {
+        return this.quantite;
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	public void setId(long myId) {
-		this.id = myId;
-	}
+    /**
+     * Récupère le produit de la QPC
+     *
+     * @generated
+     * @ordered
+     */
+    public Produit getProduit() {
+        return this.produit;
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	private void setQuantite(int myQuantite) {
-		this.quantite = myQuantite;
-	}
+    /**
+     * Récupère le colis lié à la QPC
+     *
+     * @generated
+     * @ordered
+     */
+    public Colis getColis() {
+        return this.colis;
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	public void setProduit(Produit myProduit) {
-		this.basicSetProduit(myProduit);
-		myProduit.addColisProduits(this);
-	}
+    /**
+     * Définit l'ID de la QPC
+     *
+     * @generated
+     * @ordered
+     * @param myId ID à définir
+     */
+    public void setId(long myId) {
+        this.id = myId;
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	public void setColis(Colis myColis) {
-		this.basicSetColis(myColis);
-		myColis.addColisProduits(this);
-	}
+    /**
+     * Définit la quantité de la QPC
+     *
+     * @generated
+     * @ordered
+     * @param myQuantite Quantité à ajouter
+     */
+    private void setQuantite(int myQuantite) {
+        this.quantite = myQuantite;
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	public void unsetId() {
-		this.id = 0L;
-	}
+    /**
+     * Définit le produit lié à la QPC
+     *
+     * @generated
+     * @ordered
+     * @param myProduit Produit que l'on veut ajouter
+     */
+    public void setProduit(Produit myProduit) {
+        this.basicSetProduit(myProduit);
+        myProduit.addColisProduits(this);
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	private void unsetQuantite() {
-		this.quantite = 0;
-	}
+    /**
+     * Définit un colis à la QPC
+     *
+     * @generated
+     * @ordered
+     * @param myColis Le colis que l'on veut ajouter
+     */
+    public void setColis(Colis myColis) {
+        this.basicSetColis(myColis);
+        myColis.addColisProduits(this);
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	public void unsetProduit() {
-		if (this.produit == null)
-			return;
-		Produit oldproduit = this.produit;
-		this.produit = null;
-		oldproduit.removeColisProduits(this);
-	}
+    /**
+     * Retire l'ID de la QPC
+     *
+     * @generated
+     * @ordered
+     */
+    public void unsetId() {
+        this.id = 0L;
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!--  end-user-doc  -->
-	 * @generated
-	 * @ordered
-	 */
-	public void unsetColis() {
-		if (this.colis == null)
-			return;
-		Colis oldcolis = this.colis;
-		this.colis = null;
-		oldcolis.removeColisProduits(this);
-	}
+    /**
+     * Retire la quantité de la QPC
+     *
+     * @generated
+     * @ordered
+     */
+    private void unsetQuantite() {
+        this.quantite = 0;
+    }
 
-	
+    /**
+     * Retire le produit de la QPC
+     *
+     * @generated
+     * @ordered
+     */
+    public void unsetProduit() {
+        if (this.produit == null) {
+            return;
+        }
+        Produit oldproduit = this.produit;
+        this.produit = null;
+        oldproduit.removeColisProduits(this);
+    }
+
+    /**
+     * Retire le colis de la QPC
+     *
+     * @generated
+     * @ordered
+     */
+    public void unsetColis() {
+        if (this.colis == null) {
+            return;
+        }
+        Colis oldcolis = this.colis;
+        this.colis = null;
+        oldcolis.removeColisProduits(this);
+    }
+
 }
-
