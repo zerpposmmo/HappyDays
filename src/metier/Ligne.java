@@ -161,7 +161,7 @@ public class Ligne {
      * @generated
      * @ordered
      */
-    private void setQuantite(int myQuantite) {
+    public void setQuantite(int myQuantite) {
         this.quantite = myQuantite;
     }
 

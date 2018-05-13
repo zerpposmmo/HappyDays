@@ -1,342 +1,431 @@
 package metier;
+
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
-
-
 
 /**
  * Classe Colis
+ *
  * @generated
  */
- 
-@javax.persistence.Entity 
-public class Colis
-{
-	/**
-	 * Identifiant
-	 * @generated
-	 * @ordered
-	 */
-	 
-	@javax.persistence.Id 
-	@javax.persistence.Column(nullable = false) 
-	protected Long id;
+@javax.persistence.Entity
+public class Colis {
 
-	/**
-	 * Poids maximum du colis
-	 * @generated
-	 * @ordered
-	 */
-	 
-	@javax.persistence.Column(nullable = false) 
-	protected int poidsMax;
+    /**
+     * Identifiant
+     *
+     * @generated
+     * @ordered
+     */
 
-	/**
-	 * Volume maximum du colis
-	 * @generated
-	 * @ordered
-	 */
-	 
-	@javax.persistence.Column(nullable = false) 
-	protected int volumeMax;
+    @javax.persistence.Id
+    @javax.persistence.Column(nullable = false)
+    protected Long id;
 
-	/**
-	 * Commande liée au colis
-	 * @generated
-	 * @ordered
-	 */
-	 
-	@javax.persistence.ManyToOne 
-	@javax.persistence.JoinColumn(nullable = false) 
-	protected Commande commande;
+    protected static Long nbColis = (long) 0;
+    /**
+     * Poids maximum du colis
+     *
+     * @generated
+     * @ordered
+     */
+    @javax.persistence.Column(nullable = false)
+    protected int poidsMax;
 
-	/**
-	 * Tournée liée au colis
-	 * @generated
-	 * @ordered
-	 */
-	 
-	@javax.persistence.ManyToOne 
-	@javax.persistence.JoinColumn(nullable = false) 
-	protected Tournee tournee;
+    /**
+     * Volume maximum du colis
+     *
+     * @generated
+     * @ordered
+     */
+    @javax.persistence.Column(nullable = false)
+    protected int volumeMax;
 
-	/**
-	 * Collection de produits liés au colis
-	 * @generated
-	 * @ordered
-	 */
-	 
-	@javax.persistence.OneToMany(mappedBy = "colis") 
-	protected Collection<QteProduitsColis> colisProduits;
+    /**
+     * Commande liée au colis
+     *
+     * @generated
+     * @ordered
+     */
+    @javax.persistence.ManyToOne
+    @javax.persistence.JoinColumn(nullable = false)
+    protected Commande commande;
 
-	/**
-	 * Constructeur par défaut
-	 * @generated
-	 */
-	public Colis(){
-		this.colisProduits = new HashSet<>();
-                poidsMax = 0;
-                volumeMax = 0;
-	}
+    /**
+     * Tournée liée au colis
+     *
+     * @generated
+     * @ordered
+     */
+    @javax.persistence.ManyToOne
+    @javax.persistence.JoinColumn(nullable = false)
+    protected Tournee tournee;
 
-	/**
-	 * Verifie le parametre commande et le set au colis
-	 * @generated
-	 * @ordered
-         * @param myCommande commande
-	 */
-	public void basicSetCommande(Commande myCommande) {
-		if (this.commande != myCommande) {
-			if (myCommande != null){
-				if (this.commande != myCommande) {
-					Commande oldcommande = this.commande;
-					this.commande = myCommande;
-					if (oldcommande != null)
-						oldcommande.removeColis(this);
-				}
-			}
-		}
-	}
+    /**
+     * Collection de produits liés au colis
+     *
+     * @generated
+     * @ordered
+     */
+    @javax.persistence.OneToMany(mappedBy = "colis")
+    protected Collection<QteProduitsColis> colisProduits;
 
-	/**
-	 * Verifie le parametre tournée et le set au colis
-	 * @generated
-	 * @ordered
-         * @param myTournee tournée
-	 */
-	public void basicSetTournee(Tournee myTournee) {
-		if (this.tournee != myTournee) {
-			if (myTournee != null){
-				if (this.tournee != myTournee) {
-					Tournee oldtournee = this.tournee;
-					this.tournee = myTournee;
-					if (oldtournee != null)
-						oldtournee.removeColis(this);
-				}
-			}
-		}
-	}
+    /**
+     * Constructeur par défaut
+     *
+     * @generated
+     */
+    public Colis() {
+        this.colisProduits = new HashSet<>();
+        this.id=Colis.nbColis;
+        Colis.nbColis ++;
+        poidsMax = 0;
+        volumeMax = 0;
+    }
 
-	/**
-	 * Retourne l'id du colis
-	 * @generated
-	 * @ordered
-	 */
-	public long getId() {
-		return this.id;
-	}
+    public Colis(int poidsMax, int volumeMax, Commande commande) {
+        this();
+        this.poidsMax = poidsMax;
+        this.volumeMax = volumeMax;
+        this.commande = commande;
+    }
 
-	/**
-	 * Retourne le poids max du colis
-	 * @generated
-	 * @ordered
-	 */
-	private int getPoidsMax() {
-		return this.poidsMax;
-	}
+    /**
+     * Verifie le parametre commande et le set au colis
+     *
+     * @generated
+     * @ordered
+     * @param myCommande commande
+     */
+    public void basicSetCommande(Commande myCommande) {
+        if (this.commande != myCommande) {
+            if (myCommande != null) {
+                if (this.commande != myCommande) {
+                    Commande oldcommande = this.commande;
+                    this.commande = myCommande;
+                    if (oldcommande != null) {
+                        oldcommande.removeColis(this);
+                    }
+                }
+            }
+        }
+    }
 
-	/**
-	 * Retourne le volume max du colis
-	 * @generated
-	 * @ordered
-	 */
-	private int getVolumeMax() {
-		return this.volumeMax;
-	}
+    /**
+     * Verifie le parametre tournée et le set au colis
+     *
+     * @generated
+     * @ordered
+     * @param myTournee tournée
+     */
+    public void basicSetTournee(Tournee myTournee) {
+        if (this.tournee != myTournee) {
+            if (myTournee != null) {
+                if (this.tournee != myTournee) {
+                    Tournee oldtournee = this.tournee;
+                    this.tournee = myTournee;
+                    if (oldtournee != null) {
+                        oldtournee.removeColis(this);
+                    }
+                }
+            }
+        }
+    }
 
-	/**
-	 * Retourne la commande du colis
-	 * @generated
-	 * @ordered
-	 */
-	public Commande getCommande() {
-		return this.commande;
-	}
+    /**
+     * Retourne l'id du colis
+     *
+     * @generated
+     * @ordered
+     */
+    public long getId() {
+        return this.id;
+    }
 
-	/**
-	 * Retourne la tournée du colis
-	 * @generated
-	 * @ordered
-	 */
-	public Tournee getTournee() {
-		return this.tournee;
-	}
+    /**
+     * Retourne le poids max du colis
+     *
+     * @generated
+     * @ordered
+     */
+    private int getPoidsMax() {
+        return this.poidsMax;
+    }
 
-	/**
-	 * Retourne l'ensemble de produits du colis
-	 * @generated
-	 * @ordered
-	 */
-	public Set<QteProduitsColis> getColisProduits() {
-		if(this.colisProduits == null) {
-				this.colisProduits = new HashSet<QteProduitsColis>();
-		}
-		return (Set<QteProduitsColis>) this.colisProduits;
-	}
+    /**
+     * Retourne le volume max du colis
+     *
+     * @generated
+     * @ordered
+     */
+    private int getVolumeMax() {
+        return this.volumeMax;
+    }
 
-	/**
-	 * Ajoute un ensemble de colisProduits au colisProduits du colis
-	 * @generated
-	 * @ordered
-	 */
-	public void addAllColisProduits(Set<QteProduitsColis> newColisProduits) {
-		if (this.colisProduits == null) {
-			this.colisProduits = new HashSet<QteProduitsColis>();
-		}
-		for (QteProduitsColis tmp : newColisProduits)
-			tmp.setColis(this);
-		
-	}
+    /**
+     * Retourne la commande du colis
+     *
+     * @generated
+     * @ordered
+     */
+    public Commande getCommande() {
+        return this.commande;
+    }
 
-	/**
-	 * Retire un ensemble de colisProduits au colisProduits du colis
-	 * @generated
-	 * @ordered
-	 */
-	public void removeAllColisProduits(Set<QteProduitsColis> newColisProduits) {
-		if(this.colisProduits == null) {
-			return;
-		}
-		
-		this.colisProduits.removeAll(newColisProduits);
-	}
+    /**
+     * Retourne la tournée du colis
+     *
+     * @generated
+     * @ordered
+     */
+    public Tournee getTournee() {
+        return this.tournee;
+    }
 
-	/**
-	 * Set l'identifiant du colis
-	 * @generated
-	 * @ordered
-         * @param myId identifiant
-	 */
-	public void setId(long myId) {
-		this.id = myId;
-	}
+    /**
+     * Retourne l'ensemble de produits du colis
+     *
+     * @generated
+     * @ordered
+     */
+    public Set<QteProduitsColis> getColisProduits() {
+        if (this.colisProduits == null) {
+            this.colisProduits = new HashSet<QteProduitsColis>();
+        }
+        return (Set<QteProduitsColis>) this.colisProduits;
+    }
 
-	/**
-	 * Set le poids maximum du colis
-	 * @generated
-	 * @ordered
-         * @param myPoidsMax poids maximum
-	 */
-	private void setPoidsMax(int myPoidsMax) {
-		this.poidsMax = myPoidsMax;
-	}
+    /**
+     * Ajoute un ensemble de colisProduits au colisProduits du colis
+     *
+     * @generated
+     * @ordered
+     */
+    public void addAllColisProduits(Set<QteProduitsColis> newColisProduits) {
+        if (this.colisProduits == null) {
+            this.colisProduits = new HashSet<QteProduitsColis>();
+        }
+        for (QteProduitsColis tmp : newColisProduits) {
+            tmp.setColis(this);
+        }
 
-	/**
-	 * Set le volume maximum du colis
-	 * @generated
-	 * @ordered
-         * @param myVolumeMax volume maximum
-	 */
-	private void setVolumeMax(int myVolumeMax) {
-		this.volumeMax = myVolumeMax;
-	}
+    }
 
-	/**
-	 * Set la commande du colis
-	 * @generated
-	 * @ordered
-         * @param myCommande commande
-	 */
-	public void setCommande(Commande myCommande) {
-		this.basicSetCommande(myCommande);
-		myCommande.addColis(this);
-	}
+    /**
+     * Retire un ensemble de colisProduits au colisProduits du colis
+     *
+     * @generated
+     * @ordered
+     */
+    public void removeAllColisProduits(Set<QteProduitsColis> newColisProduits) {
+        if (this.colisProduits == null) {
+            return;
+        }
 
-	/**
-	 * Set la tournée du colis
-	 * @generated
-	 * @ordered
-         * @param myTournee tournée
-	 */
-	public void setTournee(Tournee myTournee) {
-		this.basicSetTournee(myTournee);
-		myTournee.addColis(this);
-	}
+        this.colisProduits.removeAll(newColisProduits);
+    }
 
-	/**
-	 * Ajoute un colisProduits au colis
-	 * @generated
-	 * @ordered
-         * @param newColisProduits colisProduits
-	 */
-	public void addColisProduits(QteProduitsColis newColisProduits) {
-		if(this.colisProduits == null) {
-			this.colisProduits = new HashSet<QteProduitsColis>();
-		}
-		
-		if (this.colisProduits.add(newColisProduits))
-			newColisProduits.basicSetColis(this);
-	}
+    /**
+     * Set l'identifiant du colis
+     *
+     * @generated
+     * @ordered
+     * @param myId identifiant
+     */
+    public void setId(long myId) {
+        this.id = myId;
+    }
 
-	/**
-	 * Unset l'identifiant du colis
-	 * @generated
-	 * @ordered
-	 */
-	public void unsetId() {
-		this.id = 0L;
-	}
+    /**
+     * Set le poids maximum du colis
+     *
+     * @generated
+     * @ordered
+     * @param myPoidsMax poids maximum
+     */
+    private void setPoidsMax(int myPoidsMax) {
+        this.poidsMax = myPoidsMax;
+    }
 
-	/**
-	 * Unset le poids maximum du colis
-	 * @generated
-	 * @ordered
-	 */
-	private void unsetPoidsMax() {
-		this.poidsMax = 0;
-	}
+    /**
+     * Set le volume maximum du colis
+     *
+     * @generated
+     * @ordered
+     * @param myVolumeMax volume maximum
+     */
+    private void setVolumeMax(int myVolumeMax) {
+        this.volumeMax = myVolumeMax;
+    }
 
-	/**
-	 * Unset le volume maximum du colis
-	 * @generated
-	 * @ordered
-	 */
-	private void unsetVolumeMax() {
-		this.volumeMax = 0;
-	}
+    /**
+     * Set la commande du colis
+     *
+     * @generated
+     * @ordered
+     * @param myCommande commande
+     */
+    public void setCommande(Commande myCommande) {
+        this.basicSetCommande(myCommande);
+        myCommande.addColis(this);
+    }
 
-	/**
-	 * Unset la commande du colis
-	 * @generated
-	 * @ordered
-	 */
-	public void unsetCommande() {
-		if (this.commande == null)
-			return;
-		Commande oldcommande = this.commande;
-		this.commande = null;
-		oldcommande.removeColis(this);
-	}
+    /**
+     * Set la tournée du colis
+     *
+     * @generated
+     * @ordered
+     * @param myTournee tournée
+     */
+    public void setTournee(Tournee myTournee) {
+        this.basicSetTournee(myTournee);
+        myTournee.addColis(this);
+    }
 
-	/**
-	 * Unset la tournée du colis
-	 * @generated
-	 * @ordered
-	 */
-	public void unsetTournee() {
-		if (this.tournee == null)
-			return;
-		Tournee oldtournee = this.tournee;
-		this.tournee = null;
-		oldtournee.removeColis(this);
-	}
+    /**
+     * Ajoute un colisProduits au colis
+     *
+     * @generated
+     * @ordered
+     * @param newColisProduits colisProduits
+     */
+    public void addColisProduits(QteProduitsColis newColisProduits) {
+        if (this.colisProduits == null) {
+            this.colisProduits = new HashSet<QteProduitsColis>();
+        }
 
-	/**
-	 * Retire le colisProduits du colis
-	 * @generated
-	 * @ordered
-         * @param oldColisProduits colisProduits
-	 */
-	public void removeColisProduits(QteProduitsColis oldColisProduits) {
-		if(this.colisProduits == null)
-			return;
-		
-		if (this.colisProduits.remove(oldColisProduits))
-			oldColisProduits.unsetColis();
-		
-	}
+        if (this.colisProduits.add(newColisProduits)) {
+            newColisProduits.basicSetColis(this);
+        }
+    }
 
-	
+    /**
+     * Unset l'identifiant du colis
+     *
+     * @generated
+     * @ordered
+     */
+    public void unsetId() {
+        this.id = 0L;
+    }
+
+    /**
+     * Unset le poids maximum du colis
+     *
+     * @generated
+     * @ordered
+     */
+    private void unsetPoidsMax() {
+        this.poidsMax = 0;
+    }
+
+    /**
+     * Unset le volume maximum du colis
+     *
+     * @generated
+     * @ordered
+     */
+    private void unsetVolumeMax() {
+        this.volumeMax = 0;
+    }
+
+    /**
+     * Unset la commande du colis
+     *
+     * @generated
+     * @ordered
+     */
+    public void unsetCommande() {
+        if (this.commande == null) {
+            return;
+        }
+        Commande oldcommande = this.commande;
+        this.commande = null;
+        oldcommande.removeColis(this);
+    }
+
+    /**
+     * Unset la tournée du colis
+     *
+     * @generated
+     * @ordered
+     */
+    public void unsetTournee() {
+        if (this.tournee == null) {
+            return;
+        }
+        Tournee oldtournee = this.tournee;
+        this.tournee = null;
+        oldtournee.removeColis(this);
+    }
+
+    /**
+     * Retire le colisProduits du colis
+     *
+     * @generated
+     * @ordered
+     * @param oldColisProduits colisProduits
+     */
+    public void removeColisProduits(QteProduitsColis oldColisProduits) {
+        if (this.colisProduits == null) {
+            return;
+        }
+
+        if (this.colisProduits.remove(oldColisProduits)) {
+            oldColisProduits.unsetColis();
+        }
+
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 67 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Colis other = (Colis) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+    
+    /**
+     * Permet de renvoyer la quantité max que le colis peut accepter
+     *
+     * @param p
+     */
+    public int getQteMax(Produit p) {
+        int poidsActuel = 0;
+        int volumeActuel = 0;
+        for (QteProduitsColis qtePC : this.colisProduits) {
+            poidsActuel += qtePC.getQuantite() * qtePC.getProduit().getPoids();
+            volumeActuel += qtePC.getQuantite() * qtePC.getProduit().getVolume();
+        }
+        int poidsRestant = this.poidsMax - poidsActuel;
+        int volumeRestant = this.volumeMax - volumeActuel;
+        int qteParPoids = (int) Math.ceil(poidsRestant / p.getPoids());
+        int qteParVolume = (int) Math.ceil(volumeRestant / p.getVolume());
+        
+        if(qteParPoids < qteParVolume)
+            return qteParPoids;
+        
+        return qteParVolume;
+    }
+
 }
-

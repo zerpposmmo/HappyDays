@@ -17,9 +17,13 @@ import lecture.Result;
 import metier.Commande;
 
 import algo.Couple;
+import java.util.Iterator;
+import metier.Colis;
 import metier.Instance;
 import metier.Ligne;
+import metier.QteProduitsColis;
 import metier.Solution;
+import metier.Tournee;
 
 /**
  * Classe permettant de créer les tournées
@@ -51,6 +55,7 @@ public class Algorithme {
     public void creerSolution() {
 
         Solution s = new Solution();
+        s.setInstance(instance);
         //On fait une commande à la fois 
         HashSet myStacks = new HashSet<Stack>();
         for (Commande c : commandes) {
@@ -60,9 +65,13 @@ public class Algorithme {
             myStacks.add(myStack);
             //Création des tournées
         }
-            
-        System.out.println(myStacks.toString());
-        //return null;
+
+        for (Iterator it = myStacks.iterator(); it.hasNext();) {
+            Stack<Couple> oneStack = (Stack<Couple>) it.next();
+            this.creerTournees(oneStack, s);
+        }
+        
+        System.out.println(s.toString());
     }
 
     /**
@@ -246,7 +255,7 @@ public class Algorithme {
         }
 
         //   System.out.println(tabNbPath.toString());
-        System.out.println(tabNbPath2.toString());
+       // System.out.println(tabNbPath2.toString());
         Couple[] myCouples = tabNbPath2.toArray(new Couple[tabNbPath2.size()]);
 
         return myCouples;
@@ -265,7 +274,7 @@ public class Algorithme {
 
         int index = 0;
         int dernierAjoute;
-        while (s.size() != myCouples.length || s == null) {
+        while (s.size() != myCouples.length && s != null) {
 
             if (s.empty()) {
                 int i = 0;
@@ -297,6 +306,53 @@ public class Algorithme {
         }
         //System.out.println(s.toString());
         return s;
+    }
+
+    /**
+     * Méthode permettant de créer les tournées
+     * @param myStack
+     * @param solution 
+     */
+    public void creerTournees(Stack<Couple> myStack, Solution solution) {
+        //HashSet<Tournee> mesTournee = new HashSet();
+        Tournee myTournee;
+        int qteProduit = myStack.firstElement().getL().getCommande().getNbProduit();
+        Stack<Couple> copyStack = (Stack<Couple>) myStack.clone();
+        int index, qteMax;
+        
+        //Tant que la quantité de produit n'est pas  = 0
+        while (qteProduit > 0) {
+            myTournee = new Tournee();
+            //Création des colis de la tournée
+            for(index = 0;index < this.results.getNbBoxesTrolley(); index++ ){
+                myTournee.addColis(new Colis(this.results.getCapaBox().getPoids(),this.results.getCapaBox().getVolume(), myStack.firstElement().getL().getCommande()));
+            }
+            
+            for(Couple p : copyStack){
+                if(p.getL().getQuantite() > 0)
+                {
+                    for(Colis c : myTournee.getColisSet()){
+                        qteMax = c.getQteMax(p.getL().getProduit());
+                        //Si le colis ne peut pas contenir tout le lot
+                        if(qteMax <= p.getL().getQuantite() && qteMax > 0)
+                        {
+                            c.addColisProduits(new QteProduitsColis(qteMax, myStack.get(copyStack.indexOf(p)).getL().getProduit()));
+                            qteProduit-=qteMax;
+                            copyStack.get(copyStack.indexOf(p)).getL().setQuantite(p.getL().getQuantite() - qteMax);
+                           
+                        }else if(p.getL().getQuantite() > 0 &&  qteMax > 0) { // Si le colis peut contenir tout le lot
+                            c.addColisProduits(new QteProduitsColis(p.getL().getQuantite(), myStack.get(copyStack.indexOf(p)).getL().getProduit()));
+                            qteProduit-=p.getL().getQuantite();
+                            copyStack.get(copyStack.indexOf(p)).getL().setQuantite(0);
+                        }
+                    }
+                }
+                    
+            }
+            solution.addTournee(myTournee);
+            
+        }
+
     }
 
 }
