@@ -18,7 +18,6 @@ public class Produit {
      * @generated
      * @ordered
      */
-
     @javax.persistence.Id
     @javax.persistence.Column(nullable = false)
     protected Long id;
@@ -89,6 +88,14 @@ public class Produit {
         this.colisProduits = new HashSet<>();
     }
 
+    /**
+     * Constructeur par données
+     *
+     * @param id ID du produit
+     * @param l Localisation du produit
+     * @param poids Poids du produit
+     * @param volume Volume du produit
+     */
     public Produit(long id, Localisation l, int poids, int volume) {
         this();
         this.id = id;
@@ -102,6 +109,7 @@ public class Produit {
      *
      * @generated
      * @ordered
+     * @param myLocalisation Localisation à ajouter
      */
     public void basicSetLocalisation(Localisation myLocalisation) {
         if (this.localisation != myLocalisation) {
@@ -122,6 +130,7 @@ public class Produit {
      *
      * @generated
      * @ordered
+     * @param myInstance Instance à ajouter
      */
     public void basicSetInstance(Instance myInstance) {
         if (this.instance != myInstance) {
@@ -218,6 +227,7 @@ public class Produit {
      *
      * @generated
      * @ordered
+     * @param newLigne Ensemble de lignes de produit à ajouter
      */
     public void addAllLigne(Set<Ligne> newLigne) {
         if (this.ligne == null) {
@@ -234,6 +244,7 @@ public class Produit {
      *
      * @generated
      * @ordered
+     * @param newColisProduits Ensemble de produit dans un colis à ajouter
      */
     public void addAllColisProduits(Set<QteProduitsColis> newColisProduits) {
         if (this.colisProduits == null) {
@@ -250,6 +261,7 @@ public class Produit {
      *
      * @generated
      * @ordered
+     * @param newLigne Ensemble de lignes de produit à retirer
      */
     public void removeAllLigne(Set<Ligne> newLigne) {
         if (this.ligne == null) {
@@ -264,6 +276,7 @@ public class Produit {
      *
      * @generated
      * @ordered
+     * @param newColisProduits Ensemble de produit à retirer
      */
     public void removeAllColisProduits(Set<QteProduitsColis> newColisProduits) {
         if (this.colisProduits == null) {
@@ -278,6 +291,7 @@ public class Produit {
      *
      * @generated
      * @ordered
+     * @param myId ID à définir
      */
     public void setId(long myId) {
         this.id = myId;
@@ -288,6 +302,7 @@ public class Produit {
      *
      * @generated
      * @ordered
+     * @param myPoids Poids à définir
      */
     private void setPoids(int myPoids) {
         this.poids = myPoids;
@@ -296,9 +311,9 @@ public class Produit {
     /**
      * Ajoute le volume à un produit
      *
-     * @param myVolume Volume à ajouter au produit
      * @generated
      * @ordered
+     * @param myVolume Volume à ajouter au produit
      */
     private void setVolume(int myVolume) {
         this.volume = myVolume;
@@ -307,9 +322,9 @@ public class Produit {
     /**
      * Ajout eune ligne donnée au produit
      *
-     * @param newLigne La ligne à ajouter
      * @generated
      * @ordered
+     * @param newLigne La ligne à ajouter
      */
     public void addLigne(Ligne newLigne) {
         if (this.ligne == null) {
@@ -324,9 +339,9 @@ public class Produit {
     /**
      * Définit la localisation du produit
      *
-     * @param myLocalisation La localisation que l'on veut ajouter au produit
      * @generated
      * @ordered
+     * @param myLocalisation La localisation que l'on veut ajouter au produit
      */
     public void setLocalisation(Localisation myLocalisation) {
         this.basicSetLocalisation(myLocalisation);
@@ -336,10 +351,10 @@ public class Produit {
     /**
      * Ajouter la quantité de produit d'un colis dans le produit
      *
-     * @param newColisProduits La quantité de produit d'un colis que l'on veut
-     * rajouter
      * @generated
      * @ordered
+     * @param newColisProduits La quantité de produit d'un colis que l'on veut
+     * rajouter rajouter
      */
     public void addColisProduits(QteProduitsColis newColisProduits) {
         if (this.colisProduits == null) {
@@ -354,9 +369,9 @@ public class Produit {
     /**
      * Définit l'instance du produit
      *
-     * @param myInstance l'instance que l'on veut ajouter
      * @generated
      * @ordered
+     * @param myInstance l'instance que l'on veut ajouter
      */
     public void setInstance(Instance myInstance) {
         this.basicSetInstance(myInstance);
@@ -396,9 +411,9 @@ public class Produit {
     /**
      * Retire une ligne donnée de l'ensemble des lignes du produit
      *
-     * @param oldLigne La ligne à retirer de l'ensemble
      * @generated
      * @ordered
+     * @param oldLigne La ligne à retirer de l'ensemble
      */
     public void removeLigne(Ligne oldLigne) {
         if (this.ligne == null) {
@@ -429,10 +444,10 @@ public class Produit {
     /**
      * Retire la quantité de produit dans un colis du produit
      *
-     * @param oldColisProduits La quantité de produit dans un colis à retirer du
-     * produit
      * @generated
      * @ordered
+     * @param oldColisProduits La quantité de produit dans un colis à retirer du
+     * produit
      */
     public void removeColisProduits(QteProduitsColis oldColisProduits) {
         if (this.colisProduits == null) {
@@ -462,25 +477,28 @@ public class Produit {
 
     /**
      * Permet de savoir si un chemin existe entre les 2 produits
-     * @param prod
-     * @return 
+     *
+     * @param prod Produit dont on veut savoir s'il existe un chemin par rapport
+     * au produit courant
+     * @return
      */
-    public boolean existPath(Produit prod){
-        if(this.localisation.existPath(prod.getLocalisation()))
-        {
+    public boolean existPath(Produit prod) {
+        if (this.localisation.existPath(prod.getLocalisation())) {
             return true;
         }
-        
+
         return false;
     }
-    
+
     /**
      * Permet d'obtenir la distance entre 2 produits
-     * @param prod
+     *
+     * @param prod Produit dont on veut savoir la distance avec le produit
+     * courant
      * @return double la distance , plus l'infini si pas de chemin
      */
-    public double getDistanceTo(Produit prod){
-        if(this.existPath(prod)){
+    public double getDistanceTo(Produit prod) {
+        if (this.existPath(prod)) {
             this.localisation.getDistanceTo(prod.getLocalisation());
         }
         return Double.POSITIVE_INFINITY;
@@ -518,8 +536,7 @@ public class Produit {
         }
         return true;
     }
-    
-    
+
     @Override
     public String toString() {
         return "Produit{" + "id=" + id + ", poids=" + poids + ", volume=" + volume + ", localisation=" + localisation + ", instance=" + instance + '}';

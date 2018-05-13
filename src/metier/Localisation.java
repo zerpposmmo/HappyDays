@@ -74,6 +74,12 @@ public class Localisation {
         this.produitSet = new HashSet();
     }
     
+    /**
+     * Constructeur par données
+     * @param id ID de la Localisation
+     * @param x Coordonnées X de la localisation
+     * @param y Coordonnées Y de la localisation
+     */
     public Localisation(long id,int x, int y) {
         this();
         this.id = id;
@@ -85,6 +91,7 @@ public class Localisation {
      * Ajout basique d'un entrepôt à la localisation
      * @generated 
      * @ordered
+     * @param myEntrepot Entrepot à ajouter
      */
     public void basicSetEntrepot(Entrepot myEntrepot) {
         if (this.entrepot != myEntrepot) {
@@ -207,6 +214,7 @@ public class Localisation {
      * Retire l'ensemble de produits donné
      * @generated 
      * @ordered
+     * @param newProduit Ensemble de produit à retirer
      */
     public void removeAllProduit(Set<Produit> newProduit) {
         if (this.produitSet == null) {
@@ -220,6 +228,7 @@ public class Localisation {
      * Définit l'ID
      * @generated 
      * @ordered
+     * @param myId ID à définir
      */
     public void setId(long myId) {
         this.id = myId;
@@ -229,6 +238,7 @@ public class Localisation {
      * Définit la coordonnée X de la localisation
      * @generated 
      * @ordered
+     * @param myX coordonnées X à définir
      */
     private void setX(int myX) {
         this.x = myX;
@@ -238,6 +248,7 @@ public class Localisation {
      * Définit la coordonnée X de la localisation 
      * @generated 
      * @ordered
+     * @param myY coordonnées Y à définir
      */
     private void setY(int myY) {
         this.y = myY;
@@ -247,6 +258,7 @@ public class Localisation {
      * Ajoute un arc donné à la localisation 
      * @generated 
      * @ordered
+     * @param myArc Arc à ajouter
      */
     public void addArc(Arc newArc) {
         if (this.arcMap == null) {
@@ -260,6 +272,7 @@ public class Localisation {
      * Ajoute un produit donné à la localisation
      * @generated 
      * @ordered
+     * @param newProduit Produit à ajouter
      */
     public void addProduit(Produit newProduit) {
         if (this.produitSet == null) {
@@ -275,6 +288,7 @@ public class Localisation {
      * Définit l'entrepôt auquel la localisation est liée
      * @generated 
      * @ordered
+     * @param myEntrepot Entrepot à définir 
      */
     public void setEntrepot(Entrepot myEntrepot) {
         this.basicSetEntrepot(myEntrepot);
@@ -312,6 +326,7 @@ public class Localisation {
      * Retire un arc donné de l'ensemble d'arcs
      * @generated 
      * @ordered
+     * @param oldArc Arc à retirer
      */
     public void removeArc(Arc oldArc) {
         if (this.arcMap == null) {
@@ -325,6 +340,7 @@ public class Localisation {
      * Retire le produit donné de l'ensemble des produits
      * @generated 
      * @ordered
+     * @param oldProduit Produit à retirer
      */
     public void removeProduit(Produit oldProduit) {
         if (this.produitSet == null) {
@@ -353,7 +369,7 @@ public class Localisation {
     
     /**
      * Permet de savoir si le chemin entre les 2 localisations existe 
-     * @param localisation
+     * @param localisation La localisation dont on cherche un possible chemin avec la localisation courante
      * @return boolean true si existe false sinon
      */
     boolean existPath(Localisation localisation) {

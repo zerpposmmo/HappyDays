@@ -16,7 +16,6 @@ public class Ligne {
      * @generated
      * @ordered
      */
-
     @javax.persistence.Id
     @javax.persistence.Column(nullable = false)
     protected Long id;
@@ -70,6 +69,7 @@ public class Ligne {
      *
      * @generated
      * @ordered
+     * @param myProduit Produit à ajouter
      */
     public void basicSetProduit(Produit myProduit) {
         if (this.produit != myProduit) {
@@ -90,6 +90,7 @@ public class Ligne {
      *
      * @generated
      * @ordered
+     * @param myCommande Commande à ajouter
      */
     public void basicSetCommande(Commande myCommande) {
         if (this.commande != myCommande) {
@@ -150,6 +151,7 @@ public class Ligne {
      *
      * @generated
      * @ordered
+     * @param myId ID à définir
      */
     public void setId(long myId) {
         this.id = myId;
@@ -160,6 +162,7 @@ public class Ligne {
      *
      * @generated
      * @ordered
+     * @param myQuantite Quantité à définir
      */
     public void setQuantite(int myQuantite) {
         this.quantite = myQuantite;
@@ -170,6 +173,7 @@ public class Ligne {
      *
      * @generated
      * @ordered
+     * @param myProduit Produit à définir
      */
     public void setProduit(Produit myProduit) {
         this.basicSetProduit(myProduit);
@@ -181,6 +185,7 @@ public class Ligne {
      *
      * @generated
      * @ordered
+     * @param myCommande Commande à définir
      */
     public void setCommande(Commande myCommande) {
         this.basicSetCommande(myCommande);

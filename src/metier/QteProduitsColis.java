@@ -57,6 +57,7 @@ public class QteProduitsColis {
         super();
     }
 
+
     public QteProduitsColis(int quantite, Produit produit) {
         this.quantite = quantite;
         this.produit = produit;
@@ -65,9 +66,9 @@ public class QteProduitsColis {
     /**
      * Ajout basique d'un produit à la QPC
      *
-     * @param myProduct Le produit à ajouter à la QPC
      * @generated
      * @ordered
+     * @param myProduct Le produit à ajouter à la QPC
      */
     public void basicSetProduit(Produit myProduit) {
         if (this.produit != myProduit) {
@@ -86,9 +87,9 @@ public class QteProduitsColis {
     /**
      * Ajout basique d'un colis à la QPC
      *
-     * @param myColis Colis à ajouter à la QPC
      * @generated
      * @ordered
+     * @param myColis Colis à ajouter à la QPC
      */
     public void basicSetColis(Colis myColis) {
         if (this.colis != myColis) {
@@ -121,6 +122,7 @@ public class QteProduitsColis {
      * @ordered
      */
     public int getQuantite() {
+
         return this.quantite;
     }
 
@@ -147,9 +149,9 @@ public class QteProduitsColis {
     /**
      * Définit l'ID de la QPC
      *
-     * @param myId ID à définir
      * @generated
      * @ordered
+     * @param myId ID à définir
      */
     public void setId(long myId) {
         this.id = myId;
@@ -158,9 +160,9 @@ public class QteProduitsColis {
     /**
      * Définit la quantité de la QPC
      *
-     * @param myQuantite Quantité à ajouter
      * @generated
      * @ordered
+     * @param myQuantite Quantité à ajouter
      */
     private void setQuantite(int myQuantite) {
         this.quantite = myQuantite;
@@ -169,9 +171,9 @@ public class QteProduitsColis {
     /**
      * Définit le produit lié à la QPC
      *
-     * @param myProduit Produit que l'on veut ajouter
      * @generated
      * @ordered
+     * @param myProduit Produit que l'on veut ajouter
      */
     public void setProduit(Produit myProduit) {
         this.basicSetProduit(myProduit);
@@ -181,9 +183,9 @@ public class QteProduitsColis {
     /**
      * Définit un colis à la QPC
      *
-     * @param myColis Le colis que l'on veut ajouter
      * @generated
      * @ordered
+     * @param myColis Le colis que l'on veut ajouter
      */
     public void setColis(Colis myColis) {
         this.basicSetColis(myColis);

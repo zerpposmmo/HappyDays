@@ -10,6 +10,7 @@ import java.util.Set;
  *
  * @generated
  */
+
 @javax.persistence.Entity
 public class Colis {
 
@@ -427,5 +428,6 @@ public class Colis {
         
         return qteParVolume;
     }
+
 
 }
