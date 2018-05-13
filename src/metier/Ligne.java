@@ -164,7 +164,7 @@ public class Ligne {
      * @ordered
      * @param myQuantite Quantité à définir
      */
-    private void setQuantite(int myQuantite) {
+    public void setQuantite(int myQuantite) {
         this.quantite = myQuantite;
     }
 
