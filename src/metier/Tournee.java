@@ -1,16 +1,15 @@
 package metier;
+
 import java.util.HashSet;
 import java.util.Set;
 
-
-
 /**
- * Class Tournee
- * Posséde une collection d'objet Colis et une collection d'objet Solution
+ * Class Tournee Posséde une collection d'objet Colis et une collection d'objet
+ * Solution
+ *
  * @author Samuel
  * @generated
- */
- 
+ */ 
 @javax.persistence.Entity 
 public class Tournee
 {
@@ -43,13 +42,22 @@ public class Tournee
 	@javax.persistence.OneToMany(mappedBy = "tournee") 
 	protected Set<Colis> colisSet;
 
-	/**
-	 * Constructeur par défaut
-	 * @generated
-	 */
-	public Tournee(){
-		this.colisSet = new HashSet();
-	}
+	 protected static Long nbTournee = (long) 0;
+
+  /**
+  * Constructeur par défaut
+  *
+  */
+  public Tournee() {
+    this.id = Tournee.nbTournee;
+    Tournee.nbTournee++;
+    this.colisSet = new HashSet();
+  }
+
+  public Tournee(Solution s) {
+    this();
+    this.setSolution(solution);
+  }
 
 	/**
 	 * Permet de set la solution de la tournée 
@@ -209,4 +217,3 @@ public class Tournee
 
 	
 }
-

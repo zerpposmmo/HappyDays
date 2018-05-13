@@ -331,4 +331,16 @@ public class Commande {
         return "Commande{" + "id=" + id + ", colisMax=" + colisMax + ", ligneSet=" + ligneSet + "} \n";
     }
 
+    /**
+     * Permet de renvoyer la quantité de produit totale de la commande
+     * @return 
+     */
+    public int getNbProduit() {
+        int qte = 0;
+        for(Ligne l : this.ligneSet){
+            qte+=l.getQuantite();
+        }
+        return qte;
+    }
+
 }

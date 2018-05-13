@@ -57,6 +57,12 @@ public class QteProduitsColis {
         super();
     }
 
+
+    public QteProduitsColis(int quantite, Produit produit) {
+        this.quantite = quantite;
+        this.produit = produit;
+    }
+
     /**
      * Ajout basique d'un produit à la QPC
      *
@@ -115,7 +121,8 @@ public class QteProduitsColis {
      * @generated
      * @ordered
      */
-    private int getQuantite() {
+    public int getQuantite() {
+
         return this.quantite;
     }
 
