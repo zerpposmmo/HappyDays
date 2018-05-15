@@ -66,14 +66,4 @@ public class JpaInstanceDao extends JpaDao<Instance> implements InstanceDao {
 	public boolean create(Instance obj) {
 		return super.create(obj);
 	}
-
-	@Override
-	public Instance findByName(String name) {
-		CriteriaBuilder cb = super.em.getCriteriaBuilder();
-		CriteriaQuery<Instance> cq = cb.createQuery(Instance.class);
-		Root<Instance> tasks = cq.from(Instance.class);
-		cq.select(tasks).where(cb.like(tasks.get("nom"), "%" + name + "%"));
-		return super.em.createQuery(cq).getSingleResult();
-	}
-
 }
