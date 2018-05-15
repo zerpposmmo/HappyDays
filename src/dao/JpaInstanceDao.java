@@ -71,26 +71,4 @@ public class JpaInstanceDao extends JpaDao<Instance> implements InstanceDao {
 	public boolean create(Instance obj) {
 		return super.create(obj);
 	}
-        
-        @Override
-        public boolean processResult(Result result) {
-            this.instance.create(result.getInstance());
-            ProduitDao produitDao = JpaProduitDao.getInstance();
-            for(Produit p : result.getProduits().values()) {
-                produitDao.create(p);
-            }
-            ArcDao arcDao = JpaArcDao.getInstance();
-            for(Arc a : result.getArcs()) {
-                arcDao.create(a);
-            }
-            LocalisationDao localisationDao = JpaLocalisationDao.getInstance();
-            for(Localisation l : result.getLocalisations().values()) {
-                localisationDao.create(l);
-            }
-            CommandeDao commandeDao = JpaCommandeDao.getInstance();
-            for(Commande c : result.getCommandes().values()) {
-                commandeDao.create(c);
-            }
-            return false;
-        }
 }
