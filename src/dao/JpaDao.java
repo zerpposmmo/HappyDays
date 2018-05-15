@@ -22,7 +22,7 @@ public abstract class JpaDao<T> implements Dao<T> {
 	protected EntityManager em;
 
 	//CHECKSTYLE:OFF: ModifierOrderCheck
-	protected final static String PERSISTENCE_UNIT = "HappyDaysPu";
+	protected final static String PERSISTENCE_UNIT = "HappyDaysPU";
 	//CHECKSTYLE:ON
 	protected Class<T> entite;
 

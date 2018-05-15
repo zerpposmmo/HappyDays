@@ -2,6 +2,8 @@ package metier;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.GenerationType;
 
 
 
@@ -21,6 +23,7 @@ public class Instance
 	 
 	@javax.persistence.Id 
 	@javax.persistence.Column(nullable = false) 
+        @javax.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Long id;
 
 	/**
@@ -29,7 +32,7 @@ public class Instance
 	 * @ordered
 	 */
 	 
-	@javax.persistence.OneToMany(mappedBy = "instance") 
+	@javax.persistence.OneToMany(cascade = CascadeType.PERSIST, mappedBy = "instance") 
 	protected Set<Solution> solutionSet;
 
 	/**
@@ -38,7 +41,7 @@ public class Instance
 	 * @ordered
 	 */
 	 
-	@javax.persistence.OneToMany(mappedBy = "instance") 
+	@javax.persistence.OneToMany(cascade = CascadeType.PERSIST, mappedBy = "instance") 
 	protected Set<Produit> produitSet;
 
 	/**
