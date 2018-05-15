@@ -56,7 +56,7 @@ public class Produit {
      * @generated
      * @ordered
      */
-    @javax.persistence.ManyToOne
+    @javax.persistence.ManyToOne(cascade = CascadeType.PERSIST)
     @javax.persistence.JoinColumn(nullable = false)
     protected Localisation localisation;
 

@@ -1,5 +1,6 @@
 package metier;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -12,7 +13,7 @@ import javax.persistence.GenerationType;
  * @generated
  */
 @javax.persistence.Entity
-public class Entrepot {
+public class Entrepot implements Serializable {
 
     /**
      * ID de l'entrepot
@@ -23,7 +24,7 @@ public class Entrepot {
 
     @javax.persistence.Id
     @javax.persistence.Column(name="ID", nullable = false)
-    @javax.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
+    @javax.persistence.GeneratedValue(strategy = GenerationType.TABLE)
     protected Long id;
 
     /**

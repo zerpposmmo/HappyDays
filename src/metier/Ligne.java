@@ -1,6 +1,7 @@
 package metier;
 
 import java.util.Objects;
+import javax.persistence.CascadeType;
 
 /**
  * Classe ligne
@@ -45,7 +46,7 @@ public class Ligne {
      * @generated
      * @ordered
      */
-    @javax.persistence.ManyToOne
+    @javax.persistence.ManyToOne(cascade = CascadeType.PERSIST)
     @javax.persistence.JoinColumn(nullable = false)
     protected Commande commande;
 

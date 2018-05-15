@@ -23,7 +23,7 @@ public class Instance
 	 
 	@javax.persistence.Id 
 	@javax.persistence.Column(nullable = false) 
-        @javax.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
+        @javax.persistence.GeneratedValue(strategy = GenerationType.TABLE)
 	protected Long id;
 
 	/**
@@ -32,7 +32,7 @@ public class Instance
 	 * @ordered
 	 */
 	 
-	@javax.persistence.OneToMany(cascade = CascadeType.PERSIST, mappedBy = "instance") 
+	@javax.persistence.OneToMany(mappedBy = "instance") 
 	protected Set<Solution> solutionSet;
 
 	/**

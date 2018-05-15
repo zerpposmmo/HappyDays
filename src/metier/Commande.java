@@ -3,6 +3,7 @@ package metier;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import javax.persistence.CascadeType;
 
 /**
  * Classe Commande
@@ -37,7 +38,7 @@ public class Commande {
      * @generated
      * @ordered
      */
-    @javax.persistence.OneToMany(mappedBy = "commande")
+    @javax.persistence.OneToMany(cascade = CascadeType.PERSIST, mappedBy = "commande")
     protected Set<Ligne> ligneSet;
 
     /**
@@ -46,7 +47,7 @@ public class Commande {
      * @generated
      * @ordered
      */
-    @javax.persistence.OneToMany(mappedBy = "commande")
+    @javax.persistence.OneToMany(cascade = CascadeType.PERSIST, mappedBy = "commande")
     protected Set<Colis> colisSet;
 
     /**

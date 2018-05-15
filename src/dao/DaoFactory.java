@@ -23,5 +23,47 @@ public abstract class DaoFactory {
 	 * @return InstanceDao
 	 */
 	public abstract InstanceDao getInstanceDao();
-
+        
+        /**
+	 * Retourne une EntrepotDao.
+	 * @return EntrepotDao
+	 */
+	public abstract EntrepotDao getEntrepotDao();
+        
+        /**
+	 * Retourne une ArcDao.
+	 * @return ArcDao
+	 */
+	public abstract ArcDao getArcDao();
+        
+        /**
+	 * Retourne une ColisDao.
+	 * @return ColisDao
+	 */
+	public abstract ColisDao getColisDao();
+        
+        /**
+	 * Retourne une CommandeDao.
+	 * @return CommandeDao
+	 */
+	public abstract CommandeDao getCommandeDao();
+        
+        /**
+	 * Retourne une LigneDao.
+	 * @return LigneDao
+	 */
+	public abstract LigneDao getLigneDao();
+        
+        /**
+	 * Retourne une LocalisationDao.
+	 * @return LocalisationDao
+	 */
+	public abstract LocalisationDao getLocalisationDao();
+        
+        /**
+	 * Retourne une ProduitDao.
+	 * @return ProduitDao
+	 */
+	public abstract ProduitDao getProduitDao();
+        
 }

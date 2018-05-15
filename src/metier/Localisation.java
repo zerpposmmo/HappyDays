@@ -61,8 +61,8 @@ public class Localisation {
      * @generated 
      * @ordered
      */
-    @javax.persistence.ManyToOne
-    @javax.persistence.JoinColumn(name="ID_ENTREPOT", referencedColumnName = "ID", nullable = false)
+    @javax.persistence.ManyToOne(cascade = CascadeType.PERSIST)
+    @javax.persistence.JoinColumn(nullable = false)
     protected Entrepot entrepot;
 
     /**
