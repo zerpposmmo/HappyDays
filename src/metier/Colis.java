@@ -16,6 +16,8 @@ import javax.persistence.GenerationType;
 @javax.persistence.Entity
 public class Colis {
 
+    private static Integer nbColis = 0;
+    
     /**
      * Identifiant
      *
@@ -28,6 +30,8 @@ public class Colis {
     @javax.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
+    private Integer discriminator;
+    
     /**
      * Poids maximum du colis
      *
@@ -84,6 +88,8 @@ public class Colis {
         this.colisProduits = new HashSet<>();
         poidsMax = 0;
         volumeMax = 0;
+        nbColis++;
+        this.discriminator = nbColis;
     }
 
     public Colis(int poidsMax, int volumeMax, Commande commande) {
@@ -399,7 +405,7 @@ public class Colis {
             return false;
         }
         final Colis other = (Colis) obj;
-        if (!Objects.equals(this.id, other.id)) {
+        if (!Objects.equals(this.discriminator, other.discriminator)) {
             return false;
         }
         return true;
