@@ -5,12 +5,21 @@
  */
 package ecriture;
 
+import algo.Algorithme;
+import dao.DaoFactory;
+import dao.InstanceDao;
+import dao.PersistenceType;
+import dao.SolutionDao;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import lecture.Result;
 import metier.Colis;
+import metier.Commande;
 import metier.Instance;
 import metier.QteProduitsColis;
 import metier.Solution;
@@ -66,6 +75,22 @@ public class WriteSolution {
             if (writer != null) {
                 writer.close();
             }
+        }
+    }
+    
+    public static boolean sauverSolution(Instance instance) {
+        try {
+            DaoFactory fabrique = DaoFactory.getDaoFactory(PersistenceType.JPA);
+            InstanceDao instanceDao = fabrique.getInstanceDao();
+            instanceDao.create(instance);
+            SolutionDao solutionDao = fabrique.getSolutionDao();
+            for(Solution s : instance.getSolutionSet()) {
+                solutionDao.create(s);
+            }
+            return true;
+        } catch(Exception ex) {
+            Logger.getLogger(WriteSolution.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
     }
 

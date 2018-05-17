@@ -20,6 +20,7 @@ import dao.JpaProduitDao;
 import dao.LocalisationDao;
 import dao.PersistenceType;
 import dao.ProduitDao;
+import dao.SolutionDao;
 import ecriture.WriteSolution;
 import java.io.IOException;
 import java.util.HashMap;
@@ -34,6 +35,7 @@ import metier.Commande;
 import metier.Instance;
 import metier.Localisation;
 import metier.Produit;
+import metier.Solution;
 
 /**
  *
@@ -44,17 +46,17 @@ public class Persistence_Test1 {
         Result result;
         try {
             result = ReadFiles.getCreatedObjects("src/files/instance_0116_131940_Z2.txt");
-            
             HashSet commandes = new HashSet();
             for (Map.Entry<Long, Commande> entry : result.getCommandes().entrySet()) {
                 commandes.add(entry.getValue());
             }
             Algorithme a = new Algorithme(result.getInstance(), commandes, result);
             a.creerSolution();
+            
             DaoFactory fabrique = DaoFactory.getDaoFactory(PersistenceType.JPA);
             InstanceDao instanceDao = fabrique.getInstanceDao();
             instanceDao.create(result.getInstance());
-            
+            WriteSolution.sauverSolution(a.getInstance());
             Instance i = instanceDao.find(1);
             WriteSolution.ecrireSolution(i);
         } catch (Exception ex) {

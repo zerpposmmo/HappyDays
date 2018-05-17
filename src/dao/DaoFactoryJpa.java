@@ -77,5 +77,14 @@ public class DaoFactoryJpa extends DaoFactory {
 		return JpaProduitDao.getInstance();
         }
         
+        /**
+	 * Retourne une SolutionDao.
+	 * @return SolutionDao
+	 */
+        @Override
+	public SolutionDao getSolutionDao() {            
+		return JpaSolutionDao.getInstance();
+        }
+        
 
 }

@@ -66,4 +66,11 @@ public abstract class DaoFactory {
 	 */
 	public abstract ProduitDao getProduitDao();
         
+                
+        /**
+	 * Retourne une SolutionDao.
+	 * @return SolutionDao
+	 */
+	public abstract SolutionDao getSolutionDao();
+        
 }
