@@ -97,7 +97,7 @@ public abstract class JpaDao<T> implements Dao<T> {
 
 	@Override
 	public T find(Integer id) {
-		return this.em.find(this.entite, id);
+		return this.em.find(this.entite, (long) id);
 	}
 
 	@Override

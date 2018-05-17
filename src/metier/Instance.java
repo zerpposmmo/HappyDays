@@ -32,7 +32,7 @@ public class Instance
 	 * @ordered
 	 */
 	 
-	@javax.persistence.OneToMany(mappedBy = "instance") 
+	@javax.persistence.OneToMany(cascade = CascadeType.PERSIST,mappedBy = "instance") 
 	protected Set<Solution> solutionSet;
 
 	/**

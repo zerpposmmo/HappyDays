@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.GenerationType;
 
 /**
  * Classe Colis
@@ -23,9 +25,9 @@ public class Colis {
 
     @javax.persistence.Id
     @javax.persistence.Column(nullable = false)
+    @javax.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
-    protected static Long nbColis = (long) 0;
     /**
      * Poids maximum du colis
      *
@@ -70,7 +72,7 @@ public class Colis {
      * @generated
      * @ordered
      */
-    @javax.persistence.OneToMany(mappedBy = "colis")
+    @javax.persistence.OneToMany(cascade = CascadeType.PERSIST, mappedBy = "colis")
     protected Collection<QteProduitsColis> colisProduits;
 
     /**
@@ -80,8 +82,6 @@ public class Colis {
      */
     public Colis() {
         this.colisProduits = new HashSet<>();
-        this.id=Colis.nbColis;
-        Colis.nbColis ++;
         poidsMax = 0;
         volumeMax = 0;
     }

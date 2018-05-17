@@ -28,7 +28,7 @@ public class Test4 {
         Result r;
         try {
             //création des objets
-            r = ReadFiles.getCreatedObjects("src/files/instance_0606_136178_Z1.txt");
+            r = ReadFiles.getCreatedObjects("src/files/instance_0116_131940_Z2.txt");
             //System.out.println(r.toString());
             //récupération instance
             Instance i = r.getInstance();
