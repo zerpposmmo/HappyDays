@@ -215,5 +215,14 @@ public class Tournee
 		
 	}
 
+        public int getNbColis() {
+            int nb = 0;
+            for(Colis c : this.colisSet){
+                if(c.getColisProduits().size() > 0)
+                    nb++;
+            }
+            return nb;
+        }
+
 	
 }
