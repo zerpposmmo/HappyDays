@@ -20,7 +20,7 @@ import metier.Tournee;
  *
  * @author Samuel
  */
-public class TestWrite {
+public class WriteSolution {
 
     
     /**
@@ -57,10 +57,10 @@ public class TestWrite {
             }
             return true;
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(TestWrite.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(WriteSolution.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(TestWrite.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(WriteSolution.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         } finally {
             if (writer != null) {

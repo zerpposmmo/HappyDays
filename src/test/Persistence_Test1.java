@@ -27,7 +27,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import lecture.Result;
-import lecture.TestRead;
+import lecture.ReadFiles;
 import metier.Arc;
 import metier.Commande;
 import metier.Instance;
@@ -42,10 +42,11 @@ public class Persistence_Test1 {
     public static void main(String[] args) {
         Result result;
         try {
-            result = TestRead.getCreatedObjects("src/test/instance_0116_131940_Z2.txt");
+            result = ReadFiles.getCreatedObjects("src/files/instance_0116_131940_Z2.txt");
             DaoFactory fabrique = DaoFactory.getDaoFactory(PersistenceType.JPA);
             InstanceDao instanceDao = fabrique.getInstanceDao();
             instanceDao.create(result.getInstance());
+            
         } catch (Exception ex) {
             Logger.getLogger(Test1.class.getName()).log(Level.SEVERE, null, ex);
         }
