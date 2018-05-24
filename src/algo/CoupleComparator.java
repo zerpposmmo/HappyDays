@@ -29,16 +29,16 @@ public class CoupleComparator implements Comparator<Couple>{
     public int compare(Couple o1, Couple o2) {
        
         if (o2.getNbChemin() > o1.getNbChemin()) {
-            return -1;
-        } else if (o2.getNbChemin() < o1.getNbChemin()) {
             return 1;
+        } else if (o2.getNbChemin() < o1.getNbChemin()) {
+            return -1;
         }
         
         if(o2.getL().getId() > o1.getL().getId())
         {
-            return 1;
+            return -1;
         }
-        return -1;
+        return 1;
         
     }
 

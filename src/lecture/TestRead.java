@@ -33,7 +33,7 @@ import metier.Instance;
  *
  * @author Xtree
  */
-public class ReadFiles {
+public class TestRead {
     
     public static Result getCreatedObjects(String filePath) throws IOException{
         Result result = new Result();
@@ -250,7 +250,24 @@ public class ReadFiles {
             result.setProduits(produits);
             result.setEntrepot(newEntrepot);
             result.setInstance(newInstance);
+            /* TEST AFFICHAGE OBJETS */
+            //System.out.println(commandesBrutes);
+            //System.out.println(commandes);
+            //System.out.println(arcs);
+            //System.out.println(produits);
+
+            /* TESTS VARIABLES */
+            //System.out.println(nbLocalisations);
+            //System.out.println(localisations.size());
+            //System.out.println(nbProduits);
+            //System.out.println(produits.size());
 
             return result;
+    }
+    
+    public static void main(String[] args) throws FileNotFoundException, IOException {
+        Result result = new Result();
+        result = getCreatedObjects("src/test/test.txt");
+        System.out.println(result.toString());
     }
 }

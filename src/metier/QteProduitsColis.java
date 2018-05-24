@@ -1,7 +1,5 @@
 package metier;
 
-import javax.persistence.GenerationType;
-
 /**
  * Classe quantité de produit par colis (Nommée QPC)
  *
@@ -19,7 +17,6 @@ public class QteProduitsColis {
 
     @javax.persistence.Id
     @javax.persistence.Column(nullable = false)
-    @javax.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
     /**

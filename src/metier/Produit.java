@@ -3,7 +3,6 @@ package metier;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-import javax.persistence.CascadeType;
 
 /**
  * Classe produit
@@ -47,7 +46,7 @@ public class Produit {
      * @generated
      * @ordered
      */
-    @javax.persistence.OneToMany(cascade = CascadeType.PERSIST, mappedBy = "produit")
+    @javax.persistence.OneToMany(mappedBy = "produit")
     protected Set<Ligne> ligne;
 
     /**
@@ -56,7 +55,7 @@ public class Produit {
      * @generated
      * @ordered
      */
-    @javax.persistence.ManyToOne(cascade = CascadeType.PERSIST)
+    @javax.persistence.ManyToOne
     @javax.persistence.JoinColumn(nullable = false)
     protected Localisation localisation;
 
@@ -66,7 +65,7 @@ public class Produit {
      * @generated
      * @ordered
      */
-    @javax.persistence.OneToMany(cascade = CascadeType.PERSIST, mappedBy = "produit")
+    @javax.persistence.OneToMany(mappedBy = "produit")
     protected Set<QteProduitsColis> colisProduits;
 
     /**
