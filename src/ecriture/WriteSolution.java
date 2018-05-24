@@ -77,21 +77,5 @@ public class WriteSolution {
             }
         }
     }
-    
-    public static boolean sauverSolution(Instance instance) {
-        try {
-            DaoFactory fabrique = DaoFactory.getDaoFactory(PersistenceType.JPA);
-            InstanceDao instanceDao = fabrique.getInstanceDao();
-            instanceDao.create(instance);
-            SolutionDao solutionDao = fabrique.getSolutionDao();
-            for(Solution s : instance.getSolutionSet()) {
-                solutionDao.create(s);
-            }
-            return true;
-        } catch(Exception ex) {
-            Logger.getLogger(WriteSolution.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
-    }
 
 }

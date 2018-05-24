@@ -56,7 +56,6 @@ public class Persistence_Test1 {
             DaoFactory fabrique = DaoFactory.getDaoFactory(PersistenceType.JPA);
             InstanceDao instanceDao = fabrique.getInstanceDao();
             instanceDao.create(result.getInstance());
-            WriteSolution.sauverSolution(a.getInstance());
             Instance i = instanceDao.find(1);
             WriteSolution.ecrireSolution(i);
         } catch (Exception ex) {

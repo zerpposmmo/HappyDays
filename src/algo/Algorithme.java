@@ -244,14 +244,14 @@ public class Algorithme {
         Set<Couple> tabNbPath2 = new TreeSet<>(cp);
 
         for (Ligne line1 : c.getLigneSet()) {
-            int i = 0;
+            /*int i = 0;
             for (Ligne line2 : c.getLigneSet()) {
                 if (line1.getProduit().existPath(line2.getProduit())) {
                     i++;
                 }
-            }
+            }*/
             //tabNbPath.put(line1, i);
-            tabNbPath2.add(new Couple(line1, i));
+            tabNbPath2.add(new Couple(line1, (int) line1.getProduit().getLocalisation().getId()));
         }
 
         //   System.out.println(tabNbPath.toString());
