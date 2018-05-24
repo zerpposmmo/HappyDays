@@ -5,6 +5,7 @@
     <class>metier.Arc</class>
     <class>metier.Colis</class>
     <class>metier.Commande</class>
+    <class>metier.Entrepot</class>
     <class>metier.Instance</class>
     <class>metier.Ligne</class>
     <class>metier.Localisation</class>
@@ -12,7 +13,6 @@
     <class>metier.QteProduitsColis</class>
     <class>metier.Solution</class>
     <class>metier.Tournee</class>
-    <class>metier.Entrepot</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/HappyDays"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
