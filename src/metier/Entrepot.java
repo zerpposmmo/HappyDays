@@ -1,11 +1,8 @@
 package metier;
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import javax.persistence.CascadeType;
-import javax.persistence.GenerationType;
 
 /**
  * Classe entrepôt
@@ -13,7 +10,7 @@ import javax.persistence.GenerationType;
  * @generated
  */
 @javax.persistence.Entity
-public class Entrepot implements Serializable {
+public class Entrepot {
 
     /**
      * ID de l'entrepot
@@ -23,8 +20,7 @@ public class Entrepot implements Serializable {
      */
 
     @javax.persistence.Id
-    @javax.persistence.Column(name="ID", nullable = false)
-    @javax.persistence.GeneratedValue(strategy = GenerationType.TABLE)
+    @javax.persistence.Column(nullable = false)
     protected Long id;
 
     /**
@@ -33,7 +29,7 @@ public class Entrepot implements Serializable {
      * @generated
      * @ordered
      */
-    @javax.persistence.OneToMany(cascade = CascadeType.PERSIST, mappedBy = "entrepot")
+    @javax.persistence.OneToMany(mappedBy = "entrepot")
     protected Set<Localisation> localisationSet;
 
     /**

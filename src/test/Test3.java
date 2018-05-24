@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import lecture.Result;
-import lecture.ReadFiles;
+import lecture.TestRead;
 import metier.Commande;
 import metier.Instance;
 import metier.Produit;
@@ -27,7 +27,7 @@ public class Test3 {
         Result r;
         try {
             //création des objets
-            r = ReadFiles.getCreatedObjects("src/test/test2.txt");
+            r = TestRead.getCreatedObjects("src/test/test2.txt");
             //System.out.println(r.toString());
             //récupération instance
             Instance i = r.getInstance();
