@@ -6,7 +6,7 @@
 package test;
 
 import algo.Algorithme;
-import ecriture.TestWrite;
+import ecriture.WriteSolution;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import lecture.Result;
-import lecture.TestRead;
+import lecture.ReadFiles;
 import metier.Commande;
 import metier.Instance;
 import metier.Produit;
@@ -28,7 +28,7 @@ public class Test4 {
         Result r;
         try {
             //création des objets
-            r = TestRead.getCreatedObjects("src/files/instance_0606_136178_Z1.txt");
+            r = ReadFiles.getCreatedObjects("src/files/instance_0116_131940_Z2.txt");
             //System.out.println(r.toString());
             //récupération instance
             Instance i = r.getInstance();
@@ -66,7 +66,7 @@ public class Test4 {
             a.creerSolution();
             //Stack<Couple> ac= a.nbPath();
             //Stack<Ligne> ab= a.creerSolution();
-            TestWrite.ecrireSolution(i);
+            WriteSolution.ecrireSolution(i);
             System.out.println(a);
         } catch (IOException ex) {
             Logger.getLogger(Test1.class.getName()).log(Level.SEVERE, null, ex);

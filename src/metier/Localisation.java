@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.GenerationType;
 
 /**
  * Classe Localisation
@@ -21,6 +23,7 @@ public class Localisation {
 
     @javax.persistence.Id
     @javax.persistence.Column(nullable = false)
+    @javax.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
     /**
@@ -44,7 +47,7 @@ public class Localisation {
      * @generated 
      * @ordered
      */
-    @javax.persistence.OneToMany(mappedBy = "localisation")
+    @javax.persistence.OneToMany(cascade = CascadeType.PERSIST, mappedBy = "arrivee")
     protected Map<Localisation, Arc> arcMap;
 
     /**
@@ -52,7 +55,7 @@ public class Localisation {
      * @generated 
      * @ordered
      */
-    @javax.persistence.OneToMany(mappedBy = "localisation")
+    @javax.persistence.OneToMany(cascade = CascadeType.PERSIST, mappedBy = "localisation")
     protected Set<Produit> produitSet;
 
     /**
@@ -60,7 +63,7 @@ public class Localisation {
      * @generated 
      * @ordered
      */
-    @javax.persistence.ManyToOne
+    @javax.persistence.ManyToOne(cascade = CascadeType.PERSIST)
     @javax.persistence.JoinColumn(nullable = false)
     protected Entrepot entrepot;
 

@@ -1,7 +1,6 @@
 package metier;
 
 import java.util.Objects;
-import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 /**
@@ -21,8 +20,8 @@ public class Arc {
      */
 
     @javax.persistence.Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @javax.persistence.Column(nullable = false)
+    @javax.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
     /**

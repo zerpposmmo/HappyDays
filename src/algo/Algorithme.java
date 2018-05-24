@@ -17,6 +17,7 @@ import lecture.Result;
 import metier.Commande;
 
 import algo.Couple;
+import java.time.LocalDateTime;
 import java.util.Iterator;
 import metier.Colis;
 import metier.Instance;
@@ -55,6 +56,7 @@ public class Algorithme {
     public void creerSolution() {
 
         Solution s = new Solution();
+        s.setNom("Solution_" + LocalDateTime.now());
         s.setInstance(instance);
         //On fait une commande à la fois 
         HashSet myStacks = new HashSet<Stack>();
@@ -70,8 +72,6 @@ public class Algorithme {
             Stack<Couple> oneStack = (Stack<Couple>) it.next();
             this.creerTournees(oneStack, s);
         }
-        
-        System.out.println(s.toString());
     }
 
     /**
@@ -244,14 +244,14 @@ public class Algorithme {
         Set<Couple> tabNbPath2 = new TreeSet<>(cp);
 
         for (Ligne line1 : c.getLigneSet()) {
-            int i = 0;
+            /*int i = 0;
             for (Ligne line2 : c.getLigneSet()) {
                 if (line1.getProduit().existPath(line2.getProduit())) {
                     i++;
                 }
-            }
+            }*/
             //tabNbPath.put(line1, i);
-            tabNbPath2.add(new Couple(line1, i));
+            tabNbPath2.add(new Couple(line1, (int) line1.getProduit().getLocalisation().getId()));
         }
 
         //   System.out.println(tabNbPath.toString());
@@ -355,4 +355,8 @@ public class Algorithme {
 
     }
 
+    public Instance getInstance() {
+        return instance;
+    }
+    
 }
