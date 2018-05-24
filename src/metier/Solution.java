@@ -1,6 +1,8 @@
 package metier;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.GenerationType;
 
 
 
@@ -20,6 +22,7 @@ public class Solution
 	 
 	@javax.persistence.Id 
 	@javax.persistence.Column(nullable = false) 
+        @javax.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Long id;
 
 	/**
@@ -37,7 +40,7 @@ public class Solution
 	 * @ordered
 	 */
 	 
-	@javax.persistence.OneToMany(mappedBy = "solution") 
+	@javax.persistence.OneToMany(cascade = CascadeType.PERSIST, mappedBy = "solution") 
 	protected Set<Tournee> tourneeSet;
 
 	/**
@@ -91,7 +94,7 @@ public class Solution
 	 * @generated
 	 * @ordered
 	 */
-	private String getNom() {
+	public String getNom() {
 		return this.nom;
 	}
 
@@ -162,7 +165,7 @@ public class Solution
 	 * @ordered
          * @param myNom Nom que l'on veut ajouter
 	 */
-	private void setNom(String myNom) {
+	public void setNom(String myNom) {
 		this.nom = myNom;
 	}
 

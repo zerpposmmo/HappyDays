@@ -5,12 +5,21 @@
  */
 package ecriture;
 
+import algo.Algorithme;
+import dao.DaoFactory;
+import dao.InstanceDao;
+import dao.PersistenceType;
+import dao.SolutionDao;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import lecture.Result;
 import metier.Colis;
+import metier.Commande;
 import metier.Instance;
 import metier.QteProduitsColis;
 import metier.Solution;
@@ -20,7 +29,7 @@ import metier.Tournee;
  *
  * @author Samuel
  */
-public class TestWrite {
+public class WriteSolution {
 
     
     /**
@@ -57,10 +66,10 @@ public class TestWrite {
             }
             return true;
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(TestWrite.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(WriteSolution.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(TestWrite.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(WriteSolution.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         } finally {
             if (writer != null) {

@@ -2,6 +2,8 @@ package metier;
 
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.GenerationType;
 
 /**
  * Class Tournee Posséde une collection d'objet Colis et une collection d'objet
@@ -21,6 +23,7 @@ public class Tournee
 	 
 	@javax.persistence.Id 
 	@javax.persistence.Column(nullable = false) 
+        @javax.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Long id;
 
 	/**
@@ -39,7 +42,7 @@ public class Tournee
 	 * @ordered
 	 */
 	 
-	@javax.persistence.OneToMany(mappedBy = "tournee") 
+	@javax.persistence.OneToMany(cascade = CascadeType.PERSIST, mappedBy = "tournee") 
 	protected Set<Colis> colisSet;
 
 	 protected static Long nbTournee = (long) 0;
