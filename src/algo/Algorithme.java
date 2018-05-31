@@ -19,9 +19,11 @@ import metier.Commande;
 import algo.Couple;
 import java.time.LocalDateTime;
 import java.util.Iterator;
+import java.util.List;
 import metier.Colis;
 import metier.Instance;
 import metier.Ligne;
+import metier.Produit;
 import metier.QteProduitsColis;
 import metier.Solution;
 import metier.Tournee;
@@ -72,6 +74,109 @@ public class Algorithme {
             Stack<Couple> oneStack = (Stack<Couple>) it.next();
             this.creerTournees(oneStack, s);
         }
+    }
+
+    /**
+     * permet de créer une solution basé sur l'algorithme amélioré
+     */
+    public void creerSolutionUpdated() throws CloneNotSupportedException {
+        Solution sol = new Solution();
+        sol.setNom("Solution_" + LocalDateTime.now());
+        sol.setInstance(instance);
+        Map<Long, List<Ligne>> listLignesMapByIdProd = new HashMap();
+        Integer qteTotalCommandes = 0;
+        Tournee newTournee;
+        Integer qteAffecteeATournee = 0;
+        // On doit créer notre tableau Produit -> QuantiteProduit
+        for (Commande c : commandes) {
+            for (Ligne l : c.getLigneSet()) {
+                if (listLignesMapByIdProd.containsKey(l.getProduit().getId())) {
+                    listLignesMapByIdProd.get(l.getProduit().getId()).add((Ligne) l.clone());
+                } else {
+                    List<Ligne> lignes = new ArrayList<Ligne>();
+                    lignes.add((Ligne) l.clone());
+                    listLignesMapByIdProd.put(l.getProduit().getId(), lignes);
+                }
+                qteTotalCommandes += l.getQuantite();
+            }
+        }
+
+        //Tableau ordonné de produit en fonction de l'id localisation
+        CoupleProdLoc[] tabCouple = this.getTabProduit(commandes);
+
+        while (qteTotalCommandes > 0) {
+            newTournee = new Tournee(sol);
+
+            for (CoupleProdLoc cpl : tabCouple) {
+                List<Ligne> lignesCmds = listLignesMapByIdProd.get(cpl.getP().getId());
+                //Ici on pourrait rajouter un .random sur la list;
+                for (Ligne ligneDeCmd : lignesCmds) {
+                    if (ligneDeCmd.getQuantite() > 0) {
+                        qteAffecteeATournee = this.ajouterProdATournee(ligneDeCmd.getCommande(), ligneDeCmd.getProduit(), ligneDeCmd.getQuantite(), newTournee);
+                        qteTotalCommandes = qteTotalCommandes - qteAffecteeATournee;
+                        ligneDeCmd.setQuantite(ligneDeCmd.getQuantite() - qteAffecteeATournee);
+                    }
+                }
+
+            }
+
+        }
+        /*for (Commande c : commandes) {
+            Stack myStack;
+            Couple[] tabCouple = this.nbPath(c);
+            myStack = this.resoudreV4(tabCouple);
+            myStacks.add(myStack);
+            //Création des tournées
+        }*/
+    }
+
+    private Integer ajouterProdATournee(Commande cmd, Produit produit, int quantite, Tournee newTournee) {
+        Integer qteAffectee = 0;
+        Integer quantiteProduitMaxDansColis = 0;
+        Integer qteEsperee = quantite;
+        Integer nbColis = newTournee.getColisSet().size();
+        Set<Colis> colisCmd = newTournee.getColisSet(cmd.getId());
+
+        for (Colis c : colisCmd) {
+            if (c.getCommande().getId() == cmd.getId()) {
+                quantiteProduitMaxDansColis = c.getQteMax(produit);
+                if (quantiteProduitMaxDansColis > 0 && qteEsperee > 0) {
+
+                    if (quantiteProduitMaxDansColis <= qteEsperee) {
+                        c.addColisProduits(new QteProduitsColis(quantiteProduitMaxDansColis, produit));
+                        qteAffectee += quantiteProduitMaxDansColis;
+                        qteEsperee -= quantiteProduitMaxDansColis;
+                    } else {
+                        c.addColisProduits(new QteProduitsColis(qteEsperee, produit));
+                        qteAffectee += qteEsperee;
+                        qteEsperee = 0;
+                    }
+
+                }
+            }
+            if (c.getCommande().getId() != cmd.getId()) {
+                System.out.println("Wrong");
+            }
+        }
+
+        while (qteEsperee > 0 && nbColis < this.results.getNbBoxesTrolley()) {
+            Colis newColis = new Colis(this.results.getCapaBox().getPoids(), this.results.getCapaBox().getVolume(), cmd);
+            newColis.setTournee(newTournee);
+            quantiteProduitMaxDansColis = newColis.getQteMax(produit); // Renvoye le nombre max de produit possiblement à ajouter au colis peut etre > à qte ou < à qte
+
+            if (qteEsperee > 0) {
+                if (quantiteProduitMaxDansColis <= qteEsperee) {
+                    newColis.addColisProduits(new QteProduitsColis(quantiteProduitMaxDansColis, produit));
+                    qteAffectee += quantiteProduitMaxDansColis;
+                    qteEsperee -= quantiteProduitMaxDansColis;
+                } else {
+                    newColis.addColisProduits(new QteProduitsColis(qteEsperee, produit));
+                    qteAffectee += qteEsperee;
+                    qteEsperee = 0;
+                }
+            }
+        }
+        return qteAffectee;
     }
 
     /**
@@ -255,10 +360,42 @@ public class Algorithme {
         }
 
         //   System.out.println(tabNbPath.toString());
-       // System.out.println(tabNbPath2.toString());
+        // System.out.println(tabNbPath2.toString());
         Couple[] myCouples = tabNbPath2.toArray(new Couple[tabNbPath2.size()]);
 
         return myCouples;
+    }
+
+    /**
+     * Permet de créer un tableau contenant les produits ordonnées
+     *
+     * @param c Commande voulant être traitée
+     * @return Couple[] tableau de Couple par ordre décroissant
+     */
+    public CoupleProdLoc[] getTabProduit(Set<Commande> commandes) {
+        //HashMap<Ligne, Integer> tabNbPath = new HashMap<Ligne,Integer>();
+        CoupleProdLocComparator cp = new CoupleProdLocComparator();
+        Set<CoupleProdLoc> tabNbPath2 = new TreeSet<>(cp);
+        for (Commande c : commandes) {
+            for (Ligne line1 : c.getLigneSet()) {
+                /*int i = 0;
+                for (Ligne line2 : c.getLigneSet()) {
+                    if (line1.getProduit().existPath(line2.getProduit())) {
+                        i++;
+                    }
+                }*/
+                //tabNbPath.put(line1, i);
+                CoupleProdLoc possibleCouple = new CoupleProdLoc(line1.getProduit(), (long) line1.getProduit().getLocalisation().getId());
+                if (!tabNbPath2.contains(possibleCouple)) {
+                    tabNbPath2.add(possibleCouple);
+                }
+            }
+        }
+        //   System.out.println(tabNbPath.toString());
+        // System.out.println(tabNbPath2.toString());
+        CoupleProdLoc[] tabProduitLocalisation = tabNbPath2.toArray(new CoupleProdLoc[tabNbPath2.size()]);
+
+        return tabProduitLocalisation;
     }
 
     /**
@@ -304,14 +441,15 @@ public class Algorithme {
                 index = 0;
             }
         }
-        //System.out.println(s.toString());
+        //System.out.println(sol.toString());
         return s;
     }
 
     /**
      * Méthode permettant de créer les tournées
+     *
      * @param myStack
-     * @param solution 
+     * @param solution
      */
     public void creerTournees(Stack<Couple> myStack, Solution solution) {
         //HashSet<Tournee> mesTournee = new HashSet();
@@ -319,44 +457,47 @@ public class Algorithme {
         int qteProduit = myStack.firstElement().getL().getCommande().getNbProduit();
         Stack<Couple> copyStack = (Stack<Couple>) myStack.clone();
         int index, qteMax;
-        
+
         //Tant que la quantité de produit n'est pas  = 0
         while (qteProduit > 0) {
             myTournee = new Tournee();
             //Création des colis de la tournée
-            for(index = 0;index < this.results.getNbBoxesTrolley(); index++ ){
-                myTournee.addColis(new Colis(this.results.getCapaBox().getPoids(),this.results.getCapaBox().getVolume(), myStack.firstElement().getL().getCommande()));
+            for (index = 0; index < this.results.getNbBoxesTrolley(); index++) {
+                myTournee.addColis(new Colis(this.results.getCapaBox().getPoids(), this.results.getCapaBox().getVolume(), myStack.firstElement().getL().getCommande()));
             }
-            
-            for(Couple p : copyStack){
-                if(p.getL().getQuantite() > 0)
-                {
-                    for(Colis c : myTournee.getColisSet()){
+
+            for (Couple p : copyStack) {
+                if (p.getL().getQuantite() > 0) {
+                    for (Colis c : myTournee.getColisSet()) {
                         qteMax = c.getQteMax(p.getL().getProduit());
                         //Si le colis ne peut pas contenir tout le lot
-                        if(qteMax <= p.getL().getQuantite() && qteMax > 0)
-                        {
+                        if (qteMax <= p.getL().getQuantite() && qteMax > 0) {
                             c.addColisProduits(new QteProduitsColis(qteMax, myStack.get(copyStack.indexOf(p)).getL().getProduit()));
-                            qteProduit-=qteMax;
+                            qteProduit -= qteMax;
                             copyStack.get(copyStack.indexOf(p)).getL().setQuantite(p.getL().getQuantite() - qteMax);
-                           
-                        }else if(p.getL().getQuantite() > 0 &&  qteMax > 0) { // Si le colis peut contenir tout le lot
+
+                        } else if (p.getL().getQuantite() > 0 && qteMax > 0) { // Si le colis peut contenir tout le lot
                             c.addColisProduits(new QteProduitsColis(p.getL().getQuantite(), myStack.get(copyStack.indexOf(p)).getL().getProduit()));
-                            qteProduit-=p.getL().getQuantite();
+                            qteProduit -= p.getL().getQuantite();
                             copyStack.get(copyStack.indexOf(p)).getL().setQuantite(0);
                         }
                     }
                 }
-                    
+
             }
             solution.addTournee(myTournee);
-            
+
         }
 
     }
 
+    /**
+     * Getter instance
+     *
+     * @return
+     */
     public Instance getInstance() {
         return instance;
     }
-    
+
 }

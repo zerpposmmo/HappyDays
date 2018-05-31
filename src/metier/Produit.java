@@ -22,7 +22,6 @@ public class Produit {
      */
     @javax.persistence.Id
     @javax.persistence.Column(nullable = false)
-    @javax.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
     /**

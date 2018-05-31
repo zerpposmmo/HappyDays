@@ -59,7 +59,7 @@ public class Tournee
 
   public Tournee(Solution s) {
     this();
-    this.setSolution(solution);
+    this.setSolution(s);
   }
 
 	/**
@@ -110,6 +110,24 @@ public class Tournee
 				this.colisSet = new HashSet<Colis>();
 		}
 		return (Set<Colis>) this.colisSet;
+	}
+        
+        /**
+	 * Récupérer les colis d'une commande par id
+	 * @generated
+	 * @ordered
+	 */
+	public Set<Colis> getColisSet(Long idCommande) {
+                Set<Colis> colisCommandeSet = new HashSet();
+		if(this.colisSet == null) {
+				this.colisSet = new HashSet<Colis>();
+		}
+                for(Colis c : this.colisSet){
+                    if(c.getCommande().getId() == idCommande){
+                        colisCommandeSet.add(c);
+                    }
+                }
+		return colisCommandeSet;
 	}
 
 	/**
