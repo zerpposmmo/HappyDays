@@ -52,6 +52,9 @@ public class Solution
 	@javax.persistence.ManyToOne 
 	@javax.persistence.JoinColumn(nullable = false) 
 	protected Instance instance;
+        
+        
+        protected transient Double distance;
 
 	/**
 	 * Constructeur de la solution
@@ -59,6 +62,7 @@ public class Solution
 	 */
 	public Solution(){
                 this.tourneeSet = new HashSet();
+                this.distance = (double) 0;
 	}
 
 	/**
@@ -241,6 +245,12 @@ public class Solution
 		oldinstance.removeSolution(this);
 	}
 
-	
+        public Double getDistance() {
+            return distance;
+        }
+
+        public void setDistance(Double distance) {
+            this.distance = distance;
+        }
 }
 

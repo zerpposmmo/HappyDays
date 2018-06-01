@@ -31,10 +31,10 @@ public class Persistence_Test2 {
         Result result;
         try {
             result = ReadFiles.getCreatedObjects("src/files/instance_0116_131950_Z1.txt");
-            HashSet commandes = new HashSet();
-            for (Map.Entry<Long, Commande> entry : result.getCommandes().entrySet()) {
+            HashSet commandes = new HashSet(result.getCommandes().values());
+            /*for (Map.Entry<Long, Commande> entry : result.getCommandes().entrySet()) {
                 commandes.add(entry.getValue());
-            }
+            }*/
             Algorithme a = new Algorithme(result.getInstance(), commandes, result);
             a.creerSolutionUpdated();
             

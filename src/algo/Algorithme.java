@@ -115,12 +115,19 @@ public class Algorithme {
                         qteAffecteeATournee = this.ajouterProdATournee(ligneDeCmd.getCommande(), ligneDeCmd.getProduit(), ligneDeCmd.getQuantite(), newTournee);
                         qteTotalCommandes = qteTotalCommandes - qteAffecteeATournee;
                         ligneDeCmd.setQuantite(ligneDeCmd.getQuantite() - qteAffecteeATournee);
+                        if(qteAffecteeATournee > 0){
+                            if(!newTournee.getChemin().getRoute().contains(ligneDeCmd.getProduit())){
+                                newTournee.getChemin().addProduit(ligneDeCmd.getProduit());
+                            }
+                        }
                     }
                 }
 
             }
-
+            sol.setDistance(newTournee.getChemin().getDistance() + sol.getDistance());
         }
+        
+        
         /*for (Commande c : commandes) {
             Stack myStack;
             Couple[] tabCouple = this.nbPath(c);

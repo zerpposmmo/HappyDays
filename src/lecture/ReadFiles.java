@@ -232,11 +232,18 @@ public class ReadFiles {
                 }
                 
                 for(Localisation loc : localisations.values()){
+                    if(loc.getId() == departingDepot){
+                        newInstance.setDepartingDepot(loc);
+                    }
+                    if(loc.getId() == arrivalDepot){
+                        newInstance.setArrivalDepot(loc);
+                    }
                     newEntrepot.addLocalisation(loc);
                 }
             }
             result.setArcs(arcs);
             result.setArrivalDepot(arrivalDepot);
+            
             result.setCapaBox(capaBox);
             result.setCommandes(commandes);
             result.setDepartingDepot(departingDepot);

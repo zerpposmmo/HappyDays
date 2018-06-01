@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.GenerationType;
+import javax.persistence.Transient;
 
 
 
@@ -44,6 +45,14 @@ public class Instance
 	@javax.persistence.OneToMany(cascade = CascadeType.PERSIST, mappedBy = "instance") 
 	protected Set<Produit> produitSet;
 
+        
+        
+        @Transient
+        protected Localisation arrivalDepot;
+        
+        @Transient
+        protected Localisation departingDepot;
+        
 	/**
 	 * Constructeur par défaut de l'instance
 	 * @generated
@@ -154,6 +163,38 @@ public class Instance
 		this.id = myId;
 	}
 
+        /**
+         * Permet de récupérer le dépôt d'arrivée
+         * @return 
+         */
+        public Localisation getArrivalDepot() {
+            return arrivalDepot;
+        }
+
+        /**
+         * Définit le dépôt d'arrivée
+         * @param arrivalDepot 
+         */
+        public void setArrivalDepot(Localisation arrivalDepot) {
+            this.arrivalDepot = arrivalDepot;
+        }
+
+        /**
+         * Permet de récupérer le dépôt de départ
+         * @return 
+         */
+        public Localisation getDepartingDepot() {
+            return departingDepot;
+        }
+
+        /**
+         * Définit le dépôt de départ
+         * @param arrivalDepot 
+         */
+        public void setDepartingDepot(Localisation departingDepot) {
+            this.departingDepot = departingDepot;
+        }    
+        
 	/**
 	 * Ajoute une solution à l'instance
 	 * @generated

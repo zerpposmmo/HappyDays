@@ -392,14 +392,19 @@ public class Localisation {
      */
     public double getDistanceTo(Localisation key){
         Arc r = this.arcMap.get(key);
+        if(this.equals(key)){
+                return 0;
+        }
+        
         if( r == null)
         {
             //Same place
-            if(this.equals(key)){
+           /* if(this.equals(key)){
                 return 0;
-            }
+            }*/
             return Double.POSITIVE_INFINITY;
         }
+        
         return r.getDistance();
     }
 

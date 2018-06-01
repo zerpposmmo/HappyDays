@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.GenerationType;
+import javax.persistence.Transient;
 
 /**
  * Class Tournee Posséde une collection d'objet Colis et une collection d'objet
@@ -45,7 +46,13 @@ public class Tournee
 	@javax.persistence.OneToMany(cascade = CascadeType.PERSIST, mappedBy = "tournee") 
 	protected Set<Colis> colisSet;
 
-	 protected static Long nbTournee = (long) 0;
+	protected static Long nbTournee = (long) 0;
+        
+        /**
+         * Route empreintée par la tournée
+         */
+        @Transient
+        protected transient Chemin chemin;
 
   /**
   * Constructeur par défaut
@@ -55,11 +62,13 @@ public class Tournee
     this.id = Tournee.nbTournee;
     Tournee.nbTournee++;
     this.colisSet = new HashSet();
+    
   }
 
   public Tournee(Solution s) {
     this();
     this.setSolution(s);
+    this.chemin = new Chemin(s.getInstance().getDepartingDepot(), s.getInstance().getArrivalDepot());
   }
 
 	/**
@@ -158,11 +167,7 @@ public class Tournee
 		
 		this.colisSet.removeAll(newColis);
 	}
-
-        
-        
-        
-        
+    
 	/**
 	 * Setter  id
 	 * @generated
@@ -220,6 +225,14 @@ public class Tournee
 		this.solution = null;
 		oldsolution.removeTournee(this);
 	}
+
+        /**
+         * Permet de récupérer le chemin de la tournée
+         * @return 
+         */
+        public Chemin getChemin() {
+            return chemin;
+        } 
 
 	/**
 	 * Permet de supprimer un colis de la collection de colis

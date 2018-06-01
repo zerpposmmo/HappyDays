@@ -488,7 +488,6 @@ public class Produit {
         if (this.localisation.existPath(prod.getLocalisation())) {
             return true;
         }
-
         return false;
     }
 
@@ -501,8 +500,10 @@ public class Produit {
      */
     public double getDistanceTo(Produit prod) {
         if (this.existPath(prod)) {
-            this.localisation.getDistanceTo(prod.getLocalisation());
+            return this.localisation.getDistanceTo(prod.getLocalisation());
         }
+       /* if(this.localisation.id == prod.getLocalisation().getId())
+            return  0;*/
         return Double.POSITIVE_INFINITY;
     }
 
