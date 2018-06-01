@@ -21,6 +21,7 @@ import lecture.Result;
 import metier.Commande;
 import metier.Instance;
 import metier.Produit;
+import metier.Solution;
 
 /**
  *
@@ -30,10 +31,24 @@ public class Persistence_Test2 {
     public static void main(String[] args) {
         Result result;
         try {
-            result = ReadFiles.getCreatedObjects("src/files/instance_0116_131950_Z1.txt");
+            result = ReadFiles.getCreatedObjects("src/files/instance_0203_132623_Z1.txt");
             HashSet commandes = new HashSet(result.getCommandes().values());
             Algorithme a = new Algorithme(result.getInstance(), commandes, result);
-            a.creerSolutionUpdated();
+            Solution bestSolution = null;
+            int index = 0;
+            for(; index  < 200; index++){
+                System.out.println(index);
+                a.creerSolutionUpdated();
+            }
+            
+            
+            for(Solution s:result.getInstance().getSolutionSet()){
+                if(bestSolution == null)
+                    bestSolution = s;
+                if(s.getDistance() < bestSolution.getDistance())
+                    bestSolution = s;
+            }
+            
             
             DaoFactory fabrique = DaoFactory.getDaoFactory(PersistenceType.JPA);
             InstanceDao instanceDao = fabrique.getInstanceDao();

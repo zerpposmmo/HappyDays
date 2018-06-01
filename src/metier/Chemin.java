@@ -101,7 +101,7 @@ public class Chemin {
             else{
                 //element interne à la chaine
                 distance+= this.route.get(this.route.indexOf(p) - 1).getDistanceTo(p);
-                System.out.println(distance);
+               // System.out.println(distance);
             }
             
             

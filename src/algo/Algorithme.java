@@ -18,6 +18,8 @@ import metier.Commande;
 
 import algo.Couple;
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import metier.Colis;
@@ -110,6 +112,7 @@ public class Algorithme {
             for (CoupleProdLoc cpl : tabCouple) {
                 List<Ligne> lignesCmds = listLignesMapByIdProd.get(cpl.getP().getId());
                 //Ici on pourrait rajouter un .random sur la list;
+                Collections.shuffle(lignesCmds);
                 for (Ligne ligneDeCmd : lignesCmds) {
                     if (ligneDeCmd.getQuantite() > 0) {
                         qteAffecteeATournee = this.ajouterProdATournee(ligneDeCmd.getCommande(), ligneDeCmd.getProduit(), ligneDeCmd.getQuantite(), newTournee);
@@ -142,8 +145,10 @@ public class Algorithme {
         Integer quantiteProduitMaxDansColis = 0;
         Integer qteEsperee = quantite;
         Integer nbColis = newTournee.getColisSet().size();
-        Set<Colis> colisCmd = newTournee.getColisSet(cmd.getId());
-
+        Set<Colis> acolisCmd = newTournee.getColisSet(cmd.getId());
+       
+        ArrayList<Colis> colisCmd = new ArrayList<Colis>(acolisCmd);
+        Collections.shuffle(colisCmd);
         for (Colis c : colisCmd) {
             if (c.getCommande().getId() == cmd.getId()) {
                 quantiteProduitMaxDansColis = c.getQteMax(produit);
