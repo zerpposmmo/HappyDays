@@ -7,6 +7,7 @@ import java.util.Objects;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.GenerationType;
+import javax.persistence.Transient;
 
 /**
  * Classe Localisation
@@ -47,7 +48,8 @@ public class Localisation {
      * @generated 
      * @ordered
      */
-    @javax.persistence.OneToMany(cascade = CascadeType.PERSIST, mappedBy = "arrivee")
+    //@javax.persistence.OneToMany(cascade = CascadeType.PERSIST, mappedBy = "arrivee")
+    @Transient
     protected Map<Localisation, Arc> arcMap;
 
     /**
@@ -55,7 +57,7 @@ public class Localisation {
      * @generated 
      * @ordered
      */
-    @javax.persistence.OneToMany(cascade = CascadeType.PERSIST, mappedBy = "localisation")
+    @javax.persistence.OneToMany(mappedBy = "localisation")
     protected Set<Produit> produitSet;
 
     /**

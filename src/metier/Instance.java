@@ -42,7 +42,7 @@ public class Instance
 	 * @ordered
 	 */
 	 
-	@javax.persistence.OneToMany(cascade = CascadeType.PERSIST, mappedBy = "instance") 
+	@javax.persistence.OneToMany(mappedBy = "instance") 
 	protected Set<Produit> produitSet;
 
         

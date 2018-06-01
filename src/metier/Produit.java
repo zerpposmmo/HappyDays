@@ -48,7 +48,7 @@ public class Produit {
      * @generated
      * @ordered
      */
-    @javax.persistence.OneToMany(cascade = CascadeType.PERSIST, mappedBy = "produit")
+    @javax.persistence.OneToMany(mappedBy = "produit")
     protected Set<Ligne> ligne;
 
     /**
@@ -67,7 +67,7 @@ public class Produit {
      * @generated
      * @ordered
      */
-    @javax.persistence.OneToMany(cascade = CascadeType.PERSIST, mappedBy = "produit")
+    @javax.persistence.OneToMany( mappedBy = "produit")
     protected Set<QteProduitsColis> colisProduits;
 
     /**

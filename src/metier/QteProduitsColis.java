@@ -1,5 +1,6 @@
 package metier;
 
+import javax.persistence.CascadeType;
 import javax.persistence.GenerationType;
 
 /**
@@ -37,7 +38,7 @@ public class QteProduitsColis {
      * @generated
      * @ordered
      */
-    @javax.persistence.ManyToOne
+    @javax.persistence.ManyToOne(cascade = CascadeType.PERSIST)
     @javax.persistence.JoinColumn(nullable = false)
     protected Produit produit;
 

@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
  * @author Arnaud
  * @generated
  */
-@javax.persistence.Entity
 public class Arc {
 
     /**
@@ -18,10 +17,6 @@ public class Arc {
      * @generated
      * @ordered
      */
-
-    @javax.persistence.Id
-    @javax.persistence.Column(nullable = false)
-    @javax.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
     /**
@@ -30,7 +25,6 @@ public class Arc {
      * @generated
      * @ordered
      */
-    @javax.persistence.OneToOne
     protected Localisation arrivee;
 
     /**
@@ -39,7 +33,6 @@ public class Arc {
      * @generated
      * @ordered
      */
-    @javax.persistence.Column(nullable = false)
     protected int distance;
 
     /**
@@ -48,8 +41,6 @@ public class Arc {
      * @generated
      * @ordered
      */
-    @javax.persistence.ManyToOne
-    @javax.persistence.JoinColumn(nullable = false)
     protected Localisation depart;
 
     /**
