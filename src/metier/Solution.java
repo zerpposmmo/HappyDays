@@ -53,8 +53,8 @@ public class Solution
 	@javax.persistence.JoinColumn(nullable = false) 
 	protected Instance instance;
         
-        
-        protected transient Double distance;
+        @javax.persistence.Column(nullable = false)
+        protected Double distance;
 
 	/**
 	 * Constructeur de la solution
@@ -251,6 +251,12 @@ public class Solution
 
         public void setDistance(Double distance) {
             this.distance = distance;
+        }
+        
+        public void createCheminProduit(){
+            for (Tournee tournee : this.tourneeSet){
+                tournee.createCheminProduit();
+            }
         }
 }
 

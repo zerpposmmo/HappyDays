@@ -5,23 +5,48 @@
  */
 package metier;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author Samuel
  */
+@javax.persistence.Entity
 public class Chemin {
+    
+    
+    
+    @javax.persistence.Id
+    @javax.persistence.Column(nullable = false)
+    @javax.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id;
+    
+    
     
     /**
      * Route entre différents produits
      */
-    private List<Produit> route;
+    private transient List<Produit> route;
 
-    private Localisation depart;
     
-    private Localisation arrivee;
+    /*@ManyToOne
+    @javax.persistence.JoinColumn(nullable = false)*/
+    private transient Localisation depart;
+    
+   /* @ManyToOne
+    @javax.persistence.JoinColumn(nullable = false)*/
+    private transient Localisation arrivee;
     
     //Permet de ne pas avoir à recalculer la distance si on appelle 
     //plusieurs fois le getter
@@ -30,14 +55,22 @@ public class Chemin {
     /**
      * Distance de la route
      */
+    @javax.persistence.Column(nullable = false)
     private Double distance;
     
+    
+    @OneToOne
+    private Tournee tournee;
     /** Constructor **/ 
     
+    @javax.persistence.OneToMany( mappedBy = "chemin", cascade = CascadeType.PERSIST)
+    private Set<CheminProduit> cheminProduits;
+    
     private Chemin() {
-        route = new LinkedList<Produit>();
-        distance=(double) 0;
-        flag = true;
+        this.route = new LinkedList<Produit>();
+        this.cheminProduits = new HashSet<>();
+        this.distance=(double) 0;
+        this.flag = true;
     }
 
     public Chemin(Localisation depart, Localisation arrivee) {
@@ -83,6 +116,19 @@ public class Chemin {
     }
     
     /**
+     * Ajoute un chemin produit qui lie le produit et le chemin
+     * @param cP CheminProduit
+     * @return 
+     */
+    public boolean addCheminProduit(CheminProduit cP){
+        if(this.cheminProduits.add(cP)){
+            cP.getProduit().addCheminProduit(cP);
+            return true;
+        }
+        return false;
+    }
+    
+    /**
      * Permet de calculer la distance totale de la route
      */
     private void calculerDistance(){
@@ -103,11 +149,7 @@ public class Chemin {
                 distance+= this.route.get(this.route.indexOf(p) - 1).getDistanceTo(p);
                // System.out.println(distance);
             }
-            
-            
         }
-        
-        
         flag = true;
         
         

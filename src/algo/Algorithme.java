@@ -22,6 +22,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 import metier.Colis;
 import metier.Instance;
 import metier.Ligne;
@@ -118,8 +119,8 @@ public class Algorithme {
                         qteAffecteeATournee = this.ajouterProdATournee(ligneDeCmd.getCommande(), ligneDeCmd.getProduit(), ligneDeCmd.getQuantite(), newTournee);
                         qteTotalCommandes = qteTotalCommandes - qteAffecteeATournee;
                         ligneDeCmd.setQuantite(ligneDeCmd.getQuantite() - qteAffecteeATournee);
-                        if(qteAffecteeATournee > 0){
-                            if(!newTournee.getChemin().getRoute().contains(ligneDeCmd.getProduit())){
+                        if (qteAffecteeATournee > 0) {
+                            if (!newTournee.getChemin().getRoute().contains(ligneDeCmd.getProduit())) {
                                 newTournee.getChemin().addProduit(ligneDeCmd.getProduit());
                             }
                         }
@@ -129,8 +130,7 @@ public class Algorithme {
             }
             sol.setDistance(newTournee.getChemin().getDistance() + sol.getDistance());
         }
-        
-        
+
         /*for (Commande c : commandes) {
             Stack myStack;
             Couple[] tabCouple = this.nbPath(c);
@@ -140,15 +140,37 @@ public class Algorithme {
         }*/
     }
 
+    /**
+     *
+     * @param cmd
+     * @param produit
+     * @param quantite
+     * @param newTournee
+     * @return
+     */
     private Integer ajouterProdATournee(Commande cmd, Produit produit, int quantite, Tournee newTournee) {
+
+        Random generator = new Random();
+
+        boolean split = generator.nextBoolean();
+
         Integer qteAffectee = 0;
         Integer quantiteProduitMaxDansColis = 0;
         Integer qteEsperee = quantite;
         Integer nbColis = newTournee.getColisSet().size();
         Set<Colis> acolisCmd = newTournee.getColisSet(cmd.getId());
-       
+
         ArrayList<Colis> colisCmd = new ArrayList<Colis>(acolisCmd);
+
+        //Randomisation des colis
         Collections.shuffle(colisCmd);
+
+        //On regarde si on peut ajouter le produit aux colis déjà créer
+        //Ici on peut ajouter du random
+        /*if (!split) {
+            
+        }*/
+         //ajouterProdAColisAffectesNonSplitte(colisCmd, cmd, produit, qteEsperee);
         for (Colis c : colisCmd) {
             if (c.getCommande().getId() == cmd.getId()) {
                 quantiteProduitMaxDansColis = c.getQteMax(produit);
@@ -166,9 +188,11 @@ public class Algorithme {
 
                 }
             }
+
             if (c.getCommande().getId() != cmd.getId()) {
                 System.out.println("Wrong");
             }
+
         }
 
         while (qteEsperee > 0 && nbColis < this.results.getNbBoxesTrolley()) {
@@ -188,6 +212,88 @@ public class Algorithme {
                 }
             }
         }
+        return qteAffectee;
+    }
+
+    /**
+     * Permet d'affecter un produit à un colis dejà existants, il faut que les
+     * colis appartiennent bien à la commande passée en paramètre
+     *
+     * @param colisCmd
+     * @param cmd
+     * @param produit
+     * @param qteEsperee
+     * @return
+     */
+    private Integer ajouterProdAColisAffectesNonSplitte(List<Colis> colisCmd, Commande cmd, Produit produit, Integer qteEsperee) {
+        int quantiteProduitMaxDansColis;
+        int qteAffectee = 0;
+        for (Colis c : colisCmd) {
+            if (c.getCommande().getId() == cmd.getId()) {
+                quantiteProduitMaxDansColis = c.getQteMax(produit);
+                if (quantiteProduitMaxDansColis > 0 && qteEsperee > 0) {
+
+                    if (quantiteProduitMaxDansColis <= qteEsperee) {
+                        c.addColisProduits(new QteProduitsColis(quantiteProduitMaxDansColis, produit));
+                        qteAffectee += quantiteProduitMaxDansColis;
+                        qteEsperee -= quantiteProduitMaxDansColis;
+                    } else {
+                        c.addColisProduits(new QteProduitsColis(qteEsperee, produit));
+                        qteAffectee += qteEsperee;
+                        qteEsperee = 0;
+                    }
+
+                }
+            }
+
+            if (c.getCommande().getId() != cmd.getId()) {
+                System.out.println("Wrong");
+            }
+
+        }
+        return qteAffectee;
+    }
+
+    /**
+     * Permet d'affecter un produit à des colis dejà existants,splitté, il faut
+     * que les colis appartiennent bien à la commande passée en paramètre
+     *
+     * @param colisCmd
+     * @param cmd
+     * @param produit
+     * @param qteEsperee
+     * @return
+     */
+    private Integer ajouterProdAColisAffectesSplitte(List<Colis> colisCmd, Commande cmd, Produit produit, Integer qteEsperee, Integer qteAffectee) {
+        int quantiteProduitMaxDansColis;
+
+        if (qteEsperee <= 1) {
+           // return this.ajouterProdAColisAffectesNonSplitte(colisCmd, cmd, produit, qteEsperee, qteAffectee);
+        }
+
+        /*for (Colis c : colisCmd) {
+                if (c.getCommande().getId() == cmd.getId()) {
+                    quantiteProduitMaxDansColis = c.getQteMax(produit);
+                    if (quantiteProduitMaxDansColis > 0 && qteEsperee > 0) {
+
+                        if (quantiteProduitMaxDansColis <= qteEsperee) {
+                            c.addColisProduits(new QteProduitsColis(quantiteProduitMaxDansColis, produit));
+                            qteAffectee += quantiteProduitMaxDansColis;
+                            qteEsperee -= quantiteProduitMaxDansColis;
+                        } else {
+                            c.addColisProduits(new QteProduitsColis(qteEsperee, produit));
+                            qteAffectee += qteEsperee;
+                            qteEsperee = 0;
+                        }
+
+                    }
+                }
+
+                if (c.getCommande().getId() != cmd.getId()) {
+                    System.out.println("Wrong");
+                }
+
+        }*/
         return qteAffectee;
     }
 

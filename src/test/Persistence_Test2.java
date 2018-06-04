@@ -31,12 +31,12 @@ public class Persistence_Test2 {
     public static void main(String[] args) {
         Result result;
         try {
-            result = ReadFiles.getCreatedObjects("src/files/instance_0203_132623_Z1.txt");
+            result = ReadFiles.getCreatedObjects("src/files/instance_0116_131940_Z2.txt");
             HashSet commandes = new HashSet(result.getCommandes().values());
             Algorithme a = new Algorithme(result.getInstance(), commandes, result);
             Solution bestSolution = null;
             int index = 0;
-            for(; index  < 200; index++){
+            for(; index  < 10; index++){
                 System.out.println(index);
                 a.creerSolutionUpdated();
             }
@@ -49,6 +49,11 @@ public class Persistence_Test2 {
                     bestSolution = s;
             }
             
+            HashSet<Solution> sss = (HashSet<Solution>) result.getInstance().getSolutionSet();
+            sss.clear();
+            sss.add(bestSolution);
+            
+            bestSolution.createCheminProduit();
             
             DaoFactory fabrique = DaoFactory.getDaoFactory(PersistenceType.JPA);
             InstanceDao instanceDao = fabrique.getInstanceDao();

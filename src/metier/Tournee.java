@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.GenerationType;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 /**
@@ -51,8 +53,11 @@ public class Tournee
         /**
          * Route empreintée par la tournée
          */
-        @Transient
-        protected transient Chemin chemin;
+        @OneToOne(cascade = CascadeType.PERSIST, mappedBy = "tournee")
+        protected Chemin chemin;
+        
+        
+        protected boolean etat;
 
   /**
   * Constructeur par défaut
@@ -62,7 +67,7 @@ public class Tournee
     this.id = Tournee.nbTournee;
     Tournee.nbTournee++;
     this.colisSet = new HashSet();
-    
+    this.etat = false;
   }
 
   public Tournee(Solution s) {
@@ -258,5 +263,12 @@ public class Tournee
             return nb;
         }
 
-	
+	public void createCheminProduit(){
+            int i = 0;
+            for(Produit p : this.chemin.getRoute()){
+                CheminProduit newCheminProduit = new CheminProduit(this.chemin, p, i);
+                this.chemin.addCheminProduit(newCheminProduit);
+                i++;
+            }
+        }
 }

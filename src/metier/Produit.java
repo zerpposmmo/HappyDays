@@ -80,6 +80,12 @@ public class Produit {
     @javax.persistence.JoinColumn(nullable = false)
     protected Instance instance;
 
+    
+    @javax.persistence.OneToMany( mappedBy = "produit")
+    private Set<CheminProduit> cheminProduits;
+    
+    
+    //protected Set<Chemin> chemins;
     /**
      * Constructeur par défaut du produit
      *
@@ -88,6 +94,7 @@ public class Produit {
     public Produit() {
         this.ligne = new HashSet<>();
         this.colisProduits = new HashSet<>();
+        this.cheminProduits = new HashSet<>();
     }
 
     /**
@@ -545,4 +552,12 @@ public class Produit {
         return "Produit{" + "id=" + id + ", poids=" + poids + ", volume=" + volume + ", localisation=" + localisation + ", instance=" + instance + '}';
     }
 
+    public boolean addCheminProduit(CheminProduit cP){
+        if(!this.cheminProduits.contains(cP)){
+            if(this.cheminProduits.add(cP)){
+                return true;
+            }  
+        }
+        return false;
+    }
 }
