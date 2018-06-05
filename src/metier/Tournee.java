@@ -265,6 +265,7 @@ public class Tournee
 
 	public void createCheminProduit(){
             int i = 0;
+            this.chemin.setTournee(this);
             for(Produit p : this.chemin.getRoute()){
                 CheminProduit newCheminProduit = new CheminProduit(this.chemin, p, i);
                 this.chemin.addCheminProduit(newCheminProduit);

@@ -100,6 +100,14 @@ public class Chemin {
         }
         return distance.doubleValue();
     }
+
+    /**
+     * Setter tournee
+     * @param tournee la tournee à set
+     */
+    public void setTournee(Tournee tournee) {
+        this.tournee = tournee;
+    }
     
     /**
      * Ajoute un produit à la route
