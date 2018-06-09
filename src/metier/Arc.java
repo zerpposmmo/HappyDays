@@ -26,7 +26,6 @@ public class Arc {
 
     /**
      * Localisation de l'arrivée de l'arc
-     *
      * @generated
      * @ordered
      */
@@ -35,7 +34,6 @@ public class Arc {
 
     /**
      * Distance entre le départ et l'arrivée de l'arc
-     *
      * @generated
      * @ordered
      */
@@ -44,7 +42,6 @@ public class Arc {
 
     /**
      * Localisation du départ de l'arc
-     *
      * @generated
      * @ordered
      */
@@ -54,7 +51,6 @@ public class Arc {
 
     /**
      * Constructeur par défaut
-     *
      * @generated
      */
     public Arc() {
@@ -65,7 +61,6 @@ public class Arc {
 
     /**
      * Constructeur par arrivée, distance et départ
-     *
      * @param arrivee
      * @param distance
      * @param depart

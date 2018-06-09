@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package algo;
 
 import java.util.Comparator;
@@ -13,6 +8,9 @@ import java.util.Comparator;
  */
 public class CoupleComparator implements Comparator<Couple>{
 
+    /**
+     * Constructeur par défaut
+     */
     public CoupleComparator() {
     }
 
@@ -21,9 +19,9 @@ public class CoupleComparator implements Comparator<Couple>{
      * Permet de comparer 2 objets de type Couple
      * Ordre décroissant, pas de cas d'egalité si les nombre de chemin sont egaux
      * alors l'id de la ligne détermine l'egalité
-     * @param o1
-     * @param o2
-     * @return 
+     * @param o1 le premier couple 
+     * @param o2 le deuxième couple
+     * @return  
      */
     @Override
     public int compare(Couple o1, Couple o2) {
@@ -41,7 +39,5 @@ public class CoupleComparator implements Comparator<Couple>{
         return -1;
         
     }
-
-    
     
 }

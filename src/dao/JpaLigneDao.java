@@ -7,8 +7,9 @@ import javax.persistence.criteria.Root;
 import metier.Ligne;
 
 /**
+ * Représente un DAO de type Ligne utilisant comme source de données une bdd.
  *
- * @author Ando
+ * @author Danny
  */
 public class JpaLigneDao extends JpaDao<Ligne> implements LigneDao {
 
@@ -22,8 +23,9 @@ public class JpaLigneDao extends JpaDao<Ligne> implements LigneDao {
     }
 
     /**
-     * Retourne une instance de JpaDaoArc.
-     * @return JpaDaoArc
+     * Retourne une instance de JpaLigneDao.
+     *
+     * @return JpaLigneDao
      */
     public static JpaLigneDao getInstance() {
         if (instance == null) {
@@ -37,11 +39,22 @@ public class JpaLigneDao extends JpaDao<Ligne> implements LigneDao {
         return super.deleteAll();
     }
 
+    /**
+     * Récupère toutes les lignes sous forme de collection
+     *
+     * @return
+     */
     @Override
     public Collection<Ligne> findAll() {
         return super.findAll();
     }
 
+    /**
+     * Cherche une Ligne particulière
+     *
+     * @param id ID de la ligne à chercher
+     * @return
+     */
     @Override
     public Ligne find(Integer id) {
         return super.find(id);
@@ -52,28 +65,37 @@ public class JpaLigneDao extends JpaDao<Ligne> implements LigneDao {
         super.close();
     }
 
+    /**
+     * Supprime une Ligne donnée en base
+     *
+     * @param obj Ligne à supprimer
+     * @return
+     */
     @Override
     public boolean delete(Ligne obj) {
         return super.delete(obj);
     }
 
+    /**
+     * Met à jour une Ligne donnée en base
+     *
+     * @param obj Ligne à modifier
+     * @return
+     */
     @Override
     public boolean update(Ligne obj) {
         return super.update(obj);
     }
 
+    /**
+     * Crée une nouvelle ligne en base
+     *
+     * @param obj Ligne à créer
+     * @return
+     */
     @Override
     public boolean create(Ligne obj) {
         return super.create(obj);
-    }
-
-    public Collection<Ligne> findAllNotUsed() {
-        CriteriaBuilder cb = super.em.getCriteriaBuilder();
-        CriteriaQuery<Ligne> cq = cb.createQuery(Ligne.class);
-        Root<Ligne> tasks = cq.from(Ligne.class);
-        cq.select(tasks).where(cb.or(cb.isNotNull(tasks.get("nplanning")),
-                cb.isNotEmpty(tasks.get("nplanning"))));
-        return super.em.createQuery(cq).getResultList();
     }
 
 }

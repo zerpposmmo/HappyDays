@@ -7,8 +7,10 @@ import javax.persistence.criteria.Root;
 import metier.Localisation;
 
 /**
+ * Représente un DAO de type Localisation utilisant comme source de données une
+ * bdd.
  *
- * @author Ando
+ * @author Danny
  */
 public class JpaLocalisationDao extends JpaDao<Localisation> implements LocalisationDao {
 
@@ -22,8 +24,9 @@ public class JpaLocalisationDao extends JpaDao<Localisation> implements Localisa
     }
 
     /**
-     * Retourne une instance de JpaDaoArc.
-     * @return JpaDaoArc
+     * Retourne une instance de JpaLocalisationDao.
+     *
+     * @return JpaLocalisationDao
      */
     public static JpaLocalisationDao getInstance() {
         if (instance == null) {
@@ -37,11 +40,22 @@ public class JpaLocalisationDao extends JpaDao<Localisation> implements Localisa
         return super.deleteAll();
     }
 
+    /**
+     * Récupère toutes les localisation sous la forme d'une collection
+     *
+     * @return
+     */
     @Override
     public Collection<Localisation> findAll() {
         return super.findAll();
     }
 
+    /**
+     * Cherche une localisation donnée
+     *
+     * @param id ID de la localisation à chercher
+     * @return
+     */
     @Override
     public Localisation find(Integer id) {
         return super.find(id);
@@ -52,28 +66,37 @@ public class JpaLocalisationDao extends JpaDao<Localisation> implements Localisa
         super.close();
     }
 
+    /**
+     * Supprime une Localisation en base
+     *
+     * @param obj Localisation à supprimer
+     * @return
+     */
     @Override
     public boolean delete(Localisation obj) {
         return super.delete(obj);
     }
 
+    /**
+     * Met à jour une Localisation en base
+     *
+     * @param obj Localisation à mettre à jour
+     * @return
+     */
     @Override
     public boolean update(Localisation obj) {
         return super.update(obj);
     }
 
+    /**
+     * Crée une Localisation en base
+     *
+     * @param obj Localisation à créer
+     * @return
+     */
     @Override
     public boolean create(Localisation obj) {
         return super.create(obj);
-    }
-
-    public Collection<Localisation> findAllNotUsed() {
-        CriteriaBuilder cb = super.em.getCriteriaBuilder();
-        CriteriaQuery<Localisation> cq = cb.createQuery(Localisation.class);
-        Root<Localisation> tasks = cq.from(Localisation.class);
-        cq.select(tasks).where(cb.or(cb.isNotNull(tasks.get("nplanning")),
-                cb.isNotEmpty(tasks.get("nplanning"))));
-        return super.em.createQuery(cq).getResultList();
     }
 
 }

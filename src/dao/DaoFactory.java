@@ -1,14 +1,14 @@
 package dao;
 
 /**
- * Représente une frabrique DAO.
+ * Représente une fabrique DAO.
  * @author Arnaud
  */
 public abstract class DaoFactory {
 
 	/**
 	 * Peremt de retourner un DaoFactory.
-	 * @param type TODO.
+	 * @param type Type de persistence à vérifier.
 	 * @return DaoFactory
 	 */
 	public static DaoFactory getDaoFactory(PersistenceType type) {
