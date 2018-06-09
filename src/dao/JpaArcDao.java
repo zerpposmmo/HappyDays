@@ -7,8 +7,9 @@ import javax.persistence.criteria.Root;
 import metier.Arc;
 
 /**
+ * Représente un DAO de type Arc utilisant comme source de données une bdd.
  *
- * @author Ando
+ * @author Danny
  */
 public class JpaArcDao extends JpaDao<Arc> implements ArcDao {
 
@@ -23,6 +24,7 @@ public class JpaArcDao extends JpaDao<Arc> implements ArcDao {
 
     /**
      * Retourne une instance de JpaDaoArc.
+     *
      * @return JpaDaoArc
      */
     public static JpaArcDao getInstance() {
@@ -37,11 +39,22 @@ public class JpaArcDao extends JpaDao<Arc> implements ArcDao {
         return super.deleteAll();
     }
 
+    /**
+     * Renvoie la collection d'arc
+     *
+     * @return
+     */
     @Override
     public Collection<Arc> findAll() {
         return super.findAll();
     }
 
+    /**
+     * Cherche un arc
+     *
+     * @param id ID de l'arc recherché
+     * @return
+     */
     @Override
     public Arc find(Integer id) {
         return super.find(id);
@@ -52,28 +65,37 @@ public class JpaArcDao extends JpaDao<Arc> implements ArcDao {
         super.close();
     }
 
+    /**
+     * Supprime l'arc donné en base
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean delete(Arc obj) {
         return super.delete(obj);
     }
 
+    /**
+     * Met à jour l'arc donné en base
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean update(Arc obj) {
         return super.update(obj);
     }
 
+    /**
+     * Crée un arc en base
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean create(Arc obj) {
         return super.create(obj);
-    }
-
-    public Collection<Arc> findAllNotUsed() {
-        CriteriaBuilder cb = super.em.getCriteriaBuilder();
-        CriteriaQuery<Arc> cq = cb.createQuery(Arc.class);
-        Root<Arc> tasks = cq.from(Arc.class);
-        cq.select(tasks).where(cb.or(cb.isNotNull(tasks.get("nplanning")),
-                cb.isNotEmpty(tasks.get("nplanning"))));
-        return super.em.createQuery(cq).getResultList();
     }
 
 }

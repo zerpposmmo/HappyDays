@@ -1,17 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lecture;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,7 +10,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Predicate;
 import metier.Arc;
 import metier.Commande;
 import metier.Entrepot;
@@ -30,8 +19,9 @@ import metier.Produit;
 import metier.Instance;
 
 /**
- *
- * @author Xtree
+ * Lecture de fichier texte en se basant sur le format des fichiers d'instance.
+ * Création d'objets à partir du fichier lu.
+ * @author Julien
  */
 public class ReadFiles {
     
@@ -70,7 +60,6 @@ public class ReadFiles {
                 int i=0;
                 while ((line = br.readLine()) != null) {
                     i++;
-                    //System.out.println(i);
                     switch(line.toString()){
                         case "//Products ":
                             while(!(line = br.readLine()).equals(" ")){

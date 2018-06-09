@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package algo;
 
 import java.util.Comparator;
@@ -37,16 +32,16 @@ public class Couple  {
     /**                         Getter                             **/
     
     /**
-     * getter ligne produit
-     * @return 
+     * Récupère la ligne produit
+     * @return Ligne : la ligne
      */
     public Ligne getL() {
         return l;
     }
 
     /**
-     * getter nombre de chemin
-     * @return 
+     * Récupère le nombre de chemin(s)
+     * @return nbChemin : le nombre de chemin
      */
     public int getNbChemin() {
         return nbChemin;
@@ -56,16 +51,16 @@ public class Couple  {
     /**                         Setter                             **/
     
     /**
-     * setter ligne de produit 
-     * @param l 
+     * Définit la ligne de produit 
+     * @param l la ligne 
      */
     public void setL(Ligne l) {
         this.l = l;
     }
 
     /**
-     * setter nbChemin
-     * @param nbChemin 
+     * Définit le nbChemin
+     * @param nbChemin Le nombre de chemin à définir  
      */
     public void setNbChemin(int nbChemin) {
         this.nbChemin = nbChemin;
@@ -102,7 +97,4 @@ public class Couple  {
     public String toString() {
         return "Couple{" + "l=" + l + ", nbChemin=" + nbChemin + '}';
     }
-
-    
-
 }

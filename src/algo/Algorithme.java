@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package algo;
 
 import java.util.ArrayList;
@@ -46,7 +42,14 @@ public class Algorithme {
     private Result results;
     private int poids;
     private int volume;
-
+    
+    
+    /**
+     * Constructeur par données
+     * @param i L'instance
+     * @param cs Un ensemble de commande
+     * @param r  Le résultat
+     */
     public Algorithme(Instance i, Set<Commande> cs, Result r) {
         this.instance = i;
         this.commandes = cs;
@@ -56,7 +59,7 @@ public class Algorithme {
     }
 
     /**
-     * permet de créer une solution à partir des algorithmes présent ici.
+     * Permet de créer une solution à partir des algorithmes présent ici.
      */
     public void creerSolution() {
 
@@ -356,6 +359,12 @@ public class Algorithme {
         return resoudre(myStack, tabProd, tabProd[0], 0, tabProdDansPile);
     }
 
+    /**
+     * Récupère la ligne de commande dans un tableau de lignes
+     * @param tab Le tableau de lignes à parcourir
+     * @param l La ligne que l'on souhaite récupérer
+     * @return Renvoie i, l'élément correspondant à la recherche, -1 sinon
+     */
     private int getKey(Ligne[] tab, Ligne l) {
         int i;
         for (i = 0; i < tab.length; i++) {
@@ -366,6 +375,12 @@ public class Algorithme {
         return -1;
     }
 
+    /**
+     * Récupère le couple dans un tableau de couple
+     * @param tab Le tableau de couples à parcourir
+     * @param l Le couple que l'on souhaite récupérer
+     * @return Renvoie i, l'élément correspondant à la recherche, -1 sinon
+     */
     private int getKey(Couple[] tab, Couple l) {
         int i;
         for (i = 0; i < tab.length; i++) {
@@ -379,8 +394,8 @@ public class Algorithme {
     /**
      * Version 2 de resolution
      *
-     * @param lignes
-     * @param myStack
+     * @param lignes Ensemble des lignes de commande
+     * @param myStack Equivalent de la pile/chariot
      * @param l
      * @return
      */
@@ -393,7 +408,7 @@ public class Algorithme {
             next = chercheNext(lignes, myStack, 0);
             return resoudrev2(lignes, myStack, next);
         }
-        //Si la lign n'est pas défini -> pas de solution
+        //Si la ligne n'est pas défini -> pas de solution
         if (l == null) {
             Ligne lastLine;
             int key;
@@ -425,12 +440,11 @@ public class Algorithme {
     }
 
     /**
-     * Permet de recherchr le prochain produit à aller rechercher
-     *
+     * Permet de rechercher le prochain produit à aller récupérer
      * @param lines
      * @param myStack
      * @param index
-     * @return
+     * @return Le prochain produit que l'on va récupérer
      */
     private Ligne chercheNext(Ligne[] lines, Stack<Ligne> myStack, int index) {
         int i = index;
@@ -517,9 +531,8 @@ public class Algorithme {
     }
 
     /**
-     * Permet à partir un tableau de couple rangé par ordre décroissant de
+     * Permet à partir un tableau de couples rangés par ordre décroissant de
      * renvoyer la pile de chemin correspondante.
-     *
      * @param myCouples
      * @return
      */
@@ -570,7 +583,6 @@ public class Algorithme {
      * @param solution
      */
     public void creerTournees(Stack<Couple> myStack, Solution solution) {
-        //HashSet<Tournee> mesTournee = new HashSet();
         Tournee myTournee;
         int qteProduit = myStack.firstElement().getL().getCommande().getNbProduit();
         Stack<Couple> copyStack = (Stack<Couple>) myStack.clone();

@@ -7,8 +7,9 @@ import javax.persistence.criteria.Root;
 import metier.Solution;
 
 /**
+ * Représente un DAO de type Solution utilisant comme source de données une bdd.
  *
- * @author Ando
+ * @author Danny
  */
 public class JpaSolutionDao extends JpaDao<Solution> implements SolutionDao {
 
@@ -22,8 +23,9 @@ public class JpaSolutionDao extends JpaDao<Solution> implements SolutionDao {
     }
 
     /**
-     * Retourne une instance de JpaDaoArc.
-     * @return JpaDaoArc
+     * Retourne une instance de JpaSolutionDao.
+     *
+     * @return JpaSolutionDao
      */
     public static JpaSolutionDao getInstance() {
         if (instance == null) {
@@ -37,11 +39,22 @@ public class JpaSolutionDao extends JpaDao<Solution> implements SolutionDao {
         return super.deleteAll();
     }
 
+    /**
+     * Récupère l'ensemble des solutions sous la forme d'une collection
+     *
+     * @return
+     */
     @Override
     public Collection<Solution> findAll() {
         return super.findAll();
     }
 
+    /**
+     * Cherche une Solution particulière
+     *
+     * @param id ID de la solution à chercher
+     * @return
+     */
     @Override
     public Solution find(Integer id) {
         return super.find(id);
@@ -52,28 +65,37 @@ public class JpaSolutionDao extends JpaDao<Solution> implements SolutionDao {
         super.close();
     }
 
+    /**
+     * Supprime une Solution en base
+     *
+     * @param obj Solution à supprimer
+     * @return
+     */
     @Override
     public boolean delete(Solution obj) {
         return super.delete(obj);
     }
 
+    /**
+     * Met à jour une Solution en base
+     *
+     * @param obj Solution à mettre à jour
+     * @return
+     */
     @Override
     public boolean update(Solution obj) {
         return super.update(obj);
     }
 
+    /**
+     * Crée une solution en base
+     *
+     * @param obj Solution à créer
+     * @return
+     */
     @Override
     public boolean create(Solution obj) {
         return super.create(obj);
-    }
-
-    public Collection<Solution> findAllNotUsed() {
-        CriteriaBuilder cb = super.em.getCriteriaBuilder();
-        CriteriaQuery<Solution> cq = cb.createQuery(Solution.class);
-        Root<Solution> tasks = cq.from(Solution.class);
-        cq.select(tasks).where(cb.or(cb.isNotNull(tasks.get("nplanning")),
-                cb.isNotEmpty(tasks.get("nplanning"))));
-        return super.em.createQuery(cq).getResultList();
     }
 
 }

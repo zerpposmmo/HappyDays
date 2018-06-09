@@ -12,118 +12,153 @@ import javax.persistence.criteria.Root;
 
 /**
  * Représente un DAO utilisant comme source de données une bdd.
+ *
  * @author Arnaud
  * @param <T> TODO
  */
 public abstract class JpaDao<T> implements Dao<T> {
 
-	protected EntityManagerFactory emf;
+    protected EntityManagerFactory emf;
+    protected EntityManager em;
 
-	protected EntityManager em;
+    //CHECKSTYLE:OFF: ModifierOrderCheck
+    protected final static String PERSISTENCE_UNIT = "HappyDaysPU";
+    //CHECKSTYLE:ON
+    protected Class<T> entite;
 
-	//CHECKSTYLE:OFF: ModifierOrderCheck
-	protected final static String PERSISTENCE_UNIT = "HappyDaysPU";
-	//CHECKSTYLE:ON
-	protected Class<T> entite;
+    /**
+     * Constructeur par données.
+     *
+     * @param entite TODO
+     */
+    public JpaDao(Class<T> entite) {
+        this.entite = entite;
+        this.emf = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT);
+        this.em = this.emf.createEntityManager();
+    }
 
-	/**
-	 * Constructeur par données.
-	 * @param entite TODO
-	 */
-	public JpaDao(Class<T> entite) {
-		this.entite = entite;
-		this.emf = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT);
-		this.em = this.emf.createEntityManager();
-	}
+    /**
+     * Crée un objet en base
+     *
+     * @param obj objet à créer
+     * @return
+     */
+    @Override
+    public boolean create(T obj) {
+        EntityTransaction et = this.em.getTransaction();
 
-	@Override
-	public boolean create(T obj) {
-		EntityTransaction et = this.em.getTransaction();
+        try {
+            et.begin();
+            em.persist(obj);
+            et.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
 
-		try {
-			et.begin();
-			em.persist(obj);
-			et.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
+        return true;
+    }
 
-		return true;
-	}
+    /**
+     * Met à jour un objet en base
+     *
+     * @param obj objet à mettre à jour
+     * @return
+     */
+    @Override
+    public boolean update(T obj) {
+        EntityTransaction et = this.em.getTransaction();
 
-	@Override
-	public boolean update(T obj) {
-		EntityTransaction et = this.em.getTransaction();
+        try {
+            et.begin();
+            em.merge(obj);
+            et.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
 
-		try {
-			et.begin();
-			em.merge(obj);
-			et.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
+        return true;
+    }
 
-		return true;
-	}
+    /**
+     * Supprime un objet en base
+     *
+     * @param obj objet à supprimer
+     * @return
+     */
+    @Override
+    public boolean delete(T obj) {
+        EntityTransaction et = this.em.getTransaction();
 
-	@Override
-	public boolean delete(T obj) {
-		EntityTransaction et = this.em.getTransaction();
+        try {
+            et.begin();
+            em.remove(obj);
+            et.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
 
-		try {
-			et.begin();
-			em.remove(obj);
-			et.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
+        return true;
+    }
 
-		return true;
-	}
+    @Override
+    public void close() {
+        if (this.emf != null) {
+            this.emf.close();
+        }
 
-	@Override
-	public void close() {
-		if (this.emf != null) {
-			this.emf.close();
-		}
+        if (this.em != null) {
+            this.em.close();
+        }
+    }
 
-		if (this.em != null) {
-			this.em.close();
-		}
-	}
+    /**
+     * Trouve l'entité ayant l'ID donné
+     *
+     * @param id ID de l'entité à rechercher
+     * @return
+     */
+    @Override
+    public T find(Integer id) {
+        return this.em.find(this.entite, (long) id);
+    }
 
-	@Override
-	public T find(Integer id) {
-		return this.em.find(this.entite, (long) id);
-	}
+    /**
+     * Renvoie toutes les entitées
+     *
+     * @return
+     */
+    @Override
+    public Collection<T> findAll() {
+        CriteriaBuilder cb = this.em.getCriteriaBuilder();
+        CriteriaQuery<T> cq = cb.createQuery(this.entite);
+        Root<T> tacks = cq.from(this.entite);
+        cq.select(tacks);
+        return this.em.createQuery(cq).getResultList();
+    }
 
-	@Override
-	public Collection<T> findAll() {
-		CriteriaBuilder cb = this.em.getCriteriaBuilder();
-		CriteriaQuery<T> cq = cb.createQuery(this.entite);
-		Root<T> tacks = cq.from(this.entite);
-		cq.select(tacks);
-		return this.em.createQuery(cq).getResultList();
-	}
+    /**
+     * Supprime toutes les entités
+     *
+     * @return
+     */
+    @Override
+    public boolean deleteAll() {
+        EntityTransaction et = this.em.getTransaction();
+        try {
+            CriteriaBuilder cb = em.getCriteriaBuilder();
+            CriteriaDelete<T> cd = cb.createCriteriaDelete(this.entite);
+            et.begin();
+            int nbDelete = em.createQuery(cd).executeUpdate();
+            et.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
 
-	@Override
-	public boolean deleteAll() {
-		EntityTransaction et = this.em.getTransaction();
-		try {
-			CriteriaBuilder cb = em.getCriteriaBuilder();
-			CriteriaDelete<T> cd = cb.createCriteriaDelete(this.entite);
-			et.begin();
-			int nbDelete = em.createQuery(cd).executeUpdate();
-			et.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-
-		return true;
-	}
+        return true;
+    }
 
 }

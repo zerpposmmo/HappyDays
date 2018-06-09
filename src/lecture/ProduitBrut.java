@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lecture;
 
 /**
- *
- * @author Xtree
+ * Représente un produit brut servant à créer l'objet après lecture dans un fichier texte
+ * @author Julien
  */
 public class ProduitBrut {
     
@@ -16,6 +11,13 @@ public class ProduitBrut {
     private int poids;
     private int volume;
 
+    /**
+     * Constructeur par données
+     * @param id
+     * @param localisationId
+     * @param poids
+     * @param volume 
+     */
     public ProduitBrut(long id, long localisationId, int poids, int volume) {
         this.id = id;
         this.localisationId = localisationId;
@@ -23,6 +25,7 @@ public class ProduitBrut {
         this.volume = volume;
     }   
 
+    //--------------Getter--------------//
     public long getId() {
         return id;
     }

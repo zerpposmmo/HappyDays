@@ -6,7 +6,10 @@ package dao;
  */
 public class DaoFactoryJpa extends DaoFactory {
 
-	
+	/**
+         * Récupère l'instance de la DAO
+         * @return 
+         */
 	@Override
 	public InstanceDao getInstanceDao() {
 		return JpaInstanceDao.getInstance();

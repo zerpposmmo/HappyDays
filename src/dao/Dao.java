@@ -32,14 +32,14 @@ public interface Dao<T> {
 
 	/**
 	 * Méthode permettant de mettre à jour un objet.
-	 * @param obj TODO
+	 * @param obj objet à mettre à jour
 	 * @return boolean
 	 */
 	public boolean update(T obj);
 
 	/**
 	 * Méthode permettant de supprimer un objet.
-	 * @param obj TODO
+	 * @param obj objet à supprimer
 	 * @return boolean
 	 */
 	public boolean delete(T obj);

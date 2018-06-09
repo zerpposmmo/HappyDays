@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lecture;
 
 import java.util.HashMap;
@@ -18,7 +13,7 @@ import metier.Produit;
 
 /**
  *
- * @author Xtree
+ * @author Julien
  */
 public class Result {
     
@@ -54,6 +49,7 @@ public class Result {
         nbIntersections = 0;
     }
 
+    //-------------------GETTER && SETTER ---------------------//
     public Map<Long, Produit> getProduits() {
         return produits;
     }
