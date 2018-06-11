@@ -1,9 +1,7 @@
 package algo;
-
 import java.util.Comparator;
 
 /**
- *
  * @author Samuel
  */
 public class CoupleComparator implements Comparator<Couple>{
@@ -13,7 +11,6 @@ public class CoupleComparator implements Comparator<Couple>{
      */
     public CoupleComparator() {
     }
-
     
     /**
      * Permet de comparer 2 objets de type Couple
@@ -25,19 +22,15 @@ public class CoupleComparator implements Comparator<Couple>{
      */
     @Override
     public int compare(Couple o1, Couple o2) {
-       
-        if (o2.getNbChemin() > o1.getNbChemin()) {
+        if (o2.getIdLocalisation() > o1.getIdLocalisation()) {
             return -1;
-        } else if (o2.getNbChemin() < o1.getNbChemin()) {
+        } else if (o2.getIdLocalisation() < o1.getIdLocalisation()) {
             return 1;
         }
-        
         if(o2.getL().getId() > o1.getL().getId())
         {
             return 1;
         }
         return -1;
-        
     }
-    
 }

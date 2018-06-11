@@ -1,18 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package algo;
-
 import java.util.Comparator;
 
 /**
- *
+ * Comparateur d'un couple Produit, Localisation
  * @author Samuel
  */
 public class CoupleProdLocComparator implements Comparator<CoupleProdLoc> {
 
+    /**
+     * Compare 2 objets CoupleProdLoc passé en paramètre
+     * @param o1
+     * @param o2
+     * @return 
+     */
     @Override
     public int compare(CoupleProdLoc o1, CoupleProdLoc o2) {
          if (o2.getIdLocalisation()> o1.getIdLocalisation()) {
@@ -20,7 +20,6 @@ public class CoupleProdLocComparator implements Comparator<CoupleProdLoc> {
         } else if (o2.getIdLocalisation()< o1.getIdLocalisation()) {
             return 1;
         }
-        
         if(o2.getP().getId() > o1.getP().getId())
         {
             return 1;

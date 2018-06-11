@@ -1,20 +1,14 @@
-
 package algo;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.SortedSet;
 import java.util.Stack;
 import java.util.TreeSet;
 import lecture.Result;
 import metier.Commande;
-
-import algo.Couple;
 import java.time.LocalDateTime;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -28,8 +22,10 @@ import metier.Solution;
 import metier.Tournee;
 
 /**
- * Classe permettant de créer les tournées
- *
+ * Les méthodes se découpent en 3 parties, 
+ * Alpha de l'algorithme
+ * V1 de l'algorithme utilisé pour la partie 1 du projet
+ * V2 de l'algorithme utilisé pour la partie 3 du projet
  * @author Samuel
  */
 public class Algorithme {
@@ -42,13 +38,13 @@ public class Algorithme {
     private Result results;
     private int poids;
     private int volume;
-    
-    
+
     /**
      * Constructeur par données
+     *
      * @param i L'instance
      * @param cs Un ensemble de commande
-     * @param r  Le résultat
+     * @param r Le résultat
      */
     public Algorithme(Instance i, Set<Commande> cs, Result r) {
         this.instance = i;
@@ -59,7 +55,8 @@ public class Algorithme {
     }
 
     /**
-     * Permet de créer une solution à partir des algorithmes présent ici.
+     * V1 de l'algorithme
+     * Permet de créer une solution à partir des algorithmes présents ici.
      */
     public void creerSolution() {
 
@@ -73,17 +70,18 @@ public class Algorithme {
             Couple[] tabCouple = this.nbPath(c);
             myStack = this.resoudreV4(tabCouple);
             myStacks.add(myStack);
-            //Création des tournées
         }
 
         for (Iterator it = myStacks.iterator(); it.hasNext();) {
             Stack<Couple> oneStack = (Stack<Couple>) it.next();
+            //Création des tournées
             this.creerTournees(oneStack, s);
         }
     }
 
     /**
-     * permet de créer une solution basé sur l'algorithme amélioré
+     * VERSION 2 de l'algorithme (partie 3)
+     * Permet de créer une solution basé sur l'algorithme amélioré
      */
     public void creerSolutionUpdated() throws CloneNotSupportedException {
         Solution sol = new Solution();
@@ -112,10 +110,9 @@ public class Algorithme {
 
         while (qteTotalCommandes > 0) {
             newTournee = new Tournee(sol);
-
             for (CoupleProdLoc cpl : tabCouple) {
                 List<Ligne> lignesCmds = listLignesMapByIdProd.get(cpl.getP().getId());
-                //Ici on pourrait rajouter un .random sur la list;
+                //Ici on pourrait rajouter de l'aléatoire sur la liste;
                 Collections.shuffle(lignesCmds);
                 for (Ligne ligneDeCmd : lignesCmds) {
                     if (ligneDeCmd.getQuantite() > 0) {
@@ -129,56 +126,42 @@ public class Algorithme {
                         }
                     }
                 }
-
             }
             sol.setDistance(newTournee.getChemin().getDistance() + sol.getDistance());
         }
-
-        /*for (Commande c : commandes) {
-            Stack myStack;
-            Couple[] tabCouple = this.nbPath(c);
-            myStack = this.resoudreV4(tabCouple);
-            myStacks.add(myStack);
-            //Création des tournées
-        }*/
     }
 
-    /**
-     *
-     * @param cmd
-     * @param produit
-     * @param quantite
-     * @param newTournee
+    /** V2 de l'algorithme
+     * Ajoute un produit à une tournée
+     * @param cmd Commande dans laquelle se trouve le colis dans lequel on ajoute le produit
+     * @param produit Produit à rajouter
+     * @param quantite Quantité de produit à rajouter
+     * @param tournee  La tournee dans laquel on veut ajouter le produit
      * @return
      */
-    private Integer ajouterProdATournee(Commande cmd, Produit produit, int quantite, Tournee newTournee) {
-
+    private Integer ajouterProdATournee(Commande cmd, Produit produit, int quantite, Tournee tournee) {
         Random generator = new Random();
-
         boolean split = generator.nextBoolean();
-
         Integer qteAffectee = 0;
         Integer quantiteProduitMaxDansColis = 0;
         Integer qteEsperee = quantite;
-        Integer nbColis = newTournee.getColisSet().size();
-        Set<Colis> acolisCmd = newTournee.getColisSet(cmd.getId());
-
+        Integer nbColis = tournee.getColisSet().size();
+        Set<Colis> acolisCmd = tournee.getColisSet(cmd.getId());
         ArrayList<Colis> colisCmd = new ArrayList<Colis>(acolisCmd);
 
-        //Randomisation des colis
+        //Aléatoire appliquée sur les colis
         Collections.shuffle(colisCmd);
 
-        //On regarde si on peut ajouter le produit aux colis déjà créer
-        //Ici on peut ajouter du random
+        //On regarde si on peut ajouter le produit aux colis déjà créés
+        //Ici on peut ajouter de l'aléatoire
         /*if (!split) {
             
-        }*/
-         //ajouterProdAColisAffectesNonSplitte(colisCmd, cmd, produit, qteEsperee);
+         }*/
+        //ajouterProdAColisAffectesNonSplitte(colisCmd, cmd, produit, qteEsperee);
         for (Colis c : colisCmd) {
             if (c.getCommande().getId() == cmd.getId()) {
                 quantiteProduitMaxDansColis = c.getQteMax(produit);
                 if (quantiteProduitMaxDansColis > 0 && qteEsperee > 0) {
-
                     if (quantiteProduitMaxDansColis <= qteEsperee) {
                         c.addColisProduits(new QteProduitsColis(quantiteProduitMaxDansColis, produit));
                         qteAffectee += quantiteProduitMaxDansColis;
@@ -191,18 +174,16 @@ public class Algorithme {
 
                 }
             }
-
             if (c.getCommande().getId() != cmd.getId()) {
                 System.out.println("Wrong");
             }
-
         }
-
+        // S'il faut créer de nouveaux colis, en crée
         while (qteEsperee > 0 && nbColis < this.results.getNbBoxesTrolley()) {
             Colis newColis = new Colis(this.results.getCapaBox().getPoids(), this.results.getCapaBox().getVolume(), cmd);
-            newColis.setTournee(newTournee);
-            quantiteProduitMaxDansColis = newColis.getQteMax(produit); // Renvoye le nombre max de produit possiblement à ajouter au colis peut etre > à qte ou < à qte
-
+            newColis.setTournee(tournee);
+            // Renvoye le nombre max de produit possiblement à ajouter au colis peut etre > à qte ou < à qte
+            quantiteProduitMaxDansColis = newColis.getQteMax(produit); 
             if (qteEsperee > 0) {
                 if (quantiteProduitMaxDansColis <= qteEsperee) {
                     newColis.addColisProduits(new QteProduitsColis(quantiteProduitMaxDansColis, produit));
@@ -218,11 +199,10 @@ public class Algorithme {
         return qteAffectee;
     }
 
-    /**
-     * Permet d'affecter un produit à un colis dejà existants, il faut que les
-     * colis appartiennent bien à la commande passée en paramètre
-     *
-     * @param colisCmd
+    /** V2 de l'algorithme
+     * Permet d'affecter un produit à un colis dejà existant, il faut que les
+     * colis appartienne bien à la commande passée en paramètre
+     * @param colisCmd 
      * @param cmd
      * @param produit
      * @param qteEsperee
@@ -235,7 +215,6 @@ public class Algorithme {
             if (c.getCommande().getId() == cmd.getId()) {
                 quantiteProduitMaxDansColis = c.getQteMax(produit);
                 if (quantiteProduitMaxDansColis > 0 && qteEsperee > 0) {
-
                     if (quantiteProduitMaxDansColis <= qteEsperee) {
                         c.addColisProduits(new QteProduitsColis(quantiteProduitMaxDansColis, produit));
                         qteAffectee += quantiteProduitMaxDansColis;
@@ -245,19 +224,16 @@ public class Algorithme {
                         qteAffectee += qteEsperee;
                         qteEsperee = 0;
                     }
-
                 }
             }
-
             if (c.getCommande().getId() != cmd.getId()) {
                 System.out.println("Wrong");
             }
-
         }
         return qteAffectee;
     }
 
-    /**
+    /** V2 de l'algorithme
      * Permet d'affecter un produit à des colis dejà existants,splitté, il faut
      * que les colis appartiennent bien à la commande passée en paramètre
      *
@@ -271,38 +247,37 @@ public class Algorithme {
         int quantiteProduitMaxDansColis;
 
         if (qteEsperee <= 1) {
-           // return this.ajouterProdAColisAffectesNonSplitte(colisCmd, cmd, produit, qteEsperee, qteAffectee);
+            // return this.ajouterProdAColisAffectesNonSplitte(colisCmd, cmd, produit, qteEsperee, qteAffectee);
         }
 
         /*for (Colis c : colisCmd) {
-                if (c.getCommande().getId() == cmd.getId()) {
-                    quantiteProduitMaxDansColis = c.getQteMax(produit);
-                    if (quantiteProduitMaxDansColis > 0 && qteEsperee > 0) {
+         if (c.getCommande().getId() == cmd.getId()) {
+         quantiteProduitMaxDansColis = c.getQteMax(produit);
+         if (quantiteProduitMaxDansColis > 0 && qteEsperee > 0) {
 
-                        if (quantiteProduitMaxDansColis <= qteEsperee) {
-                            c.addColisProduits(new QteProduitsColis(quantiteProduitMaxDansColis, produit));
-                            qteAffectee += quantiteProduitMaxDansColis;
-                            qteEsperee -= quantiteProduitMaxDansColis;
-                        } else {
-                            c.addColisProduits(new QteProduitsColis(qteEsperee, produit));
-                            qteAffectee += qteEsperee;
-                            qteEsperee = 0;
-                        }
+         if (quantiteProduitMaxDansColis <= qteEsperee) {
+         c.addColisProduits(new QteProduitsColis(quantiteProduitMaxDansColis, produit));
+         qteAffectee += quantiteProduitMaxDansColis;
+         qteEsperee -= quantiteProduitMaxDansColis;
+         } else {
+         c.addColisProduits(new QteProduitsColis(qteEsperee, produit));
+         qteAffectee += qteEsperee;
+         qteEsperee = 0;
+         }
 
-                    }
-                }
+         }
+         }
 
-                if (c.getCommande().getId() != cmd.getId()) {
-                    System.out.println("Wrong");
-                }
+         if (c.getCommande().getId() != cmd.getId()) {
+         System.out.println("Wrong");
+         }
 
-        }*/
+         }*/
         return qteAffectee;
     }
 
-    /**
+    /** Alpha de l'algorithme
      * Résolution d'un chemin par récurrence
-     *
      * @param myStack
      * @param tabProd
      * @param ligne
@@ -311,24 +286,19 @@ public class Algorithme {
      * @return
      */
     private Stack resoudre(Stack myStack, Ligne[] tabProd, Ligne ligne, int index, HashSet<Ligne> tabProdDansPile) {
-
         //Critère d'arret
         if (myStack.size() == tabProd.length) {
             return myStack;
         }
-
         //Si pile vide
         if (myStack.empty()) {
             myStack.push(ligne);
             tabProdDansPile.add(ligne);
             return resoudre(myStack, tabProd, tabProd[0], 0, tabProdDansPile);
         }
-
         Ligne lastLigne = (Ligne) myStack.peek();
-
         //Si le produit est déjà dans la pile
         if (myStack.contains(ligne)) {
-
             //Si non dernier element de tabProd
             if (index < tabProd.length - 1) {
                 return resoudre(myStack, tabProd, tabProd[index + 1], index + 1, tabProdDansPile);
@@ -337,9 +307,7 @@ public class Algorithme {
             if (myStack.peek().equals(ligne)) {
                 return null;// pas de solution car dernier du tableau et de la pile
             }
-
         }
-
         //Si pas de chemin
         if (!lastLigne.getProduit().existPath(ligne.getProduit())) {
             //On regarde le suivant, si il n'est pas dernier
@@ -392,19 +360,20 @@ public class Algorithme {
     }
 
     /**
-     * Version 2 de resolution
-     *
+     * V1 de l'algorithme
      * @param lignes Ensemble des lignes de commande
-     * @param myStack Equivalent de la pile/chariot
+     * @param myStack représentation d'une pile permettant de tracer le chemin à réaliser
      * @param l
      * @return
      */
     private Stack resoudrev2(Ligne[] lignes, Stack<Ligne> myStack, Ligne l) {
         Ligne next;
-        if (myStack.size() == lignes.length || this.poids > 12000 * 6 || this.volume > 92160 * 6) { // si pile pleine ou chariot plein
+        // si pile pleine ou chariot plein
+        if (myStack.size() == lignes.length || this.poids > 12000 * 6 || this.volume > 92160 * 6) { 
             return myStack;
         }
-        if (myStack.size() == 0 && l == null) { // si pile vide
+        // si pile vide ou chariot vide
+        if (myStack.size() == 0 && l == null) { 
             next = chercheNext(lignes, myStack, 0);
             return resoudrev2(lignes, myStack, next);
         }
@@ -417,7 +386,6 @@ public class Algorithme {
                 lastLine = myStack.pop();
                 this.poids -= lastLine.getProduit().getPoids() * lastLine.getQuantite();
                 this.volume -= lastLine.getProduit().getVolume() * lastLine.getQuantite();
-
                 //Il faut dépiler 2 fois car le dernier est le dernier de la liste donc la ligne précédente est une ligne morte
             } else {
                 lastLine = myStack.pop();
@@ -439,11 +407,11 @@ public class Algorithme {
         return resoudrev2(lignes, myStack, next);
     }
 
-    /**
+    /** Version 1 de l'algorithme
      * Permet de rechercher le prochain produit à aller récupérer
-     * @param lines
-     * @param myStack
-     * @param index
+     * @param lines Ensemble de lignes de commande
+     * @param myStack Pile de lignes
+     * @param index Index du produit à aller rechercher
      * @return Le prochain produit que l'on va récupérer
      */
     private Ligne chercheNext(Ligne[] lines, Stack<Ligne> myStack, int index) {
@@ -466,98 +434,66 @@ public class Algorithme {
 
     }
 
-    /**
+    /** Version 2 de l'algorithme
      * Permet de renvoyer un tableau contenant des objets de type Couple en
-     * ordre décroissant par rapport à leurs variables nbChemin Si nbChemin sont
-     * égaux alors c'est l'id de la ligne du Couple qui va déterminer la
+     * ordre croissant par rapport à leurs variables idLocalisation
+     * Si nbChemin sont égaux alors c'est l'id de la ligne du Couple qui va déterminer la
      * comparaison.
-     *
-     * @param c Commande voulant être traitée
+     * @param c Commande que être traitée
      * @return Couple[] tableau de Couple par ordre décroissant
      */
     public Couple[] nbPath(Commande c) {
-        //HashMap<Ligne, Integer> tabNbPath = new HashMap<Ligne,Integer>();
         CoupleComparator cp = new CoupleComparator();
         Set<Couple> tabNbPath2 = new TreeSet<>(cp);
-
         for (Ligne line1 : c.getLigneSet()) {
-            /*int i = 0;
-            for (Ligne line2 : c.getLigneSet()) {
-                if (line1.getProduit().existPath(line2.getProduit())) {
-                    i++;
-                }
-            }*/
-            //tabNbPath.put(line1, i);
             tabNbPath2.add(new Couple(line1, (int) line1.getProduit().getLocalisation().getId()));
         }
-
-        //   System.out.println(tabNbPath.toString());
-        // System.out.println(tabNbPath2.toString());
         Couple[] myCouples = tabNbPath2.toArray(new Couple[tabNbPath2.size()]);
-
         return myCouples;
     }
 
-    /**
-     * Permet de créer un tableau contenant les produits ordonnées
-     *
+    /** VERSION 2 de l'algorithme 
+     * Permet de créer un tableau contenant les produits ordonnées par ID de Localisation croissant
      * @param c Commande voulant être traitée
      * @return Couple[] tableau de Couple par ordre décroissant
      */
     public CoupleProdLoc[] getTabProduit(Set<Commande> commandes) {
-        //HashMap<Ligne, Integer> tabNbPath = new HashMap<Ligne,Integer>();
         CoupleProdLocComparator cp = new CoupleProdLocComparator();
         Set<CoupleProdLoc> tabNbPath2 = new TreeSet<>(cp);
         for (Commande c : commandes) {
             for (Ligne line1 : c.getLigneSet()) {
-                /*int i = 0;
-                for (Ligne line2 : c.getLigneSet()) {
-                    if (line1.getProduit().existPath(line2.getProduit())) {
-                        i++;
-                    }
-                }*/
-                //tabNbPath.put(line1, i);
                 CoupleProdLoc possibleCouple = new CoupleProdLoc(line1.getProduit(), (long) line1.getProduit().getLocalisation().getId());
                 if (!tabNbPath2.contains(possibleCouple)) {
                     tabNbPath2.add(possibleCouple);
                 }
             }
         }
-        //   System.out.println(tabNbPath.toString());
-        // System.out.println(tabNbPath2.toString());
         CoupleProdLoc[] tabProduitLocalisation = tabNbPath2.toArray(new CoupleProdLoc[tabNbPath2.size()]);
-
         return tabProduitLocalisation;
     }
 
-    /**
+    /** VERSION 1 de l'algorithme
      * Permet à partir un tableau de couples rangés par ordre décroissant de
-     * renvoyer la pile de chemin correspondante.
+     * renvoyer la pile de chemins correspondants.
      * @param myCouples
      * @return
      */
     private Stack<Couple> resoudreV4(Couple[] myCouples) {
-
         Stack<Couple> s = new Stack<Couple>();
-
         int index = 0;
         int dernierAjoute;
         while (s.size() != myCouples.length && s != null) {
-
             if (s.empty()) {
                 int i = 0;
                 s.push(myCouples[i]);
                 dernierAjoute = i;
             }
-
             for (; index < myCouples.length; index++) {
                 if (!s.contains(myCouples[index]) && s.peek().getL().getProduit().existPath(myCouples[index].getL().getProduit())) {
                     s.push(myCouples[index]);
                     break;
                 }
-
             }
-
             //Pas eu d'ajout a la pile, on dépile
             if (!s.peek().equals(myCouples[index])) {
                 index = getKey(myCouples, s.pop());
@@ -566,20 +502,18 @@ public class Algorithme {
                     index = getKey(myCouples, s.pop());
                     index++;
                 }
-
-            } //Si le dernier element de la pile == element à l'index is ok on continue sinon on pops
+            } 
+            //Si le dernier element de la pile == element à l'index is ok on continue sinon on pops
             else {
                 index = 0;
             }
         }
-        //System.out.println(sol.toString());
         return s;
     }
 
-    /**
+    /** V1 de l'algorithme
      * Méthode permettant de créer les tournées
-     *
-     * @param myStack
+     * @param myStack 
      * @param solution
      */
     public void creerTournees(Stack<Couple> myStack, Solution solution) {
@@ -587,7 +521,6 @@ public class Algorithme {
         int qteProduit = myStack.firstElement().getL().getCommande().getNbProduit();
         Stack<Couple> copyStack = (Stack<Couple>) myStack.clone();
         int index, qteMax;
-
         //Tant que la quantité de produit n'est pas  = 0
         while (qteProduit > 0) {
             myTournee = new Tournee();
@@ -605,25 +538,22 @@ public class Algorithme {
                             c.addColisProduits(new QteProduitsColis(qteMax, myStack.get(copyStack.indexOf(p)).getL().getProduit()));
                             qteProduit -= qteMax;
                             copyStack.get(copyStack.indexOf(p)).getL().setQuantite(p.getL().getQuantite() - qteMax);
-
-                        } else if (p.getL().getQuantite() > 0 && qteMax > 0) { // Si le colis peut contenir tout le lot
+                        }
+                        // Si le colis peut contenir tout le lot
+                        else if (p.getL().getQuantite() > 0 && qteMax > 0) { 
                             c.addColisProduits(new QteProduitsColis(p.getL().getQuantite(), myStack.get(copyStack.indexOf(p)).getL().getProduit()));
                             qteProduit -= p.getL().getQuantite();
                             copyStack.get(copyStack.indexOf(p)).getL().setQuantite(0);
                         }
                     }
                 }
-
             }
             solution.addTournee(myTournee);
-
         }
-
     }
 
     /**
      * Getter instance
-     *
      * @return
      */
     public Instance getInstance() {
