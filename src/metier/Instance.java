@@ -1,228 +1,306 @@
 package metier;
-import java.util.Collection;
+
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.GenerationType;
-
-
+import javax.persistence.Transient;
 
 /**
  * Classe Instance
+ *
  * @generated
  */
- 
-@javax.persistence.Entity 
-public class Instance
-{
-	/**
-	 * ID de l'instance
-	 * @generated
-	 * @ordered
-	 */
-	 
-	@javax.persistence.Id 
-	@javax.persistence.Column(nullable = false) 
-        @javax.persistence.GeneratedValue(strategy = GenerationType.TABLE)
-	protected Long id;
+@javax.persistence.Entity
+public class Instance {
 
-	/**
-	 * Ensemble de solutions
-	 * @generated
-	 * @ordered
-	 */
-	 
-	@javax.persistence.OneToMany(cascade = CascadeType.PERSIST,mappedBy = "instance") 
-	protected Set<Solution> solutionSet;
+    /**
+     * ID de l'instance
+     *
+     * @generated
+     * @ordered
+     */
+    @javax.persistence.Id
+    @javax.persistence.Column(nullable = false)
+    @javax.persistence.GeneratedValue(strategy = GenerationType.TABLE)
+    protected Long id;
 
-	/**
-	 * Ensemble de produit
-	 * @generated
-	 * @ordered
-	 */
-	 
-	@javax.persistence.OneToMany(cascade = CascadeType.PERSIST, mappedBy = "instance") 
-	protected Set<Produit> produitSet;
+    /**
+     * Ensemble de solutions
+     *
+     * @generated
+     * @ordered
+     */
+    @javax.persistence.OneToMany(cascade = CascadeType.PERSIST, mappedBy = "instance")
+    protected Set<Solution> solutionSet;
 
-	/**
-	 * Constructeur par défaut de l'instance
-	 * @generated
-	 */
-	public Instance(){
-                this.produitSet = new HashSet();
-                this.solutionSet = new HashSet();
-	}
+    /**
+     * Ensemble de produit
+     *
+     * @generated
+     * @ordered
+     */
+    @javax.persistence.OneToMany(mappedBy = "instance")
+    protected Set<Produit> produitSet;
 
-	/**
-	 * Récupère l'ID
-	 * @generated
-	 * @ordered
-	 */
-	public long getId() {
-		return this.id;
-	}
+    @Transient
+    protected Localisation arrivalDepot;
 
-	/**
-	 * Récupère l'ensemble des solutions de l'instance
-	 * @generated
-	 * @ordered
-	 */
-	public Set<Solution> getSolutionSet() {
-		if(this.solutionSet == null) {
-				this.solutionSet = new HashSet<Solution>();
-		}
-		return (Set<Solution>) this.solutionSet;
-	}
+    @Transient
+    protected Localisation departingDepot;
 
-	/**
-	 * Récupère l'ensemble des produits
-	 * @generated
-	 * @ordered
-	 */
-	public Set<Produit> getProduitSet() {
-		if(this.produitSet == null) {
-				this.produitSet = new HashSet<Produit>();
-		}
-		return (Set<Produit>) this.produitSet;
-	}
+    @Transient
+    protected static Random seed;
 
-	/**
-	 * Ajouter un ensemble de solution à l'instance
-	 * @generated
-	 * @ordered
-         * @param newSolution Ensemble de solutions à ajouter
-	 */
-	public void addAllSolution(Set<Solution> newSolution) {
-		if (this.solutionSet == null) {
-			this.solutionSet = new HashSet<Solution>();
-		}
-		for (Solution tmp : newSolution)
-			tmp.setInstance(this);
-		
-	}
+    /**
+     * Constructeur par défaut de l'instance
+     *
+     * @generated
+     */
+    public Instance() {
+        this.produitSet = new HashSet();
+        this.solutionSet = new HashSet();
+        this.seed = new Random();
+    }
 
-	/**
-	 * Ajoute un ensemble de produits à l'instance
-	 * @generated
-	 * @ordered
-         * @param newProduit Ensemble de produit à ajouter
-	 */
-	public void addAllProduit(Set<Produit> newProduit) {
-		if (this.produitSet == null) {
-			this.produitSet = new HashSet<Produit>();
-		}
-		for (Produit tmp : newProduit)
-			tmp.setInstance(this);
-		
-	}
+    /**
+     * Récupère l'ID de l'instance
+     *
+     * @return l'ID de l'instance
+     * @generated
+     * @ordered
+     */
+    public long getId() {
+        return this.id;
+    }
 
-	/**
-	 * Retire l'ensemble des solutions donnée de l'instance
-	 * @generated
-	 * @ordered
-         * @param newSolution Ensemble de solutions à retirer 
-	 */
-	public void removeAllSolution(Set<Solution> newSolution) {
-		if(this.solutionSet == null) {
-			return;
-		}
-		
-		this.solutionSet.removeAll(newSolution);
-	}
+    /**
+     * Récupère la seed de l'instance
+     *
+     * @return
+     */
+    public static Random getSeed() {
+        return seed;
+    }
 
-	/**
-	 * Retire l'ensemble de produits donné de l'instance
-	 * @generated
-	 * @ordered
-         * @param newProduit Ensemble de produit à retirer
-	 */
-	public void removeAllProduit(Set<Produit> newProduit) {
-		if(this.produitSet == null) {
-			return;
-		}
-		
-		this.produitSet.removeAll(newProduit);
-	}
+    /**
+     * Récupère l'ensemble des solutions de l'instance
+     *
+     * @return l'ensemble des solutions de l'instance
+     * @generated
+     * @ordered
+     */
+    public Set<Solution> getSolutionSet() {
+        if (this.solutionSet == null) {
+            this.solutionSet = new HashSet<>();
+        }
+        return (Set<Solution>) this.solutionSet;
+    }
 
-	/**
-	 * Définit un ID à l'instance
-	 * @generated
-	 * @ordered
-         * @param myId ID à fixer
-	 */
-	public void setId(long myId) {
-		this.id = myId;
-	}
+    /**
+     * Récupère l'ensemble des produits
+     *
+     * @return l'ensemble des produits
+     * @generated
+     * @ordered
+     */
+    public Set<Produit> getProduitSet() {
+        if (this.produitSet == null) {
+            this.produitSet = new HashSet<>();
+        }
+        return (Set<Produit>) this.produitSet;
+    }
 
-	/**
-	 * Ajoute une solution à l'instance
-	 * @generated
-	 * @ordered
-         * @param newSolution Solution à ajouter
-	 */
-	public void addSolution(Solution newSolution) {
-		if(this.solutionSet == null) {
-			this.solutionSet = new HashSet<Solution>();
-		}
-		
-		if (this.solutionSet.add(newSolution))
-			newSolution.basicSetInstance(this);
-	}
+    /**
+     * Ajouter un ensemble de solution à l'instance
+     *
+     * @generated
+     * @ordered
+     * @param newSolution Ensemble de solutions à ajouter
+     */
+    public void addAllSolution(Set<Solution> newSolution) {
+        if (this.solutionSet == null) {
+            this.solutionSet = new HashSet<>();
+        }
+        for (Solution tmp : newSolution) {
+            tmp.setInstance(this);
+        }
 
-	/**
-	 * Ajoute un produit à l'instance
-	 * @generated
-	 * @ordered
-         * @param newProduit Produit à ajouter
-	 */
-	public void addProduit(Produit newProduit) {
-		if(this.produitSet == null) {
-			this.produitSet = new HashSet<Produit>();
-		}
-		
-		if (this.produitSet.add(newProduit))
-			newProduit.basicSetInstance(this);
-	}
+    }
 
-	/**
-	 * Retire l'ID de l'instance
-	 * @generated
-	 * @ordered
-	 */
-	public void unsetId() {
-		this.id = 0L;
-	}
+    /**
+     * Ajoute un ensemble de produits à l'instance
+     *
+     * @generated
+     * @ordered
+     * @param newProduit Ensemble de produit à ajouter
+     */
+    public void addAllProduit(Set<Produit> newProduit) {
+        if (this.produitSet == null) {
+            this.produitSet = new HashSet<>();
+        }
+        for (Produit tmp : newProduit) {
+            tmp.setInstance(this);
+        }
 
-	/**
-	 * Retire une solution donnée de l'ensemble des solutions de l'instance
-	 * @generated
-	 * @ordered
-         * @param oldSolution Solution à retirer
-	 */
-	public void removeSolution(Solution oldSolution) {
-		if(this.solutionSet == null)
-			return;
-		
-		if (this.solutionSet.remove(oldSolution))
-			oldSolution.unsetInstance();
-		
-	}
+    }
 
-	/**
-	 * Retire un produit donné de l'ensemble de produits de l'instance
-	 * @generated
-	 * @ordered
-         * @param oldProduit Produit à retirer
-	 */
-	public void removeProduit(Produit oldProduit) {
-		if(this.produitSet == null)
-			return;
-		
-		if (this.produitSet.remove(oldProduit))
-			oldProduit.unsetInstance();
-		
-	}
+    /**
+     * Retire l'ensemble des solutions donnée de l'instance
+     *
+     * @generated
+     * @ordered
+     * @param newSolution Ensemble de solutions à retirer
+     */
+    public void removeAllSolution(Set<Solution> newSolution) {
+        if (this.solutionSet == null) {
+            return;
+        }
 
-	
+        this.solutionSet.removeAll(newSolution);
+    }
+
+    /**
+     * Retire l'ensemble de produits donné de l'instance
+     *
+     * @generated
+     * @ordered
+     * @param newProduit Ensemble de produit à retirer
+     */
+    public void removeAllProduit(Set<Produit> newProduit) {
+        if (this.produitSet == null) {
+            return;
+        }
+
+        this.produitSet.removeAll(newProduit);
+    }
+
+    /**
+     * Définit un ID à l'instance
+     *
+     * @generated
+     * @ordered
+     * @param myId ID à fixer
+     */
+    public void setId(long myId) {
+        this.id = myId;
+    }
+
+    /**
+     * Permet de récupérer le dépôt d'arrivée
+     *
+     * @return
+     */
+    public Localisation getArrivalDepot() {
+        return arrivalDepot;
+    }
+
+    /**
+     * Définit le dépôt d'arrivée
+     *
+     * @param arrivalDepot
+     */
+    public void setArrivalDepot(Localisation arrivalDepot) {
+        this.arrivalDepot = arrivalDepot;
+    }
+
+    /**
+     * Permet de récupérer le dépôt de départ
+     *
+     * @return
+     */
+    public Localisation getDepartingDepot() {
+        return departingDepot;
+    }
+
+    /**
+     * Définit le dépôt de départ
+     *
+     * @param departingDepot le dépôt de départ
+     */
+    public void setDepartingDepot(Localisation departingDepot) {
+        this.departingDepot = departingDepot;
+    }
+
+    /**
+     * Ajoute une solution à l'instance
+     *
+     * @generated
+     * @ordered
+     * @param newSolution Solution à ajouter
+     */
+    public void addSolution(Solution newSolution) {
+        if (this.solutionSet == null) {
+            this.solutionSet = new HashSet<>();
+        }
+
+        if (this.solutionSet.add(newSolution)) {
+            newSolution.basicSetInstance(this);
+        }
+    }
+
+    /**
+     * Ajoute un produit à l'instance
+     *
+     * @generated
+     * @ordered
+     * @param newProduit Produit à ajouter
+     */
+    public void addProduit(Produit newProduit) {
+        if (this.produitSet == null) {
+            this.produitSet = new HashSet<>();
+        }
+
+        if (this.produitSet.add(newProduit)) {
+            newProduit.basicSetInstance(this);
+        }
+    }
+
+    /**
+     * Retire l'ID de l'instance
+     *
+     * @generated
+     * @ordered
+     */
+    public void unsetId() {
+        this.id = 0L;
+    }
+
+    /**
+     * Retire une solution donnée de l'ensemble des solutions de l'instance
+     *
+     * @generated
+     * @ordered
+     * @param oldSolution Solution à retirer
+     */
+    public void removeSolution(Solution oldSolution) {
+        if (this.solutionSet == null) {
+            return;
+        }
+
+        if (this.solutionSet.remove(oldSolution)) {
+            oldSolution.unsetInstance();
+        }
+
+    }
+
+    /**
+     * Retire un produit donné de l'ensemble de produits de l'instance
+     *
+     * @generated
+     * @ordered
+     * @param oldProduit Produit à retirer
+     */
+    public void removeProduit(Produit oldProduit) {
+        if (this.produitSet == null) {
+            return;
+        }
+
+        if (this.produitSet.remove(oldProduit)) {
+            oldProduit.unsetInstance();
+        }
+
+    }
+
 }
-

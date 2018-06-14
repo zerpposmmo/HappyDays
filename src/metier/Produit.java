@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 import javax.persistence.CascadeType;
-import javax.persistence.GenerationType;
 
 /**
  * Classe produit
@@ -22,7 +21,6 @@ public class Produit {
      */
     @javax.persistence.Id
     @javax.persistence.Column(nullable = false)
-    @javax.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
     /**
@@ -49,7 +47,7 @@ public class Produit {
      * @generated
      * @ordered
      */
-    @javax.persistence.OneToMany(cascade = CascadeType.PERSIST, mappedBy = "produit")
+    @javax.persistence.OneToMany(mappedBy = "produit")
     protected Set<Ligne> ligne;
 
     /**
@@ -68,7 +66,7 @@ public class Produit {
      * @generated
      * @ordered
      */
-    @javax.persistence.OneToMany(cascade = CascadeType.PERSIST, mappedBy = "produit")
+    @javax.persistence.OneToMany(mappedBy = "produit")
     protected Set<QteProduitsColis> colisProduits;
 
     /**
@@ -81,6 +79,10 @@ public class Produit {
     @javax.persistence.JoinColumn(nullable = false)
     protected Instance instance;
 
+    @javax.persistence.OneToMany(mappedBy = "produit")
+    private Set<CheminProduit> cheminProduits;
+
+    //protected Set<Chemin> chemins;
     /**
      * Constructeur par défaut du produit
      *
@@ -89,6 +91,7 @@ public class Produit {
     public Produit() {
         this.ligne = new HashSet<>();
         this.colisProduits = new HashSet<>();
+        this.cheminProduits = new HashSet<>();
     }
 
     /**
@@ -152,6 +155,7 @@ public class Produit {
     /**
      * Récupère l'ID du produit
      *
+     * @return l'ID du produit
      * @generated
      * @ordered
      */
@@ -162,6 +166,7 @@ public class Produit {
     /**
      * Récupère le poids du produit
      *
+     * @return le poids du produit
      * @generated
      * @ordered
      */
@@ -172,6 +177,7 @@ public class Produit {
     /**
      * Récupère le volume du produit
      *
+     * @return le volume du produit
      * @generated
      * @ordered
      */
@@ -180,21 +186,23 @@ public class Produit {
     }
 
     /**
-     * Récupère l'ensemble des lignes de produit lié au produit
+     * Récupère l'ensemble des lignes de produit liées au produit
      *
+     * @return l'ensemble des lignes de produit liées au produit
      * @generated
      * @ordered
      */
     public HashSet<Ligne> getLigne() {
         if (this.ligne == null) {
-            this.ligne = new HashSet<Ligne>();
+            this.ligne = new HashSet<>();
         }
         return (HashSet<Ligne>) this.ligne;
     }
 
     /**
-     * Récupère la localisation
+     * Récupère la localisation du produit
      *
+     * @return la localisation du produit
      * @generated
      * @ordered
      */
@@ -205,19 +213,21 @@ public class Produit {
     /**
      * Récupère l'ensemble des colis lié au produit
      *
+     * @return l'ensemble des colis liés au produit
      * @generated
      * @ordered
      */
     public HashSet<QteProduitsColis> getColisProduits() {
         if (this.colisProduits == null) {
-            this.colisProduits = new HashSet<QteProduitsColis>();
+            this.colisProduits = new HashSet<>();
         }
         return (HashSet<QteProduitsColis>) this.colisProduits;
     }
 
     /**
-     * Récupère l'instance lié au produit
+     * Récupère l'instance liée au produit
      *
+     * @return l'instance liée au produit
      * @generated
      * @ordered
      */
@@ -234,7 +244,7 @@ public class Produit {
      */
     public void addAllLigne(Set<Ligne> newLigne) {
         if (this.ligne == null) {
-            this.ligne = new HashSet<Ligne>();
+            this.ligne = new HashSet<>();
         }
         for (Ligne tmp : newLigne) {
             tmp.setProduit(this);
@@ -243,7 +253,7 @@ public class Produit {
     }
 
     /**
-     * Ajoute l'ensemble des quantité de produit dans un colis dans le produit
+     * Ajoute l'ensemble des quantités de produit dans un colis dans le produit
      *
      * @generated
      * @ordered
@@ -251,7 +261,7 @@ public class Produit {
      */
     public void addAllColisProduits(Set<QteProduitsColis> newColisProduits) {
         if (this.colisProduits == null) {
-            this.colisProduits = new HashSet<QteProduitsColis>();
+            this.colisProduits = new HashSet<>();
         }
         for (QteProduitsColis tmp : newColisProduits) {
             tmp.setProduit(this);
@@ -323,7 +333,7 @@ public class Produit {
     }
 
     /**
-     * Ajout eune ligne donnée au produit
+     * Ajout une ligne donnée au produit
      *
      * @generated
      * @ordered
@@ -331,7 +341,7 @@ public class Produit {
      */
     public void addLigne(Ligne newLigne) {
         if (this.ligne == null) {
-            this.ligne = new HashSet<Ligne>();
+            this.ligne = new HashSet<>();
         }
 
         if (this.ligne.add(newLigne)) {
@@ -361,7 +371,7 @@ public class Produit {
      */
     public void addColisProduits(QteProduitsColis newColisProduits) {
         if (this.colisProduits == null) {
-            this.colisProduits = new HashSet<QteProduitsColis>();
+            this.colisProduits = new HashSet<>();
         }
 
         if (this.colisProduits.add(newColisProduits)) {
@@ -486,11 +496,7 @@ public class Produit {
      * @return
      */
     public boolean existPath(Produit prod) {
-        if (this.localisation.existPath(prod.getLocalisation())) {
-            return true;
-        }
-
-        return false;
+        return this.localisation.existPath(prod.getLocalisation());
     }
 
     /**
@@ -502,8 +508,10 @@ public class Produit {
      */
     public double getDistanceTo(Produit prod) {
         if (this.existPath(prod)) {
-            this.localisation.getDistanceTo(prod.getLocalisation());
+            return this.localisation.getDistanceTo(prod.getLocalisation());
         }
+        /* if(this.localisation.id == prod.getLocalisation().getId())
+            return  0;*/
         return Double.POSITIVE_INFINITY;
     }
 
@@ -545,4 +553,12 @@ public class Produit {
         return "Produit{" + "id=" + id + ", poids=" + poids + ", volume=" + volume + ", localisation=" + localisation + ", instance=" + instance + '}';
     }
 
+    public boolean addCheminProduit(CheminProduit cP) {
+        if (!this.cheminProduits.contains(cP)) {
+            if (this.cheminProduits.add(cP)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

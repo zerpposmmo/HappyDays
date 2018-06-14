@@ -12,26 +12,24 @@ import javax.persistence.GenerationType;
  *
  * @generated
  */
-
 @javax.persistence.Entity
 public class Colis {
 
     private static Integer nbColis = 0;
-    
+
     /**
      * Identifiant
      *
      * @generated
      * @ordered
      */
-
     @javax.persistence.Id
     @javax.persistence.Column(nullable = false)
     @javax.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
     private Integer discriminator;
-    
+
     /**
      * Poids maximum du colis
      *
@@ -56,7 +54,7 @@ public class Colis {
      * @generated
      * @ordered
      */
-    @javax.persistence.ManyToOne
+    @javax.persistence.ManyToOne(cascade = CascadeType.PERSIST)
     @javax.persistence.JoinColumn(nullable = false)
     protected Commande commande;
 
@@ -144,6 +142,7 @@ public class Colis {
     /**
      * Retourne l'id du colis
      *
+     * @return l'id du colis
      * @generated
      * @ordered
      */
@@ -174,6 +173,7 @@ public class Colis {
     /**
      * Retourne la commande du colis
      *
+     * @return la commande du colis
      * @generated
      * @ordered
      */
@@ -184,6 +184,7 @@ public class Colis {
     /**
      * Retourne la tournée du colis
      *
+     * @return la tournée du colis
      * @generated
      * @ordered
      */
@@ -194,12 +195,13 @@ public class Colis {
     /**
      * Retourne l'ensemble de produits du colis
      *
+     * @return l'ensemble de produits du colis
      * @generated
      * @ordered
      */
     public Set<QteProduitsColis> getColisProduits() {
         if (this.colisProduits == null) {
-            this.colisProduits = new HashSet<QteProduitsColis>();
+            this.colisProduits = new HashSet<>();
         }
         return (Set<QteProduitsColis>) this.colisProduits;
     }
@@ -207,12 +209,13 @@ public class Colis {
     /**
      * Ajoute un ensemble de colisProduits au colisProduits du colis
      *
+     * @param newColisProduits l'ensemble de colisProduits que l'on veut ajouter
      * @generated
      * @ordered
      */
     public void addAllColisProduits(Set<QteProduitsColis> newColisProduits) {
         if (this.colisProduits == null) {
-            this.colisProduits = new HashSet<QteProduitsColis>();
+            this.colisProduits = new HashSet<>();
         }
         for (QteProduitsColis tmp : newColisProduits) {
             tmp.setColis(this);
@@ -223,6 +226,7 @@ public class Colis {
     /**
      * Retire un ensemble de colisProduits au colisProduits du colis
      *
+     * @param newColisProduits l'ensemble de colisProduits que l'on veut enlever
      * @generated
      * @ordered
      */
@@ -300,7 +304,7 @@ public class Colis {
      */
     public void addColisProduits(QteProduitsColis newColisProduits) {
         if (this.colisProduits == null) {
-            this.colisProduits = new HashSet<QteProduitsColis>();
+            this.colisProduits = new HashSet<>();
         }
 
         if (this.colisProduits.add(newColisProduits)) {
@@ -405,17 +409,14 @@ public class Colis {
             return false;
         }
         final Colis other = (Colis) obj;
-        if (!Objects.equals(this.discriminator, other.discriminator)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.discriminator, other.discriminator);
     }
 
-    
     /**
      * Permet de renvoyer la quantité max que le colis peut accepter
      *
      * @param p
+     * @return la quantité max que le colis peut accepter
      */
     public int getQteMax(Produit p) {
         int poidsActuel = 0;
@@ -428,12 +429,12 @@ public class Colis {
         int volumeRestant = this.volumeMax - volumeActuel;
         int qteParPoids = (int) Math.ceil(poidsRestant / p.getPoids());
         int qteParVolume = (int) Math.ceil(volumeRestant / p.getVolume());
-        
-        if(qteParPoids < qteParVolume)
+
+        if (qteParPoids < qteParVolume) {
             return qteParPoids;
-        
+        }
+
         return qteParVolume;
     }
-
 
 }

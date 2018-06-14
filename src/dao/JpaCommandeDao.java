@@ -1,14 +1,12 @@
 package dao;
 
 import java.util.Collection;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import metier.Commande;
 
 /**
+ * Représente un DAO de type Commande utilisant comme source de données une bdd.
  *
- * @author Ando
+ * @author Danny
  */
 public class JpaCommandeDao extends JpaDao<Commande> implements CommandeDao {
 
@@ -22,8 +20,9 @@ public class JpaCommandeDao extends JpaDao<Commande> implements CommandeDao {
     }
 
     /**
-     * Retourne une instance de JpaDaoArc.
-     * @return JpaDaoArc
+     * Retourne une instance de JpaCommandeDao.
+     *
+     * @return JpaCommandeDao
      */
     public static JpaCommandeDao getInstance() {
         if (instance == null) {
@@ -37,11 +36,22 @@ public class JpaCommandeDao extends JpaDao<Commande> implements CommandeDao {
         return super.deleteAll();
     }
 
+    /**
+     * Renvoie une collection de commande
+     *
+     * @return
+     */
     @Override
     public Collection<Commande> findAll() {
         return super.findAll();
     }
 
+    /**
+     * Cherche un commande particulière
+     *
+     * @param id Commande à récupérer
+     * @return
+     */
     @Override
     public Commande find(Integer id) {
         return super.find(id);
@@ -52,28 +62,37 @@ public class JpaCommandeDao extends JpaDao<Commande> implements CommandeDao {
         super.close();
     }
 
+    /**
+     * Supprime une commande donnée en base
+     *
+     * @param obj commande à supprimer
+     * @return
+     */
     @Override
     public boolean delete(Commande obj) {
         return super.delete(obj);
     }
 
+    /**
+     * Met à jour une commande donnée en base
+     *
+     * @param obj Commande à mettre à jour
+     * @return
+     */
     @Override
     public boolean update(Commande obj) {
         return super.update(obj);
     }
 
+    /**
+     * Crée une commande donnée en base
+     *
+     * @param obj Commande à créer
+     * @return
+     */
     @Override
     public boolean create(Commande obj) {
         return super.create(obj);
-    }
-
-    public Collection<Commande> findAllNotUsed() {
-        CriteriaBuilder cb = super.em.getCriteriaBuilder();
-        CriteriaQuery<Commande> cq = cb.createQuery(Commande.class);
-        Root<Commande> tasks = cq.from(Commande.class);
-        cq.select(tasks).where(cb.or(cb.isNotNull(tasks.get("nplanning")),
-                cb.isNotEmpty(tasks.get("nplanning"))));
-        return super.em.createQuery(cq).getResultList();
     }
 
 }

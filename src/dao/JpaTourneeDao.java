@@ -1,14 +1,12 @@
 package dao;
 
 import java.util.Collection;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import metier.Tournee;
 
 /**
+ * Représente un DAO de type Tournee utilisant comme source de données une bdd.
  *
- * @author Ando
+ * @author Danny
  */
 public class JpaTourneeDao extends JpaDao<Tournee> implements TourneeDao {
 
@@ -22,8 +20,9 @@ public class JpaTourneeDao extends JpaDao<Tournee> implements TourneeDao {
     }
 
     /**
-     * Retourne une instance de JpaDaoArc.
-     * @return JpaDaoArc
+     * Retourne une instance de JpaTourneeDao.
+     *
+     * @return JpaTourneeDao
      */
     public static JpaTourneeDao getInstance() {
         if (instance == null) {
@@ -37,11 +36,22 @@ public class JpaTourneeDao extends JpaDao<Tournee> implements TourneeDao {
         return super.deleteAll();
     }
 
+    /**
+     * Récupère l'ensemble des tournées sous la forme d'une collection
+     *
+     * @return
+     */
     @Override
     public Collection<Tournee> findAll() {
         return super.findAll();
     }
 
+    /**
+     * Cherche une Tournee particulière
+     *
+     * @param id ID de la tournee à trouver
+     * @return
+     */
     @Override
     public Tournee find(Integer id) {
         return super.find(id);
@@ -52,28 +62,37 @@ public class JpaTourneeDao extends JpaDao<Tournee> implements TourneeDao {
         super.close();
     }
 
+    /**
+     * Supprime une Tournee en base
+     *
+     * @param obj Tournee à supprimer
+     * @return
+     */
     @Override
     public boolean delete(Tournee obj) {
         return super.delete(obj);
     }
 
+    /**
+     * Met à jour une Tournée en base
+     *
+     * @param obj Tournee à mettre à jour
+     * @return
+     */
     @Override
     public boolean update(Tournee obj) {
         return super.update(obj);
     }
 
+    /**
+     * Crée une Tournee en base
+     *
+     * @param obj Tournée à créer
+     * @return
+     */
     @Override
     public boolean create(Tournee obj) {
         return super.create(obj);
-    }
-
-    public Collection<Tournee> findAllNotUsed() {
-        CriteriaBuilder cb = super.em.getCriteriaBuilder();
-        CriteriaQuery<Tournee> cq = cb.createQuery(Tournee.class);
-        Root<Tournee> tasks = cq.from(Tournee.class);
-        cq.select(tasks).where(cb.or(cb.isNotNull(tasks.get("nplanning")),
-                cb.isNotEmpty(tasks.get("nplanning"))));
-        return super.em.createQuery(cq).getResultList();
     }
 
 }

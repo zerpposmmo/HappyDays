@@ -2,7 +2,6 @@ package metier;
 
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.GenerationType;
@@ -21,9 +20,8 @@ public class Entrepot implements Serializable {
      * @generated
      * @ordered
      */
-
     @javax.persistence.Id
-    @javax.persistence.Column(name="ID", nullable = false)
+    @javax.persistence.Column(name = "ID", nullable = false)
     @javax.persistence.GeneratedValue(strategy = GenerationType.TABLE)
     protected Long id;
 
@@ -48,6 +46,7 @@ public class Entrepot implements Serializable {
     /**
      * Récupère l'ID de l'entrepôt
      *
+     * @return l'ID de l'entrepôt
      * @generated
      * @ordered
      */
@@ -58,12 +57,13 @@ public class Entrepot implements Serializable {
     /**
      * Definis l'ensemble des localisations de l'entrepôt
      *
+     * @return l'ensemble des localisations de l'entrepôt
      * @generated
      * @ordered
      */
     public Set<Localisation> getLocalisationSet() {
         if (this.localisationSet == null) {
-            this.localisationSet = new HashSet<Localisation>();
+            this.localisationSet = new HashSet<>();
         }
         return (Set<Localisation>) this.localisationSet;
     }
@@ -77,7 +77,7 @@ public class Entrepot implements Serializable {
      */
     public void addAllLocalisation(Set<Localisation> newLocalisation) {
         if (this.localisationSet == null) {
-            this.localisationSet = new HashSet<Localisation>();
+            this.localisationSet = new HashSet<>();
         }
         for (Localisation tmp : newLocalisation) {
             tmp.setEntrepot(this);
@@ -120,7 +120,7 @@ public class Entrepot implements Serializable {
      */
     public void addLocalisation(Localisation newLocalisation) {
         if (this.localisationSet == null) {
-            this.localisationSet = new HashSet<Localisation>();
+            this.localisationSet = new HashSet<>();
         }
 
         if (this.localisationSet.add(newLocalisation)) {

@@ -1,14 +1,12 @@
 package dao;
 
 import java.util.Collection;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import metier.Colis;
 
 /**
+ * Représente un DAO de type Colis utilisant comme source de données une bdd.
  *
- * @author Ando
+ * @author Danny
  */
 public class JpaColisDao extends JpaDao<Colis> implements ColisDao {
 
@@ -22,8 +20,9 @@ public class JpaColisDao extends JpaDao<Colis> implements ColisDao {
     }
 
     /**
-     * Retourne une instance de JpaDaoArc.
-     * @return JpaDaoArc
+     * Retourne une instance de JpaColisDao.
+     *
+     * @return JpaColisDao
      */
     public static JpaColisDao getInstance() {
         if (instance == null) {
@@ -37,11 +36,22 @@ public class JpaColisDao extends JpaDao<Colis> implements ColisDao {
         return super.deleteAll();
     }
 
+    /**
+     * renvoie une collection de colis
+     *
+     * @return
+     */
     @Override
     public Collection<Colis> findAll() {
         return super.findAll();
     }
 
+    /**
+     * Cherche un colis particulier
+     *
+     * @param id ID du colis
+     * @return
+     */
     @Override
     public Colis find(Integer id) {
         return super.find(id);
@@ -52,28 +62,37 @@ public class JpaColisDao extends JpaDao<Colis> implements ColisDao {
         super.close();
     }
 
+    /**
+     * Supprime un colis donné en base
+     *
+     * @param obj colis à supprimer
+     * @return
+     */
     @Override
     public boolean delete(Colis obj) {
         return super.delete(obj);
     }
 
+    /**
+     * Met à jour un colis en base
+     *
+     * @param obj colis à mettre à jour
+     * @return
+     */
     @Override
     public boolean update(Colis obj) {
         return super.update(obj);
     }
 
+    /**
+     * Crée un colis en base
+     *
+     * @param obj colis à créer
+     * @return
+     */
     @Override
     public boolean create(Colis obj) {
         return super.create(obj);
-    }
-
-    public Collection<Colis> findAllNotUsed() {
-        CriteriaBuilder cb = super.em.getCriteriaBuilder();
-        CriteriaQuery<Colis> cq = cb.createQuery(Colis.class);
-        Root<Colis> tasks = cq.from(Colis.class);
-        cq.select(tasks).where(cb.or(cb.isNotNull(tasks.get("nplanning")),
-                cb.isNotEmpty(tasks.get("nplanning"))));
-        return super.em.createQuery(cq).getResultList();
     }
 
 }
