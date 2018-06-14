@@ -1,6 +1,7 @@
 package metier;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.GenerationType;
@@ -53,6 +54,9 @@ public class Instance
         @Transient
         protected Localisation departingDepot;
         
+        @Transient
+        protected static Random seed;
+        
 	/**
 	 * Constructeur par défaut de l'instance
 	 * @generated
@@ -60,6 +64,7 @@ public class Instance
 	public Instance(){
                 this.produitSet = new HashSet();
                 this.solutionSet = new HashSet();
+                this.seed = new Random();
 	}
 
 	/**
@@ -70,6 +75,16 @@ public class Instance
 	public long getId() {
 		return this.id;
 	}
+
+        /**
+         * Récupère la seed de l'instancea
+         * @return 
+         */
+        public static Random getSeed() {
+            return seed;
+        }
+        
+        
 
 	/**
 	 * Récupère l'ensemble des solutions de l'instance

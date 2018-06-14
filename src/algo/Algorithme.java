@@ -113,7 +113,7 @@ public class Algorithme {
             for (CoupleProdLoc cpl : tabCouple) {
                 List<Ligne> lignesCmds = listLignesMapByIdProd.get(cpl.getP().getId());
                 //Ici on pourrait rajouter de l'aléatoire sur la liste;
-                Collections.shuffle(lignesCmds);
+                Collections.shuffle(lignesCmds, this.instance.getSeed());
                 for (Ligne ligneDeCmd : lignesCmds) {
                     if (ligneDeCmd.getQuantite() > 0) {
                         qteAffecteeATournee = this.ajouterProdATournee(ligneDeCmd.getCommande(), ligneDeCmd.getProduit(), ligneDeCmd.getQuantite(), newTournee);
@@ -141,7 +141,6 @@ public class Algorithme {
      */
     private Integer ajouterProdATournee(Commande cmd, Produit produit, int quantite, Tournee tournee) {
         Random generator = new Random();
-        boolean split = generator.nextBoolean();
         Integer qteAffectee = 0;
         Integer quantiteProduitMaxDansColis = 0;
         Integer qteEsperee = quantite;
@@ -150,34 +149,11 @@ public class Algorithme {
         ArrayList<Colis> colisCmd = new ArrayList<Colis>(acolisCmd);
 
         //Aléatoire appliquée sur les colis
-        Collections.shuffle(colisCmd);
+        Collections.shuffle(colisCmd, this.instance.getSeed());
 
-        //On regarde si on peut ajouter le produit aux colis déjà créés
-        //Ici on peut ajouter de l'aléatoire
-        /*if (!split) {
-            
-         }*/
-        //ajouterProdAColisAffectesNonSplitte(colisCmd, cmd, produit, qteEsperee);
-        for (Colis c : colisCmd) {
-            if (c.getCommande().getId() == cmd.getId()) {
-                quantiteProduitMaxDansColis = c.getQteMax(produit);
-                if (quantiteProduitMaxDansColis > 0 && qteEsperee > 0) {
-                    if (quantiteProduitMaxDansColis <= qteEsperee) {
-                        c.addColisProduits(new QteProduitsColis(quantiteProduitMaxDansColis, produit));
-                        qteAffectee += quantiteProduitMaxDansColis;
-                        qteEsperee -= quantiteProduitMaxDansColis;
-                    } else {
-                        c.addColisProduits(new QteProduitsColis(qteEsperee, produit));
-                        qteAffectee += qteEsperee;
-                        qteEsperee = 0;
-                    }
-
-                }
-            }
-            if (c.getCommande().getId() != cmd.getId()) {
-                System.out.println("Wrong");
-            }
-        }
+        qteAffectee = ajouterProdAColisAffectes(colisCmd, cmd, produit, qteEsperee);
+        qteEsperee = qteEsperee - qteAffectee;
+        
         // S'il faut créer de nouveaux colis, en crée
         while (qteEsperee > 0 && nbColis < this.results.getNbBoxesTrolley()) {
             Colis newColis = new Colis(this.results.getCapaBox().getPoids(), this.results.getCapaBox().getVolume(), cmd);
@@ -208,7 +184,7 @@ public class Algorithme {
      * @param qteEsperee
      * @return
      */
-    private Integer ajouterProdAColisAffectesNonSplitte(List<Colis> colisCmd, Commande cmd, Produit produit, Integer qteEsperee) {
+    private Integer ajouterProdAColisAffectes(List<Colis> colisCmd, Commande cmd, Produit produit, Integer qteEsperee) {
         int quantiteProduitMaxDansColis;
         int qteAffectee = 0;
         for (Colis c : colisCmd) {
@@ -230,49 +206,6 @@ public class Algorithme {
                 System.out.println("Wrong");
             }
         }
-        return qteAffectee;
-    }
-
-    /** V2 de l'algorithme
-     * Permet d'affecter un produit à des colis dejà existants,splitté, il faut
-     * que les colis appartiennent bien à la commande passée en paramètre
-     *
-     * @param colisCmd
-     * @param cmd
-     * @param produit
-     * @param qteEsperee
-     * @return
-     */
-    private Integer ajouterProdAColisAffectesSplitte(List<Colis> colisCmd, Commande cmd, Produit produit, Integer qteEsperee, Integer qteAffectee) {
-        int quantiteProduitMaxDansColis;
-
-        if (qteEsperee <= 1) {
-            // return this.ajouterProdAColisAffectesNonSplitte(colisCmd, cmd, produit, qteEsperee, qteAffectee);
-        }
-
-        /*for (Colis c : colisCmd) {
-         if (c.getCommande().getId() == cmd.getId()) {
-         quantiteProduitMaxDansColis = c.getQteMax(produit);
-         if (quantiteProduitMaxDansColis > 0 && qteEsperee > 0) {
-
-         if (quantiteProduitMaxDansColis <= qteEsperee) {
-         c.addColisProduits(new QteProduitsColis(quantiteProduitMaxDansColis, produit));
-         qteAffectee += quantiteProduitMaxDansColis;
-         qteEsperee -= quantiteProduitMaxDansColis;
-         } else {
-         c.addColisProduits(new QteProduitsColis(qteEsperee, produit));
-         qteAffectee += qteEsperee;
-         qteEsperee = 0;
-         }
-
-         }
-         }
-
-         if (c.getCommande().getId() != cmd.getId()) {
-         System.out.println("Wrong");
-         }
-
-         }*/
         return qteAffectee;
     }
 
