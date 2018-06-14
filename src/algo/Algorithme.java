@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
 import metier.Colis;
 import metier.Instance;
 import metier.Ligne;
@@ -32,7 +31,7 @@ import metier.Tournee;
 public class Algorithme {
 
     /**
-     * Instance sur lequel l'algo va travailler
+     * Instance sur laquelle l'algo va travailler
      */
     private Instance instance;
     private Set<Commande> commandes;

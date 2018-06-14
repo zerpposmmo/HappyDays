@@ -1,9 +1,6 @@
 package dao;
 
 import java.util.Collection;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import metier.Commande;
 
 /**

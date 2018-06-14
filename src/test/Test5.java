@@ -6,7 +6,6 @@
 package test;
 
 import algo.Algorithme;
-import ecriture.WriteSolution;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;

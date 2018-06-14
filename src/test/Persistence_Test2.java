@@ -10,17 +10,12 @@ import dao.DaoFactory;
 import dao.InstanceDao;
 import dao.PersistenceType;
 import ecriture.WriteSolution;
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import lecture.ReadFiles;
 import lecture.Result;
-import metier.Commande;
 import metier.Instance;
-import metier.Produit;
 import metier.Solution;
 
 /**

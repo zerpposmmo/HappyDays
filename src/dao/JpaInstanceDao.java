@@ -1,15 +1,7 @@
 package dao;
 
 import java.util.Collection;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-import lecture.Result;
-import metier.Arc;
-import metier.Commande;
 import metier.Instance;
-import metier.Localisation;
-import metier.Produit;
 
 /**
  * Représente un DAO de type Instance utilisant comme source de données une bdd.

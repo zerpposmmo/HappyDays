@@ -1,6 +1,5 @@
 package dao;
 
-import lecture.Result;
 import metier.Instance;
 
 /**

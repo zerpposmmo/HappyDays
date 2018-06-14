@@ -5,18 +5,14 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import metier.Arc;
 import metier.Commande;
-import metier.Entrepot;
 import metier.Ligne;
 import metier.Localisation;
 import metier.Produit;
-import metier.Instance;
 
 /**
  * Lecture de fichier texte en se basant sur le format des fichiers d'instance.
