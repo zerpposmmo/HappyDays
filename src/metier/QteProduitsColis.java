@@ -70,7 +70,7 @@ public class QteProduitsColis {
      *
      * @generated
      * @ordered
-     * @param myProduct Le produit à ajouter à la QPC
+     * @param myProduit Le produit à ajouter à la QPC
      */
     public void basicSetProduit(Produit myProduit) {
         if (this.produit != myProduit) {
@@ -110,6 +110,7 @@ public class QteProduitsColis {
     /**
      * Récupère l'ID de la QPC
      *
+     * @return l'ID de la QPC
      * @generated
      * @ordered
      */
@@ -120,6 +121,7 @@ public class QteProduitsColis {
     /**
      * Récupère la quantité de la QPC
      *
+     * @return la quantité de la QPC
      * @generated
      * @ordered
      */
@@ -131,6 +133,7 @@ public class QteProduitsColis {
     /**
      * Récupère le produit de la QPC
      *
+     * @return le produit de la QPC
      * @generated
      * @ordered
      */
@@ -141,6 +144,7 @@ public class QteProduitsColis {
     /**
      * Récupère le colis lié à la QPC
      *
+     * @return le colis lié à la QPC
      * @generated
      * @ordered
      */

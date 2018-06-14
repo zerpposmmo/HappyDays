@@ -21,7 +21,6 @@ public class Instance {
      * @generated
      * @ordered
      */
-
     @javax.persistence.Id
     @javax.persistence.Column(nullable = false)
     @javax.persistence.GeneratedValue(strategy = GenerationType.TABLE)
@@ -66,8 +65,9 @@ public class Instance {
     }
 
     /**
-     * Récupère l'ID
+     * Récupère l'ID de l'instance
      *
+     * @return l'ID de l'instance
      * @generated
      * @ordered
      */
@@ -76,7 +76,7 @@ public class Instance {
     }
 
     /**
-     * Récupère la seed de l'instancea
+     * Récupère la seed de l'instance
      *
      * @return
      */
@@ -87,12 +87,13 @@ public class Instance {
     /**
      * Récupère l'ensemble des solutions de l'instance
      *
+     * @return l'ensemble des solutions de l'instance
      * @generated
      * @ordered
      */
     public Set<Solution> getSolutionSet() {
         if (this.solutionSet == null) {
-            this.solutionSet = new HashSet<Solution>();
+            this.solutionSet = new HashSet<>();
         }
         return (Set<Solution>) this.solutionSet;
     }
@@ -100,12 +101,13 @@ public class Instance {
     /**
      * Récupère l'ensemble des produits
      *
+     * @return l'ensemble des produits
      * @generated
      * @ordered
      */
     public Set<Produit> getProduitSet() {
         if (this.produitSet == null) {
-            this.produitSet = new HashSet<Produit>();
+            this.produitSet = new HashSet<>();
         }
         return (Set<Produit>) this.produitSet;
     }
@@ -119,7 +121,7 @@ public class Instance {
      */
     public void addAllSolution(Set<Solution> newSolution) {
         if (this.solutionSet == null) {
-            this.solutionSet = new HashSet<Solution>();
+            this.solutionSet = new HashSet<>();
         }
         for (Solution tmp : newSolution) {
             tmp.setInstance(this);
@@ -136,7 +138,7 @@ public class Instance {
      */
     public void addAllProduit(Set<Produit> newProduit) {
         if (this.produitSet == null) {
-            this.produitSet = new HashSet<Produit>();
+            this.produitSet = new HashSet<>();
         }
         for (Produit tmp : newProduit) {
             tmp.setInstance(this);
@@ -215,7 +217,7 @@ public class Instance {
     /**
      * Définit le dépôt de départ
      *
-     * @param arrivalDepot
+     * @param departingDepot le dépôt de départ
      */
     public void setDepartingDepot(Localisation departingDepot) {
         this.departingDepot = departingDepot;
@@ -230,7 +232,7 @@ public class Instance {
      */
     public void addSolution(Solution newSolution) {
         if (this.solutionSet == null) {
-            this.solutionSet = new HashSet<Solution>();
+            this.solutionSet = new HashSet<>();
         }
 
         if (this.solutionSet.add(newSolution)) {
@@ -247,7 +249,7 @@ public class Instance {
      */
     public void addProduit(Produit newProduit) {
         if (this.produitSet == null) {
-            this.produitSet = new HashSet<Produit>();
+            this.produitSet = new HashSet<>();
         }
 
         if (this.produitSet.add(newProduit)) {

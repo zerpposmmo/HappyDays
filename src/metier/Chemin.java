@@ -30,12 +30,8 @@ public class Chemin {
      */
     private transient List<Produit> route;
 
-    /*@ManyToOne
-    @javax.persistence.JoinColumn(nullable = false)*/
     private transient Localisation depart;
 
-    /* @ManyToOne
-    @javax.persistence.JoinColumn(nullable = false)*/
     private transient Localisation arrivee;
 
     //Permet de ne pas avoir à recalculer la distance si on appelle 
@@ -58,7 +54,7 @@ public class Chemin {
     private Set<CheminProduit> cheminProduits;
 
     private Chemin() {
-        this.route = new LinkedList<Produit>();
+        this.route = new LinkedList<>();
         this.cheminProduits = new HashSet<>();
         this.distance = (double) 0;
         this.flag = true;
@@ -88,7 +84,7 @@ public class Chemin {
         if (flag == false) {
             this.calculerDistance();
         }
-        return distance.doubleValue();
+        return distance;
     }
 
     /**

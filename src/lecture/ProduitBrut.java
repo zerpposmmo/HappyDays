@@ -16,10 +16,10 @@ public class ProduitBrut {
     /**
      * Constructeur par données
      *
-     * @param id
-     * @param localisationId
-     * @param poids
-     * @param volume
+     * @param id l'id du ProduitBrut
+     * @param localisationId l'id de la localisation du produit
+     * @param poids le poids du produit
+     * @param volume le volume du produit
      */
     public ProduitBrut(long id, long localisationId, int poids, int volume) {
         this.id = id;
@@ -28,19 +28,38 @@ public class ProduitBrut {
         this.volume = volume;
     }
 
-    //--------------Getter--------------//
+    /**
+     * Récupère l'id du produit
+     *
+     * @return l'id du produit
+     */
     public long getId() {
         return id;
     }
 
+    /**
+     * Récupère l'id de la localisation du produit
+     *
+     * @return l'id de la localisation du produit
+     */
     public long getLocalisationId() {
         return localisationId;
     }
 
+    /**
+     * Récupère le poids du produit
+     *
+     * @return le poids du produit
+     */
     public int getPoids() {
         return poids;
     }
 
+    /**
+     * Récupère le volume du produit
+     *
+     * @return le volume du produit
+     */
     public int getVolume() {
         return volume;
     }

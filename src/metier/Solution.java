@@ -19,7 +19,6 @@ public class Solution {
      * @generated
      * @ordered
      */
-
     @javax.persistence.Id
     @javax.persistence.Column(nullable = false)
     @javax.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -90,6 +89,7 @@ public class Solution {
     /**
      * Récupère l'ID de la solution
      *
+     * @return l'ID de la solution
      * @generated
      * @ordered
      */
@@ -100,6 +100,7 @@ public class Solution {
     /**
      * Récupère le nom de la solution
      *
+     * @return le nom de la solution
      * @generated
      * @ordered
      */
@@ -108,14 +109,15 @@ public class Solution {
     }
 
     /**
-     * Récupère l'ensemble de tournées de la solution
+     * Récupère l'ensemble des tournées de la solution
      *
+     * @return l'ensemble des tournées de la solution
      * @generated
      * @ordered
      */
     public Set<Tournee> getTournee() {
         if (this.tourneeSet == null) {
-            this.tourneeSet = new HashSet<Tournee>();
+            this.tourneeSet = new HashSet<>();
         }
         return (Set<Tournee>) this.tourneeSet;
     }
@@ -123,6 +125,7 @@ public class Solution {
     /**
      * Récupère l'instance de la solution
      *
+     * @return l'instance de la solution
      * @generated
      * @ordered
      */
@@ -141,7 +144,7 @@ public class Solution {
      */
     public void addAllTournee(Set<Tournee> newTournee) {
         if (this.tourneeSet == null) {
-            this.tourneeSet = new HashSet<Tournee>();
+            this.tourneeSet = new HashSet<>();
         }
         for (Tournee tmp : newTournee) {
             tmp.setSolution(this);
@@ -152,16 +155,17 @@ public class Solution {
     /**
      * Retire l'ensemble des tournées données de la solution
      *
+     * @param tournees l'ensemble des tournées que l'on souhaite retirer
      * @generated
      * @ordered
-     * * @param newTournee L'ensemble des tournées que l'on souhaite retirer
+     *
      */
-    public void removeAllTournee(Set<Tournee> newTournee) {
+    public void removeAllTournee(Set<Tournee> tournees) {
         if (this.tourneeSet == null) {
             return;
         }
 
-        this.tourneeSet.removeAll(newTournee);
+        this.tourneeSet.removeAll(tournees);
     }
 
     /**
@@ -196,7 +200,7 @@ public class Solution {
      */
     public void addTournee(Tournee newTournee) {
         if (this.tourneeSet == null) {
-            this.tourneeSet = new HashSet<Tournee>();
+            this.tourneeSet = new HashSet<>();
         }
 
         if (this.tourneeSet.add(newTournee)) {

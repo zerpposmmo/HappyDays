@@ -12,9 +12,9 @@ public class CoupleProdLocComparator implements Comparator<CoupleProdLoc> {
     /**
      * Compare 2 objets CoupleProdLoc passé en paramètre
      *
-     * @param o1
-     * @param o2
-     * @return
+     * @param o1 couple à comparer
+     * @param o2 couple à comparer
+     * @return un int indiquant le résultat de la comparaison
      */
     @Override
     public int compare(CoupleProdLoc o1, CoupleProdLoc o2) {

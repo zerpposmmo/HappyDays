@@ -37,31 +37,60 @@ public class CheminProduit implements Serializable {
     public CheminProduit() {
     }
 
+    /**
+     * Constructeur par données
+     *
+     * @param chemin le chemin
+     * @param produit le produit
+     * @param ordre l'ordre
+     */
     public CheminProduit(Chemin chemin, Produit produit, int ordre) {
         this.chemin = chemin;
         this.produit = produit;
         this.ordre = ordre;
     }
 
+    /**
+     * Récupère l'id du CheminProduit
+     *
+     * @return l'id du CheminProduit
+     */
     public Long getId() {
         return id;
     }
 
-    /*public void setId(Long id) {
-        this.id = id;
-    }*/
+    /**
+     * Récupère le chemin de la tournée
+     *
+     * @return le chemin de la tournée
+     */
     public Chemin getChemin() {
         return chemin;
     }
 
+    /**
+     * Set le chemin
+     *
+     * @param chemin le chemin
+     */
     public void setChemin(Chemin chemin) {
         this.chemin = chemin;
     }
 
+    /**
+     * Récupère le produit
+     *
+     * @return le produit
+     */
     public Produit getProduit() {
         return produit;
     }
 
+    /**
+     * Set le produit
+     *
+     * @param produit le produit
+     */
     public void setProduit(Produit produit) {
         this.produit = produit;
     }
@@ -91,10 +120,7 @@ public class CheminProduit implements Serializable {
         if (!Objects.equals(this.produit, other.produit)) {
             return false;
         }
-        if (!Objects.equals(this.ordre, other.ordre)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.ordre, other.ordre);
     }
 
     @Override

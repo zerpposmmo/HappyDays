@@ -124,6 +124,7 @@ public class Localisation {
     /**
      * Récupère l'ID de la localisation
      *
+     * @return l'ID de la localisation
      * @generated
      * @ordered
      */
@@ -152,27 +153,29 @@ public class Localisation {
     }
 
     /**
-     * Récupère l'ensenble des arcs lié à la localisation
+     * Récupère l'ensemble des arcs liés à la localisation
      *
+     * @return l'ensemble des arcs liés à la localisation
      * @generated
      * @ordered
      */
     public Map<Localisation, Arc> getArc() {
         if (this.arcMap == null) {
-            this.arcMap = new HashMap<Localisation, Arc>();
+            this.arcMap = new HashMap<>();
         }
         return (Map<Localisation, Arc>) this.arcMap;
     }
 
     /**
-     * Récupère l'ensemble des produits lié à la localisation
+     * Récupère l'ensemble des produits liés à la localisation
      *
+     * @return l'ensemble des produits liés à la localisation
      * @generated
      * @ordered
      */
     public Set<Produit> getProduitSet() {
         if (this.produitSet == null) {
-            this.produitSet = new HashSet<Produit>();
+            this.produitSet = new HashSet<>();
         }
         return (Set<Produit>) this.produitSet;
     }
@@ -180,6 +183,7 @@ public class Localisation {
     /**
      * Récupère l'entrepôt auquel la localisation est liée
      *
+     * @return l'entrepôt auquel la localisation est liée
      * @generated
      * @ordered
      */
@@ -192,13 +196,13 @@ public class Localisation {
      *
      * @generated
      * @ordered
-     * @param newArc Set d'arc à ajouter à la localisation
+     * @param arcs Set d'arc à ajouter à la localisation
      */
-    public void addAllArc(Set<Arc> newArc) {
+    public void addAllArc(Set<Arc> arcs) {
         if (this.arcMap == null) {
             this.arcMap = new HashMap<>();
         }
-        for (Arc tmp : newArc) {
+        for (Arc tmp : arcs) {
             tmp.setDepart(this);
         }
 
@@ -207,15 +211,15 @@ public class Localisation {
     /**
      * Ajoute l'ensemble de produit donné à la localisation
      *
-     * @param newProduit
+     * @param produits l'ensemble de produits que l'on veut ajouter
      * @generated
      * @ordered
      */
-    public void addAllProduit(Set<Produit> newProduit) {
+    public void addAllProduit(Set<Produit> produits) {
         if (this.produitSet == null) {
-            this.produitSet = new HashSet<Produit>();
+            this.produitSet = new HashSet<>();
         }
-        for (Produit tmp : newProduit) {
+        for (Produit tmp : produits) {
             tmp.setLocalisation(this);
         }
     }
@@ -284,13 +288,13 @@ public class Localisation {
     /**
      * Ajoute un arc donné à la localisation
      *
+     * @param newArc Arc à ajouter
      * @generated
      * @ordered
-     * @param myArc Arc à ajouter
      */
     public void addArc(Arc newArc) {
         if (this.arcMap == null) {
-            this.arcMap = new HashMap<Localisation, Arc>();
+            this.arcMap = new HashMap<>();
         }
         this.arcMap.put(newArc.arrivee, newArc);
         newArc.setDepart(this);
@@ -305,7 +309,7 @@ public class Localisation {
      */
     public void addProduit(Produit newProduit) {
         if (this.produitSet == null) {
-            this.produitSet = new HashSet<Produit>();
+            this.produitSet = new HashSet<>();
         }
 
         if (this.produitSet.add(newProduit)) {

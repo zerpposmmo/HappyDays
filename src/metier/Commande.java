@@ -78,6 +78,7 @@ public class Commande {
     /**
      * Récupère l'ID de la commande
      *
+     * @return l'id de la commande
      * @generated
      * @ordered
      */
@@ -98,12 +99,13 @@ public class Commande {
     /**
      * Récupère l'ensemble des lignes de produit de la commande
      *
+     * @return l'ensemble des lignes de produits de la commande
      * @generated
      * @ordered
      */
     public Set<Ligne> getLigneSet() {
         if (this.ligneSet == null) {
-            this.ligneSet = new HashSet<Ligne>();
+            this.ligneSet = new HashSet<>();
         }
         return (Set<Ligne>) this.ligneSet;
     }
@@ -111,12 +113,13 @@ public class Commande {
     /**
      * Récupère l'ensemble des colis de la commande
      *
+     * @return l'ensemble des colis de la commande
      * @generated
      * @ordered
      */
     public Set<Colis> getColisSet() {
         if (this.colisSet == null) {
-            this.colisSet = new HashSet<Colis>();
+            this.colisSet = new HashSet<>();
         }
         return (Set<Colis>) this.colisSet;
     }
@@ -130,7 +133,7 @@ public class Commande {
      */
     public void addAllLigne(Set<Ligne> newLigne) {
         if (this.ligneSet == null) {
-            this.ligneSet = new HashSet<Ligne>();
+            this.ligneSet = new HashSet<>();
         }
         for (Ligne tmp : newLigne) {
             tmp.setCommande(this);
@@ -147,7 +150,7 @@ public class Commande {
      */
     public void addAllColis(Set<Colis> newColis) {
         if (this.colisSet == null) {
-            this.colisSet = new HashSet<Colis>();
+            this.colisSet = new HashSet<>();
         }
         for (Colis tmp : newColis) {
             tmp.setCommande(this);
@@ -217,7 +220,7 @@ public class Commande {
      */
     public void addLigne(Ligne newLigne) {
         if (this.ligneSet == null) {
-            this.ligneSet = new HashSet<Ligne>();
+            this.ligneSet = new HashSet<>();
         }
 
         if (this.ligneSet.add(newLigne)) {
@@ -234,7 +237,7 @@ public class Commande {
      */
     public void addColis(Colis newColis) {
         if (this.colisSet == null) {
-            this.colisSet = new HashSet<Colis>();
+            this.colisSet = new HashSet<>();
         }
 
         if (this.colisSet.add(newColis)) {
@@ -299,6 +302,19 @@ public class Commande {
 
     }
 
+    /**
+     * Permet de renvoyer la quantité de produit totale de la commande
+     *
+     * @return
+     */
+    public int getNbProduit() {
+        int qte = 0;
+        for (Ligne l : this.ligneSet) {
+            qte += l.getQuantite();
+        }
+        return qte;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -332,18 +348,4 @@ public class Commande {
     public String toString() {
         return "Commande{" + "id=" + id + ", colisMax=" + colisMax + ", ligneSet=" + ligneSet + "} \n";
     }
-
-    /**
-     * Permet de renvoyer la quantité de produit totale de la commande
-     *
-     * @return
-     */
-    public int getNbProduit() {
-        int qte = 0;
-        for (Ligne l : this.ligneSet) {
-            qte += l.getQuantite();
-        }
-        return qte;
-    }
-
 }

@@ -16,8 +16,8 @@ public class CoupleProdLoc implements Comparable {
     /**
      * Constructeur par données
      *
-     * @param p
-     * @param idLocalisation
+     * @param p le produit
+     * @param idLocalisation l'id de la localisation
      */
     public CoupleProdLoc(Produit p, Long idLocalisation) {
         this.p = p;
@@ -25,10 +25,18 @@ public class CoupleProdLoc implements Comparable {
     }
 
     //-----------Getter-------------//
+    /**
+     * Récupère le produit
+     * @return le produit
+     */
     public Produit getP() {
         return p;
     }
 
+    /**
+     * Récupère l'id de la localisation
+     * @return l'id de la localisation
+     */
     public Long getIdLocalisation() {
         return idLocalisation;
     }

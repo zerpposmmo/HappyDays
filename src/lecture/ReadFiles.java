@@ -28,6 +28,9 @@ public class ReadFiles {
     private Set<CommandeBrute> commandesBrutes;
     private Result result;
 
+    /**
+     * Constructeur par défaut de la classe ReadFiles
+     */
     public ReadFiles() {
         this.produitsBruts = new HashSet();
         this.arcsBruts = new HashSet();
@@ -101,6 +104,12 @@ public class ReadFiles {
         }
     }
 
+    /**
+     * Permet de récupèrer un objet Result qui contient tous les objets crées lors de la lecture
+     * @param filePath le chemin du fichier d'instance
+     * @return un objet Result qui contient tous les objets crées lors de la lecture
+     * @throws IOException 
+     */
     public Result getCreatedObjects(String filePath) throws IOException {
 
         File file = new File(filePath);

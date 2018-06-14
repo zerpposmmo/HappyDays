@@ -112,6 +112,7 @@ public class Ligne implements Cloneable {
     /**
      * Récupère l'ID de la ligne
      *
+     * @return l'ID de la ligne
      * @generated
      * @ordered
      */
@@ -122,6 +123,7 @@ public class Ligne implements Cloneable {
     /**
      * Récupère la quantité de produit de la ligne
      *
+     * @return la quantité de produit de la ligne
      * @generated
      * @ordered
      */
@@ -132,6 +134,7 @@ public class Ligne implements Cloneable {
     /**
      * Récupère le produit de la ligne
      *
+     * @return le produit de la ligne
      * @generated
      * @ordered
      */
@@ -142,6 +145,7 @@ public class Ligne implements Cloneable {
     /**
      * Récupère la commande liée à la ligne
      *
+     * @return la commande liée à la ligne
      * @generated
      * @ordered
      */
@@ -274,6 +278,12 @@ public class Ligne implements Cloneable {
         return true;
     }
 
+    /**
+     * Permet de cloner la ligne
+     *
+     * @return un clone de la ligne
+     * @throws CloneNotSupportedException
+     */
     @Override
     public Object clone() throws CloneNotSupportedException {
         Ligne nl = new Ligne();

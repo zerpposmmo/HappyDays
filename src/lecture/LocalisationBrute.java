@@ -15,9 +15,9 @@ public class LocalisationBrute {
     /**
      * Constructeur par données
      *
-     * @param localisationId
-     * @param x
-     * @param y
+     * @param localisationId l'id de la localisation
+     * @param x l'abscisse de la localisation
+     * @param y l'ordonnée de la localisation
      */
     public LocalisationBrute(Long localisationId, int x, int y) {
         this.localisationId = localisationId;
@@ -25,15 +25,29 @@ public class LocalisationBrute {
         this.y = y;
     }
 
-    //------------Getter-----------//
+    /**
+     * Récupère l'id de la localisation
+     *
+     * @return l'id de la localisation
+     */
     public Long getLocalisationId() {
         return localisationId;
     }
 
+    /**
+     * Récupère l'abscisse de la localisation
+     *
+     * @return l'abscicce de la localisation
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     * Récupère l'ordonnée de la localisation
+     *
+     * @return l'ordonnée de la localisation
+     */
     public int getY() {
         return y;
     }

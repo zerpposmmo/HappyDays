@@ -90,6 +90,7 @@ public class Arc {
     /**
      * Renvoie l'id de l'arc
      *
+     * @return l'id de l'arc
      * @generated
      * @ordered
      */
@@ -110,6 +111,7 @@ public class Arc {
     /**
      * Renvoie la distance de l'arc
      *
+     * @return la distance de l'arc
      * @generated
      * @ordered
      */
@@ -120,6 +122,7 @@ public class Arc {
     /**
      * Renvoie la localisation du départ de l'arc
      *
+     * @return la localisation du départ de l'arc
      * @generated
      * @ordered
      */

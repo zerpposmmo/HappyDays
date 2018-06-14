@@ -98,6 +98,7 @@ public class Tournee {
     /**
      * Getter de l'identifiant de la tournée
      *
+     * @return l'ID de la tournée
      * @generated
      * @ordered
      */
@@ -108,6 +109,7 @@ public class Tournee {
     /**
      * Getter de la solution de la tournée
      *
+     * @return la solution de la tournée
      * @generated
      * @ordered
      */
@@ -116,14 +118,15 @@ public class Tournee {
     }
 
     /**
-     * Getter du HashSet des colis
+     * Getter du HashSet des colis de la tournée
      *
+     * @return les colis de la tournée
      * @generated
      * @ordered
      */
     public Set<Colis> getColisSet() {
         if (this.colisSet == null) {
-            this.colisSet = new HashSet<Colis>();
+            this.colisSet = new HashSet<>();
         }
         return (Set<Colis>) this.colisSet;
     }
@@ -131,13 +134,15 @@ public class Tournee {
     /**
      * Récupérer les colis d'une commande par id
      *
+     * @param idCommande l'id de la commande dont on veut récupérer les colis
+     * @return les colis de la commande
      * @generated
      * @ordered
      */
     public Set<Colis> getColisSet(Long idCommande) {
         Set<Colis> colisCommandeSet = new HashSet();
         if (this.colisSet == null) {
-            this.colisSet = new HashSet<Colis>();
+            this.colisSet = new HashSet<>();
         }
         for (Colis c : this.colisSet) {
             if (c.getCommande().getId() == idCommande) {
@@ -148,7 +153,7 @@ public class Tournee {
     }
 
     /**
-     * Permet d'ajouter un groupe de colis a la collection de colis de la
+     * Permet d'ajouter un groupe de colis à la collection de colis de la
      * tournée
      *
      * @generated
@@ -157,7 +162,7 @@ public class Tournee {
      */
     public void addAllColis(Set<Colis> newColis) {
         if (this.colisSet == null) {
-            this.colisSet = new HashSet<Colis>();
+            this.colisSet = new HashSet<>();
         }
         for (Colis tmp : newColis) {
             tmp.setTournee(this);
@@ -212,7 +217,7 @@ public class Tournee {
      */
     public void addColis(Colis newColis) {
         if (this.colisSet == null) {
-            this.colisSet = new HashSet<Colis>();
+            this.colisSet = new HashSet<>();
         }
 
         if (this.colisSet.add(newColis)) {

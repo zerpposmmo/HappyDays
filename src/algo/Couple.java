@@ -64,9 +64,9 @@ public class Couple {
     }
 
     /**
-     * Définit le nbChemin
+     * Set l'id de la localisation
      *
-     * @param nbChemin Le nombre de chemin à définir
+     * @param idLocalisation l'id de la localisation
      */
     public void setIdLocalisation(int idLocalisation) {
         this.idLocalisation = idLocalisation;
