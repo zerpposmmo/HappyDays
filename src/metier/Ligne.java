@@ -8,7 +8,7 @@ import java.util.Objects;
  * @generated
  */
 @javax.persistence.Entity
-public class Ligne {
+public class Ligne implements Cloneable {
 
     /**
      * ID de la ligne
@@ -109,6 +109,7 @@ public class Ligne {
     /**
      * Récupère l'ID de la ligne
      *
+     * @return l'ID de la ligne
      * @generated
      * @ordered
      */
@@ -119,6 +120,7 @@ public class Ligne {
     /**
      * Récupère la quantité de produit de la ligne
      *
+     * @return la quantité de produit de la ligne
      * @generated
      * @ordered
      */
@@ -129,6 +131,7 @@ public class Ligne {
     /**
      * Récupère le produit de la ligne
      *
+     * @return le produit de la ligne
      * @generated
      * @ordered
      */
@@ -139,6 +142,7 @@ public class Ligne {
     /**
      * Récupère la commande liée à la ligne
      *
+     * @return la commande liée à la ligne
      * @generated
      * @ordered
      */
@@ -177,7 +181,9 @@ public class Ligne {
      */
     public void setProduit(Produit myProduit) {
         this.basicSetProduit(myProduit);
-        myProduit.addLigne(this);
+        if (myProduit.getLigne().contains(this)) {
+            myProduit.addLigne(this);
+        }
     }
 
     /**
@@ -189,7 +195,9 @@ public class Ligne {
      */
     public void setCommande(Commande myCommande) {
         this.basicSetCommande(myCommande);
-        myCommande.addLigne(this);
+        if (!myCommande.getLigneSet().contains(this)) {
+            myCommande.addLigne(this);
+        }
     }
 
     /**
@@ -265,6 +273,23 @@ public class Ligne {
             return false;
         }
         return true;
+    }
+
+    /**
+     * Permet de cloner la ligne
+     *
+     * @return un clone de la ligne
+     * @throws CloneNotSupportedException
+     */
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        Ligne nl = new Ligne();
+
+        nl.setId(this.id);
+        nl.setProduit(this.produit);
+        nl.setQuantite(this.quantite);
+        nl.setCommande(commande);
+        return nl; //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

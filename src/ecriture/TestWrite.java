@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ecriture;
 
 import java.io.FileNotFoundException;
@@ -22,10 +17,11 @@ import metier.Tournee;
  */
 public class TestWrite {
 
-    
     /**
-     * Permet d'écrire les solutions présentes dans l'instance passé en paramètre
-     * @param i instance sur laquelle au moins une solution à déjà été créer.
+     * Permet d'écrire les solutions présentes dans l'instance passé en
+     * paramètre
+     *
+     * @param i instance sur laquelle au moins une solution à déjà été créé.
      */
     public static boolean ecrireSolution(Instance i) {
         PrintWriter writer = null;
@@ -42,7 +38,6 @@ public class TestWrite {
                     writer.println(t.getId() + " " + t.getNbColis());
                     writer.println("//IdColis IdCommandeInColis NbProducts IdProd1 QtyProd1 IdProd2 QtyProd2 ...");
                     for (Colis c : t.getColisSet()) {
-
                         myLineColis = "";
                         if (c.getColisProduits().size() > 0) {
                             myLineColis = myLineColis.concat(c.getId() + " " + c.getCommande().getId() + " " + c.getColisProduits().size() + " ");

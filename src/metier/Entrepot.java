@@ -1,7 +1,6 @@
 package metier;
 
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -18,9 +17,13 @@ public class Entrepot {
      * @generated
      * @ordered
      */
-
     @javax.persistence.Id
+<<<<<<< HEAD
     @javax.persistence.Column(nullable = false)
+=======
+    @javax.persistence.Column(name = "ID", nullable = false)
+    @javax.persistence.GeneratedValue(strategy = GenerationType.TABLE)
+>>>>>>> develop
     protected Long id;
 
     /**
@@ -44,6 +47,7 @@ public class Entrepot {
     /**
      * Récupère l'ID de l'entrepôt
      *
+     * @return l'ID de l'entrepôt
      * @generated
      * @ordered
      */
@@ -54,12 +58,13 @@ public class Entrepot {
     /**
      * Definis l'ensemble des localisations de l'entrepôt
      *
+     * @return l'ensemble des localisations de l'entrepôt
      * @generated
      * @ordered
      */
     public Set<Localisation> getLocalisationSet() {
         if (this.localisationSet == null) {
-            this.localisationSet = new HashSet<Localisation>();
+            this.localisationSet = new HashSet<>();
         }
         return (Set<Localisation>) this.localisationSet;
     }
@@ -73,7 +78,7 @@ public class Entrepot {
      */
     public void addAllLocalisation(Set<Localisation> newLocalisation) {
         if (this.localisationSet == null) {
-            this.localisationSet = new HashSet<Localisation>();
+            this.localisationSet = new HashSet<>();
         }
         for (Localisation tmp : newLocalisation) {
             tmp.setEntrepot(this);
@@ -116,7 +121,7 @@ public class Entrepot {
      */
     public void addLocalisation(Localisation newLocalisation) {
         if (this.localisationSet == null) {
-            this.localisationSet = new HashSet<Localisation>();
+            this.localisationSet = new HashSet<>();
         }
 
         if (this.localisationSet.add(newLocalisation)) {

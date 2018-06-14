@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package test;
 
 import algo.Algorithme;
@@ -23,48 +18,36 @@ import metier.Produit;
  * @author Samuel
  */
 public class Test3 {
+
     public static void main(String[] args) {
-        Result r;
+        Result result;
+        ReadFiles readFiles = new ReadFiles();
         try {
             //création des objets
+<<<<<<< HEAD
             r = TestRead.getCreatedObjects("src/test/test2.txt");
             //System.out.println(r.toString());
+=======
+            result = readFiles.getCreatedObjects("src/test/test2.txt");
+>>>>>>> develop
             //récupération instance
-            Instance i = r.getInstance();
+            Instance i = result.getInstance();
             HashSet<Produit> ps;
             ps = (HashSet<Produit>) i.getProduitSet();
 
-            HashMap<Long, Produit> p1 = (HashMap<Long, Produit>) r.getProduits();
+            HashMap<Long, Produit> p1 = (HashMap<Long, Produit>) result.getProduits();
             Produit p2;
             Long y;
             y = (long) 190;
             p2 = p1.get(y);
 
             Produit p3 = p1.get((long) 281);
-
-            /*if (p2.existPath(p3)) {
-                System.out.println("Path exist between " + p2.getId() + " and " + p3.getId() + "\n");
-            } else {
-                System.err.print("Path does not exist between " + p2.getId() + " and " + p3.getId() + "\n");
-            }
-
-            for (Produit p : ps) {
-                //System.out.println(p.toString());
-                if (p2.existPath(p)) {
-                    System.out.println("Path exist from " + p2.getId() + " to " + p.getId() + "\n");
-                } else {
-                    System.err.print("Path does not exist from " + p2.getId() + " to " + p.getId() + "\n");
-                }
-            }*/
             HashSet commandes = new HashSet();
-            for (Map.Entry<Long, Commande> entry : r.getCommandes().entrySet()) {
-                //System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+            for (Map.Entry<Long, Commande> entry : result.getCommandes().entrySet()) {
                 commandes.add(entry.getValue());
             }
-            Algorithme a = new Algorithme(r.getInstance(), commandes, r);
+            Algorithme a = new Algorithme(result.getInstance(), commandes, result);
             a.creerSolution();
-            //Stack<Couple> ac= a.nbPath();
-            //Stack<Ligne> ab= a.creerSolution();
             System.out.println(a);
         } catch (IOException ex) {
             Logger.getLogger(Test1.class.getName()).log(Level.SEVERE, null, ex);

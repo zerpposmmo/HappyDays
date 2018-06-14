@@ -1,5 +1,11 @@
 package metier;
 
+<<<<<<< HEAD
+=======
+import javax.persistence.CascadeType;
+import javax.persistence.GenerationType;
+
+>>>>>>> develop
 /**
  * Classe quantité de produit par colis (Nommée QPC)
  *
@@ -14,7 +20,6 @@ public class QteProduitsColis {
      * @generated
      * @ordered
      */
-
     @javax.persistence.Id
     @javax.persistence.Column(nullable = false)
     protected Long id;
@@ -34,7 +39,7 @@ public class QteProduitsColis {
      * @generated
      * @ordered
      */
-    @javax.persistence.ManyToOne
+    @javax.persistence.ManyToOne(cascade = CascadeType.PERSIST)
     @javax.persistence.JoinColumn(nullable = false)
     protected Produit produit;
 
@@ -57,7 +62,6 @@ public class QteProduitsColis {
         super();
     }
 
-
     public QteProduitsColis(int quantite, Produit produit) {
         this.quantite = quantite;
         this.produit = produit;
@@ -68,7 +72,7 @@ public class QteProduitsColis {
      *
      * @generated
      * @ordered
-     * @param myProduct Le produit à ajouter à la QPC
+     * @param myProduit Le produit à ajouter à la QPC
      */
     public void basicSetProduit(Produit myProduit) {
         if (this.produit != myProduit) {
@@ -108,6 +112,7 @@ public class QteProduitsColis {
     /**
      * Récupère l'ID de la QPC
      *
+     * @return l'ID de la QPC
      * @generated
      * @ordered
      */
@@ -118,6 +123,7 @@ public class QteProduitsColis {
     /**
      * Récupère la quantité de la QPC
      *
+     * @return la quantité de la QPC
      * @generated
      * @ordered
      */
@@ -129,6 +135,7 @@ public class QteProduitsColis {
     /**
      * Récupère le produit de la QPC
      *
+     * @return le produit de la QPC
      * @generated
      * @ordered
      */
@@ -139,6 +146,7 @@ public class QteProduitsColis {
     /**
      * Récupère le colis lié à la QPC
      *
+     * @return le colis lié à la QPC
      * @generated
      * @ordered
      */
