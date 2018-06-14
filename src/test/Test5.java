@@ -24,6 +24,7 @@ import metier.Produit;
  * @author Samuel
  */
 public class Test5 {
+
     public static void main(String[] args) {
         Result result;
         ReadFiles readFiles = new ReadFiles();
@@ -72,7 +73,7 @@ public class Test5 {
             System.out.println(a.toString());
             //Stack<Couple> ac= a.nbPath();
             //Stack<Ligne> ab= a.creerSolution();
-           // WriteSolution.ecrireSolution(i);
+            // WriteSolution.ecrireSolution(i);
             System.out.println(a);
         } catch (IOException ex) {
             Logger.getLogger(Test1.class.getName()).log(Level.SEVERE, null, ex);

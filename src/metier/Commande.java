@@ -22,7 +22,7 @@ public class Commande {
      */
     @javax.persistence.Id
     @javax.persistence.Column(nullable = false)
-   // @javax.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
+    // @javax.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
     /**
@@ -336,12 +336,13 @@ public class Commande {
 
     /**
      * Permet de renvoyer la quantité de produit totale de la commande
-     * @return 
+     *
+     * @return
      */
     public int getNbProduit() {
         int qte = 0;
-        for(Ligne l : this.ligneSet){
-            qte+=l.getQuantite();
+        for (Ligne l : this.ligneSet) {
+            qte += l.getQuantite();
         }
         return qte;
     }

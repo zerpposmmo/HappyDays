@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
  * @generated
  */
 @javax.persistence.Entity
-public class Ligne implements Cloneable{
+public class Ligne implements Cloneable {
 
     /**
      * ID de la ligne
@@ -180,8 +180,9 @@ public class Ligne implements Cloneable{
      */
     public void setProduit(Produit myProduit) {
         this.basicSetProduit(myProduit);
-        if(myProduit.getLigne().contains(this))
-        myProduit.addLigne(this);
+        if (myProduit.getLigne().contains(this)) {
+            myProduit.addLigne(this);
+        }
     }
 
     /**
@@ -193,8 +194,9 @@ public class Ligne implements Cloneable{
      */
     public void setCommande(Commande myCommande) {
         this.basicSetCommande(myCommande);
-        if(!myCommande.getLigneSet().contains(this))
+        if (!myCommande.getLigneSet().contains(this)) {
             myCommande.addLigne(this);
+        }
     }
 
     /**
@@ -275,7 +277,7 @@ public class Ligne implements Cloneable{
     @Override
     public Object clone() throws CloneNotSupportedException {
         Ligne nl = new Ligne();
-        
+
         nl.setId(this.id);
         nl.setProduit(this.produit);
         nl.setQuantite(this.quantite);
@@ -283,9 +285,6 @@ public class Ligne implements Cloneable{
         return nl; //To change body of generated methods, choose Tools | Templates.
     }
 
-    
-    
-    
     @Override
     public String toString() {
         return "Ligne{" + "id=" + id + ", quantite=" + quantite + ", produit=" + produit.toString() + '}';

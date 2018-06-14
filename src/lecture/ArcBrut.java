@@ -1,11 +1,13 @@
 package lecture;
 
 /**
- * Représente un arc brut servant à créer l'objet après lecture dans un fichier texte
+ * Représente un arc brut servant à créer l'objet après lecture dans un fichier
+ * texte
+ *
  * @author Julien
  */
 public class ArcBrut {
-    
+
     private long departId;
     private long arriveeId;
     private int distance;
@@ -28,6 +30,5 @@ public class ArcBrut {
     public int getDistance() {
         return distance;
     }
-    
-    
+
 }

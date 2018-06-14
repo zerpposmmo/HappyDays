@@ -19,12 +19,13 @@ import metier.Produit;
  * @author Samuel
  */
 public class Test4 {
+
     public static void main(String[] args) {
         Result result;
         ReadFiles readFiles = new ReadFiles();
         try {
             //création des objets
-            result= readFiles.getCreatedObjects("src/files/instance_0116_131940_Z2.txt");
+            result = readFiles.getCreatedObjects("src/files/instance_0116_131940_Z2.txt");
             //récupération instance
             Instance i = result.getInstance();
             HashSet<Produit> ps;

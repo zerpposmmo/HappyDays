@@ -26,15 +26,15 @@ public class CheminProduit implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     @javax.persistence.ManyToOne
     @javax.persistence.JoinColumn(nullable = false)
     private Chemin chemin;
-    
+
     @javax.persistence.ManyToOne
     @javax.persistence.JoinColumn(nullable = false)
     private Produit produit;
-    
+
     private Integer ordre;
 
     public CheminProduit() {
@@ -53,7 +53,6 @@ public class CheminProduit implements Serializable {
     /*public void setId(Long id) {
         this.id = id;
     }*/
-
     public Chemin getChemin() {
         return chemin;
     }
@@ -69,8 +68,6 @@ public class CheminProduit implements Serializable {
     public void setProduit(Produit produit) {
         this.produit = produit;
     }
-    
-    
 
     @Override
     public int hashCode() {
@@ -103,11 +100,9 @@ public class CheminProduit implements Serializable {
         return true;
     }
 
-   
-
     @Override
     public String toString() {
         return "metier.CheminProduits[ id=" + id + " ]";
     }
-    
+
 }

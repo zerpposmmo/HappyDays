@@ -16,7 +16,7 @@ import metier.Produit;
  * @author Julien
  */
 public class Result {
-    
+
     /* LISTES D'OBJETS */
     private Map<Long, Produit> produits;
     private Set<Arc> arcs;
@@ -35,7 +35,7 @@ public class Result {
     private long departingDepot;
     private long arrivalDepot;
 
-    public Result(){
+    public Result() {
         this.produits = new HashMap();
         this.arcs = new HashSet();
         this.localisations = new HashMap<>();
@@ -44,7 +44,7 @@ public class Result {
         this.nbProduits = 0;
         this.nbBoxesTrolley = 0;
         this.nbDimensionsCapacity = 0;
-        this.capaBox=new Capacite(0,0);
+        this.capaBox = new Capacite(0, 0);
         this.nbCommandes = 0;
         this.nbIntersections = 0;
         this.entrepot = new Entrepot();

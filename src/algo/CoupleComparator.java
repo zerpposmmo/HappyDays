@@ -1,24 +1,26 @@
 package algo;
+
 import java.util.Comparator;
 
 /**
  * @author Samuel
  */
-public class CoupleComparator implements Comparator<Couple>{
+public class CoupleComparator implements Comparator<Couple> {
 
     /**
      * Constructeur par défaut
      */
     public CoupleComparator() {
     }
-    
+
     /**
-     * Permet de comparer 2 objets de type Couple
-     * Ordre décroissant, pas de cas d'egalité si les nombre de chemin sont egaux
-     * alors l'id de la ligne détermine l'egalité
-     * @param o1 le premier couple 
+     * Permet de comparer 2 objets de type Couple Ordre décroissant, pas de cas
+     * d'egalité si les nombre de chemin sont egaux alors l'id de la ligne
+     * détermine l'egalité
+     *
+     * @param o1 le premier couple
      * @param o2 le deuxième couple
-     * @return  
+     * @return
      */
     @Override
     public int compare(Couple o1, Couple o2) {
@@ -27,8 +29,7 @@ public class CoupleComparator implements Comparator<Couple>{
         } else if (o2.getIdLocalisation() < o1.getIdLocalisation()) {
             return 1;
         }
-        if(o2.getL().getId() > o1.getL().getId())
-        {
+        if (o2.getL().getId() > o1.getL().getId()) {
             return 1;
         }
         return -1;

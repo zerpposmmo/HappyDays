@@ -16,9 +16,11 @@ import metier.Instance;
 
 /**
  * Test de l'écriture en base via JPA
+ *
  * @author Arnaud
  */
 public class Persistence_Test1 {
+
     public static void main(String[] args) {
         Result result;
         ReadFiles readFiles = new ReadFiles();
@@ -30,7 +32,7 @@ public class Persistence_Test1 {
             }
             Algorithme a = new Algorithme(result.getInstance(), commandes, result);
             a.creerSolution();
-            
+
             DaoFactory fabrique = DaoFactory.getDaoFactory(PersistenceType.JPA);
             InstanceDao instanceDao = fabrique.getInstanceDao();
             instanceDao.create(result.getInstance());

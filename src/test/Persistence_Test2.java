@@ -28,7 +28,7 @@ import metier.Solution;
  * @author Samuel
  */
 public class Persistence_Test2 {
-    
+
     public static void main(String[] args) {
         Result result;
         ReadFiles readFiles = new ReadFiles();
@@ -38,25 +38,26 @@ public class Persistence_Test2 {
             Algorithme a = new Algorithme(result.getInstance(), commandes, result);
             Solution bestSolution = null;
             int index = 0;
-            for(; index  < 2000; index++){
+            for (; index < 2000; index++) {
                 System.out.println(index);
                 a.creerSolutionUpdated();
             }
-            
-            
-            for(Solution s:result.getInstance().getSolutionSet()){
-                if(bestSolution == null)
+
+            for (Solution s : result.getInstance().getSolutionSet()) {
+                if (bestSolution == null) {
                     bestSolution = s;
-                if(s.getDistance() < bestSolution.getDistance())
+                }
+                if (s.getDistance() < bestSolution.getDistance()) {
                     bestSolution = s;
+                }
             }
-            
+
             HashSet<Solution> sss = (HashSet<Solution>) result.getInstance().getSolutionSet();
             sss.clear();
             sss.add(bestSolution);
-            
+
             bestSolution.createCheminProduit();
-            
+
             DaoFactory fabrique = DaoFactory.getDaoFactory(PersistenceType.JPA);
             InstanceDao instanceDao = fabrique.getInstanceDao();
             instanceDao.create(result.getInstance());
@@ -66,5 +67,5 @@ public class Persistence_Test2 {
             Logger.getLogger(Test1.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
 }

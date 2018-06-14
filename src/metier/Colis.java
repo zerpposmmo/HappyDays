@@ -12,26 +12,24 @@ import javax.persistence.GenerationType;
  *
  * @generated
  */
-
 @javax.persistence.Entity
 public class Colis {
 
     private static Integer nbColis = 0;
-    
+
     /**
      * Identifiant
      *
      * @generated
      * @ordered
      */
-
     @javax.persistence.Id
     @javax.persistence.Column(nullable = false)
     @javax.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
     private Integer discriminator;
-    
+
     /**
      * Poids maximum du colis
      *
@@ -411,7 +409,6 @@ public class Colis {
         return true;
     }
 
-    
     /**
      * Permet de renvoyer la quantité max que le colis peut accepter
      *
@@ -428,12 +425,12 @@ public class Colis {
         int volumeRestant = this.volumeMax - volumeActuel;
         int qteParPoids = (int) Math.ceil(poidsRestant / p.getPoids());
         int qteParVolume = (int) Math.ceil(volumeRestant / p.getVolume());
-        
-        if(qteParPoids < qteParVolume)
+
+        if (qteParPoids < qteParVolume) {
             return qteParPoids;
-        
+        }
+
         return qteParVolume;
     }
-
 
 }

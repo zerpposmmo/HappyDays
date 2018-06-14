@@ -1,4 +1,5 @@
 package ecriture;
+
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -16,9 +17,10 @@ import metier.Tournee;
  */
 public class WriteSolution {
 
-    
     /**
-     * Permet d'écrire les solutions présentes dans l'instance passé en paramètre
+     * Permet d'écrire les solutions présentes dans l'instance passé en
+     * paramètre
+     *
      * @param i instance sur laquelle au moins une solution à déjà été créé.
      */
     public static boolean ecrireSolution(Instance i) {

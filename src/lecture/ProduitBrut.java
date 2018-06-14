@@ -1,11 +1,13 @@
 package lecture;
 
 /**
- * Représente un produit brut servant à créer l'objet après lecture dans un fichier texte
+ * Représente un produit brut servant à créer l'objet après lecture dans un
+ * fichier texte
+ *
  * @author Julien
  */
 public class ProduitBrut {
-    
+
     private long id;
     private long localisationId;
     private int poids;
@@ -13,17 +15,18 @@ public class ProduitBrut {
 
     /**
      * Constructeur par données
+     *
      * @param id
      * @param localisationId
      * @param poids
-     * @param volume 
+     * @param volume
      */
     public ProduitBrut(long id, long localisationId, int poids, int volume) {
         this.id = id;
         this.localisationId = localisationId;
         this.poids = poids;
         this.volume = volume;
-    }   
+    }
 
     //--------------Getter--------------//
     public long getId() {
@@ -46,6 +49,5 @@ public class ProduitBrut {
     public String toString() {
         return "ProduitBrut{" + "id=" + id + ", localisationId=" + localisationId + ", poids=" + poids + ", volume=" + volume + '}';
     }
-    
-    
+
 }

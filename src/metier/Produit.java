@@ -67,7 +67,7 @@ public class Produit {
      * @generated
      * @ordered
      */
-    @javax.persistence.OneToMany( mappedBy = "produit")
+    @javax.persistence.OneToMany(mappedBy = "produit")
     protected Set<QteProduitsColis> colisProduits;
 
     /**
@@ -80,11 +80,9 @@ public class Produit {
     @javax.persistence.JoinColumn(nullable = false)
     protected Instance instance;
 
-    
-    @javax.persistence.OneToMany( mappedBy = "produit")
+    @javax.persistence.OneToMany(mappedBy = "produit")
     private Set<CheminProduit> cheminProduits;
-    
-    
+
     //protected Set<Chemin> chemins;
     /**
      * Constructeur par défaut du produit
@@ -509,7 +507,7 @@ public class Produit {
         if (this.existPath(prod)) {
             return this.localisation.getDistanceTo(prod.getLocalisation());
         }
-       /* if(this.localisation.id == prod.getLocalisation().getId())
+        /* if(this.localisation.id == prod.getLocalisation().getId())
             return  0;*/
         return Double.POSITIVE_INFINITY;
     }
@@ -552,11 +550,11 @@ public class Produit {
         return "Produit{" + "id=" + id + ", poids=" + poids + ", volume=" + volume + ", localisation=" + localisation + ", instance=" + instance + '}';
     }
 
-    public boolean addCheminProduit(CheminProduit cP){
-        if(!this.cheminProduits.contains(cP)){
-            if(this.cheminProduits.add(cP)){
+    public boolean addCheminProduit(CheminProduit cP) {
+        if (!this.cheminProduits.contains(cP)) {
+            if (this.cheminProduits.add(cP)) {
                 return true;
-            }  
+            }
         }
         return false;
     }

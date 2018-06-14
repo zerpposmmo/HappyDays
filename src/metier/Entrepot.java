@@ -21,9 +21,8 @@ public class Entrepot implements Serializable {
      * @generated
      * @ordered
      */
-
     @javax.persistence.Id
-    @javax.persistence.Column(name="ID", nullable = false)
+    @javax.persistence.Column(name = "ID", nullable = false)
     @javax.persistence.GeneratedValue(strategy = GenerationType.TABLE)
     protected Long id;
 

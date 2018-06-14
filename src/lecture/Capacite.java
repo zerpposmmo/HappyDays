@@ -5,12 +5,13 @@ package lecture;
  * @author Samuel
  */
 public class Capacite {
-    
+
     private int poids;
     private int volume;
 
     /**
      * Constructeur par données
+     *
      * @param poids poids de la capacité
      * @param volume volume de la capacité
      */
@@ -19,11 +20,9 @@ public class Capacite {
         this.volume = volume;
     }
 
-    
-
-
-    /**-----------Getter & setter-------------**/ 
-    
+    /**
+     * -----------Getter & setter-------------*
+     */
     public int getPoids() {
         return poids;
     }
@@ -44,7 +43,5 @@ public class Capacite {
     public String toString() {
         return "Capacite{" + "poids=" + poids + ", volume=" + volume + '}';
     }
-    
-    
-    
+
 }

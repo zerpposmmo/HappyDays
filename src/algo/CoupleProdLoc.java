@@ -1,8 +1,10 @@
 package algo;
+
 import metier.Produit;
 
 /**
  * Couple Produit, id d'une localisation
+ *
  * @author Samuel
  */
 public class CoupleProdLoc implements Comparable {
@@ -33,6 +35,7 @@ public class CoupleProdLoc implements Comparable {
 
     /**
      * Compare l'objet avec un autre objet passé en paramètre
+     *
      * @param o Objet à comparer avec avec l'objet instancié
      * @return
      */

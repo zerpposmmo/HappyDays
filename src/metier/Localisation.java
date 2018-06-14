@@ -11,6 +11,7 @@ import javax.persistence.Transient;
 
 /**
  * Classe Localisation
+ *
  * @generated
  */
 @javax.persistence.Entity
@@ -18,10 +19,10 @@ public class Localisation {
 
     /**
      * ID de la localisation
-     * @generated 
+     *
+     * @generated
      * @ordered
      */
-
     @javax.persistence.Id
     @javax.persistence.Column(nullable = false)
     @javax.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +30,8 @@ public class Localisation {
 
     /**
      * Coordonnée X de la localisation
-     * @generated 
+     *
+     * @generated
      * @ordered
      */
     @javax.persistence.Column(nullable = false)
@@ -37,7 +39,8 @@ public class Localisation {
 
     /**
      * Coordonnée Y de la localisation
-     * @generated 
+     *
+     * @generated
      * @ordered
      */
     @javax.persistence.Column(nullable = false)
@@ -45,7 +48,8 @@ public class Localisation {
 
     /**
      * Ensemble d'arc de la localisation
-     * @generated 
+     *
+     * @generated
      * @ordered
      */
     //@javax.persistence.OneToMany(cascade = CascadeType.PERSIST, mappedBy = "arrivee")
@@ -54,7 +58,8 @@ public class Localisation {
 
     /**
      * Ensemble de produit de la localisation
-     * @generated 
+     *
+     * @generated
      * @ordered
      */
     @javax.persistence.OneToMany(mappedBy = "localisation")
@@ -62,7 +67,8 @@ public class Localisation {
 
     /**
      * Entrepôt à laquelle la localisation est liée
-     * @generated 
+     *
+     * @generated
      * @ordered
      */
     @javax.persistence.ManyToOne(cascade = CascadeType.PERSIST)
@@ -71,6 +77,7 @@ public class Localisation {
 
     /**
      * Constructeur par défaut de la localisation
+     *
      * @generated
      */
     public Localisation() {
@@ -78,14 +85,15 @@ public class Localisation {
         this.arcMap = new HashMap<>();
         this.produitSet = new HashSet();
     }
-    
+
     /**
      * Constructeur par données
+     *
      * @param id ID de la Localisation
      * @param x Coordonnées X de la localisation
      * @param y Coordonnées Y de la localisation
      */
-    public Localisation(long id,int x, int y) {
+    public Localisation(long id, int x, int y) {
         this();
         this.id = id;
         this.x = x;
@@ -94,7 +102,8 @@ public class Localisation {
 
     /**
      * Ajout basique d'un entrepôt à la localisation
-     * @generated 
+     *
+     * @generated
      * @ordered
      * @param myEntrepot Entrepot à ajouter
      */
@@ -114,7 +123,8 @@ public class Localisation {
 
     /**
      * Récupère l'ID de la localisation
-     * @generated 
+     *
+     * @generated
      * @ordered
      */
     public long getId() {
@@ -123,7 +133,8 @@ public class Localisation {
 
     /**
      * Récupère la coordonnée X de la localisation
-     * @generated 
+     *
+     * @generated
      * @ordered
      */
     private int getX() {
@@ -132,7 +143,8 @@ public class Localisation {
 
     /**
      * Récupère la coordonnée Y de la localisation
-     * @generated 
+     *
+     * @generated
      * @ordered
      */
     private int getY() {
@@ -141,7 +153,8 @@ public class Localisation {
 
     /**
      * Récupère l'ensenble des arcs lié à la localisation
-     * @generated 
+     *
+     * @generated
      * @ordered
      */
     public Map<Localisation, Arc> getArc() {
@@ -152,8 +165,9 @@ public class Localisation {
     }
 
     /**
-     * Récupère l'ensemble des produits lié à la localisation 
-     * @generated 
+     * Récupère l'ensemble des produits lié à la localisation
+     *
+     * @generated
      * @ordered
      */
     public Set<Produit> getProduitSet() {
@@ -165,7 +179,8 @@ public class Localisation {
 
     /**
      * Récupère l'entrepôt auquel la localisation est liée
-     * @generated 
+     *
+     * @generated
      * @ordered
      */
     public Entrepot getEntrepot() {
@@ -174,8 +189,9 @@ public class Localisation {
 
     /**
      * Ajoute l'ensemble d'arc donné
-     * @generated 
-     * @ordered 
+     *
+     * @generated
+     * @ordered
      * @param newArc Set d'arc à ajouter à la localisation
      */
     public void addAllArc(Set<Arc> newArc) {
@@ -190,6 +206,7 @@ public class Localisation {
 
     /**
      * Ajoute l'ensemble de produit donné à la localisation
+     *
      * @param newProduit
      * @generated
      * @ordered
@@ -205,7 +222,8 @@ public class Localisation {
 
     /**
      * Retire l'ensemble d'arc de la localisation
-     * @generated 
+     *
+     * @generated
      * @ordered
      */
     private void removeAllArc() {
@@ -217,7 +235,8 @@ public class Localisation {
 
     /**
      * Retire l'ensemble de produits donné
-     * @generated 
+     *
+     * @generated
      * @ordered
      * @param newProduit Ensemble de produit à retirer
      */
@@ -231,7 +250,8 @@ public class Localisation {
 
     /**
      * Définit l'ID
-     * @generated 
+     *
+     * @generated
      * @ordered
      * @param myId ID à définir
      */
@@ -241,7 +261,8 @@ public class Localisation {
 
     /**
      * Définit la coordonnée X de la localisation
-     * @generated 
+     *
+     * @generated
      * @ordered
      * @param myX coordonnées X à définir
      */
@@ -250,8 +271,9 @@ public class Localisation {
     }
 
     /**
-     * Définit la coordonnée X de la localisation 
-     * @generated 
+     * Définit la coordonnée X de la localisation
+     *
+     * @generated
      * @ordered
      * @param myY coordonnées Y à définir
      */
@@ -260,8 +282,9 @@ public class Localisation {
     }
 
     /**
-     * Ajoute un arc donné à la localisation 
-     * @generated 
+     * Ajoute un arc donné à la localisation
+     *
+     * @generated
      * @ordered
      * @param myArc Arc à ajouter
      */
@@ -275,7 +298,8 @@ public class Localisation {
 
     /**
      * Ajoute un produit donné à la localisation
-     * @generated 
+     *
+     * @generated
      * @ordered
      * @param newProduit Produit à ajouter
      */
@@ -291,9 +315,10 @@ public class Localisation {
 
     /**
      * Définit l'entrepôt auquel la localisation est liée
-     * @generated 
+     *
+     * @generated
      * @ordered
-     * @param myEntrepot Entrepot à définir 
+     * @param myEntrepot Entrepot à définir
      */
     public void setEntrepot(Entrepot myEntrepot) {
         this.basicSetEntrepot(myEntrepot);
@@ -302,7 +327,8 @@ public class Localisation {
 
     /**
      * Retire l'ID de la localisation
-     * @generated 
+     *
+     * @generated
      * @ordered
      */
     public void unsetId() {
@@ -311,7 +337,8 @@ public class Localisation {
 
     /**
      * Retire la coordonnée X de la localisation
-     * @generated 
+     *
+     * @generated
      * @ordered
      */
     private void unsetX() {
@@ -319,8 +346,9 @@ public class Localisation {
     }
 
     /**
-     * Retire la coordonnée Y de la localisation 
-     * @generated 
+     * Retire la coordonnée Y de la localisation
+     *
+     * @generated
      * @ordered
      */
     private void unsetY() {
@@ -329,7 +357,8 @@ public class Localisation {
 
     /**
      * Retire un arc donné de l'ensemble d'arcs
-     * @generated 
+     *
+     * @generated
      * @ordered
      * @param oldArc Arc à retirer
      */
@@ -343,7 +372,8 @@ public class Localisation {
 
     /**
      * Retire le produit donné de l'ensemble des produits
-     * @generated 
+     *
+     * @generated
      * @ordered
      * @param oldProduit Produit à retirer
      */
@@ -360,7 +390,8 @@ public class Localisation {
 
     /**
      * Retire l'entrepôt donné auquel la localisation est liée
-     * @generated 
+     *
+     * @generated
      * @ordered
      */
     public void unsetEntrepot() {
@@ -371,42 +402,44 @@ public class Localisation {
         this.entrepot = null;
         oldentrepot.removeLocalisation(this);
     }
-    
+
     /**
-     * Permet de savoir si le chemin entre les 2 localisations existe 
-     * @param localisation La localisation dont on cherche un possible chemin avec la localisation courante
+     * Permet de savoir si le chemin entre les 2 localisations existe
+     *
+     * @param localisation La localisation dont on cherche un possible chemin
+     * avec la localisation courante
      * @return boolean true si existe false sinon
      */
     boolean existPath(Localisation localisation) {
-        if(this.arcMap.containsKey(localisation)){
+        if (this.arcMap.containsKey(localisation)) {
             return true;
-        }
-        else if(this.equals(localisation)){
+        } else if (this.equals(localisation)) {
             return true;
         }
         return false;
     }
-    
+
     /**
      * Permet d'obtenir la distance entre 2 localisation
+     *
      * @param key
-     * @return double distance entre les 2 localisations ou + l'infini si n'existe pas
+     * @return double distance entre les 2 localisations ou + l'infini si
+     * n'existe pas
      */
-    public double getDistanceTo(Localisation key){
+    public double getDistanceTo(Localisation key) {
         Arc r = this.arcMap.get(key);
-        if(this.equals(key)){
-                return 0;
+        if (this.equals(key)) {
+            return 0;
         }
-        
-        if( r == null)
-        {
+
+        if (r == null) {
             //Same place
-           /* if(this.equals(key)){
+            /* if(this.equals(key)){
                 return 0;
             }*/
             return Double.POSITIVE_INFINITY;
         }
-        
+
         return r.getDistance();
     }
 
@@ -443,15 +476,9 @@ public class Localisation {
         return true;
     }
 
-    
-    
-    
     @Override
     public String toString() {
         return "Localisation{" + "id=" + id + ", x=" + x + ", y=" + y + ", arcMap=" + arcMap.size() + ", produitSet=" + produitSet.size() + ", entrepot=" + entrepot + "} \n";
     }
 
-    
-
-    
 }

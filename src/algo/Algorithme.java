@@ -80,7 +80,7 @@ public class Algorithme {
         }
         return listLignesMapByIdProd;
     }
-    
+
     /**
      * V2 de l'algorithme Permet d'affecter un produit à un colis dejà existant,
      * il faut que les colis appartienne bien à la commande passée en paramètre
@@ -197,7 +197,7 @@ public class Algorithme {
             sol.setDistance(newTournee.getChemin().getDistance() + sol.getDistance());
         }
     }
-    
+
     /**
      * Version 2 de l'algorithme Permet de renvoyer un tableau contenant des
      * objets de type Couple en ordre croissant par rapport à leurs variables
@@ -344,7 +344,7 @@ public class Algorithme {
         }
         return -1;
     }
-    
+
     /**
      * Version 1 de l'algorithme Permet de rechercher le prochain produit à
      * aller récupérer

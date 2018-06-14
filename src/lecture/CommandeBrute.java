@@ -3,10 +3,13 @@ package lecture;
 import java.util.List;
 
 /**
- * Représente une commande brute servant à créer l'objet après lecture dans un fichier texte
+ * Représente une commande brute servant à créer l'objet après lecture dans un
+ * fichier texte
+ *
  * @author Julien
  */
 public class CommandeBrute {
+
     private long commandeId;
     private int colisMax;
     private int nbLignes;
@@ -34,6 +37,5 @@ public class CommandeBrute {
     public List<QuantiteProduit> getqP() {
         return qP;
     }
-    
-    
+
 }

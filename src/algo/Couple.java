@@ -1,23 +1,27 @@
 package algo;
+
 import java.util.Objects;
 import metier.Ligne;
 
 /**
  * Couple d'objet ligne et idLocalisation
+ *
  * @author Samuel
  */
-public class Couple  {
+public class Couple {
+
     /**
      * Ligne de produit
      */
     private Ligne l;
     /**
-     * ID de la localisation du produit de la ligne 
+     * ID de la localisation du produit de la ligne
      */
     private int idLocalisation;
-    
+
     /**
      * Constructeur par donnée
+     *
      * @param l ligne du produit
      * @param idLocalisation nombre de chemin correspondant
      */
@@ -26,10 +30,12 @@ public class Couple  {
         this.idLocalisation = idLocalisation;
     }
 
-    /**----------------------------Getter---------------------------**/
-    
+    /**
+     * ----------------------------Getter---------------------------*
+     */
     /**
      * Récupère la ligne produit
+     *
      * @return Ligne : la ligne
      */
     public Ligne getL() {
@@ -38,18 +44,20 @@ public class Couple  {
 
     /**
      * Récupère le nombre de chemin(s)
+     *
      * @return nbChemin : le nombre de chemin
      */
     public int getIdLocalisation() {
         return idLocalisation;
     }
 
-    
-    /**-----------------------------Setter---------------------------------**/
-    
     /**
-     * Définit la ligne de produit 
-     * @param l la ligne 
+     * -----------------------------Setter---------------------------------*
+     */
+    /**
+     * Définit la ligne de produit
+     *
+     * @param l la ligne
      */
     public void setL(Ligne l) {
         this.l = l;
@@ -57,7 +65,8 @@ public class Couple  {
 
     /**
      * Définit le nbChemin
-     * @param nbChemin Le nombre de chemin à définir  
+     *
+     * @param nbChemin Le nombre de chemin à définir
      */
     public void setIdLocalisation(int idLocalisation) {
         this.idLocalisation = idLocalisation;
@@ -86,7 +95,7 @@ public class Couple  {
         if (this.idLocalisation != other.idLocalisation || !Objects.equals(this.l, other.l)) {
             return false;
         }
-       
+
         return true;
     }
 

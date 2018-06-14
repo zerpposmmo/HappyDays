@@ -17,7 +17,6 @@ public class QteProduitsColis {
      * @generated
      * @ordered
      */
-
     @javax.persistence.Id
     @javax.persistence.Column(nullable = false)
     @javax.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -60,7 +59,6 @@ public class QteProduitsColis {
     public QteProduitsColis() {
         super();
     }
-
 
     public QteProduitsColis(int quantite, Produit produit) {
         this.quantite = quantite;
