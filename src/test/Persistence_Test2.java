@@ -28,15 +28,17 @@ import metier.Solution;
  * @author Samuel
  */
 public class Persistence_Test2 {
+    
     public static void main(String[] args) {
         Result result;
+        ReadFiles readFiles = new ReadFiles();
         try {
-            result = ReadFiles.getCreatedObjects("src/files/instance_0116_131940_Z2.txt");
+            result = readFiles.getCreatedObjects("src/files/instance_0116_131950_Z1.txt");
             HashSet commandes = new HashSet(result.getCommandes().values());
             Algorithme a = new Algorithme(result.getInstance(), commandes, result);
             Solution bestSolution = null;
             int index = 0;
-            for(; index  < 10; index++){
+            for(; index  < 2000; index++){
                 System.out.println(index);
                 a.creerSolutionUpdated();
             }

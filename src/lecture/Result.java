@@ -36,17 +36,19 @@ public class Result {
     private long arrivalDepot;
 
     public Result(){
-        produits = new HashMap();
-        arcs = new HashSet();
-        localisations = new HashMap<>();
-        commandes = new HashMap();
-        nbLocalisations = 0;
-        nbProduits = 0;
-        nbBoxesTrolley = 0;
-        nbDimensionsCapacity = 0;
-        capaBox=new Capacite(0,0);
-        nbCommandes = 0;
-        nbIntersections = 0;
+        this.produits = new HashMap();
+        this.arcs = new HashSet();
+        this.localisations = new HashMap<>();
+        this.commandes = new HashMap();
+        this.nbLocalisations = 0;
+        this.nbProduits = 0;
+        this.nbBoxesTrolley = 0;
+        this.nbDimensionsCapacity = 0;
+        this.capaBox=new Capacite(0,0);
+        this.nbCommandes = 0;
+        this.nbIntersections = 0;
+        this.entrepot = new Entrepot();
+        this.instance = new Instance();
     }
 
     //-------------------GETTER && SETTER ---------------------//
@@ -169,7 +171,4 @@ public class Result {
     public void setInstance(Instance instance) {
         this.instance = instance;
     }
-    
-    
-
 }

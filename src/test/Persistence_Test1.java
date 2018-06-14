@@ -21,8 +21,9 @@ import metier.Instance;
 public class Persistence_Test1 {
     public static void main(String[] args) {
         Result result;
+        ReadFiles readFiles = new ReadFiles();
         try {
-            result = ReadFiles.getCreatedObjects("src/files/instance_0116_131940_Z2.txt");
+            result = readFiles.getCreatedObjects("src/files/instance_0116_131940_Z2.txt");
             HashSet commandes = new HashSet();
             for (Map.Entry<Long, Commande> entry : result.getCommandes().entrySet()) {
                 commandes.add(entry.getValue());

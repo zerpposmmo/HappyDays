@@ -20,16 +20,17 @@ import metier.Produit;
 public class Test1 {
 
     public static void main(String[] args) {
-        Result r;
+        Result result;
+        ReadFiles readFiles = new ReadFiles();
         try {
             //création des objets
-            r = ReadFiles.getCreatedObjects("src/test/test.txt");
+            result = readFiles.getCreatedObjects("src/test/test.txt");
             //récupération instance
-            Instance i = r.getInstance();
+            Instance i = result.getInstance();
             HashSet<Produit> ps;
             ps = (HashSet<Produit>) i.getProduitSet();
 
-            HashMap<Long, Produit> p1 = (HashMap<Long, Produit>) r.getProduits();
+            HashMap<Long, Produit> p1 = (HashMap<Long, Produit>) result.getProduits();
             Produit p2;
             Long y;
             y = (long) 190;

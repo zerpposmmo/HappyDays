@@ -20,9 +20,10 @@ public class Test2 {
 
     public static void main(String[] args) {
         Result r;
+        ReadFiles readFiles = new ReadFiles();
         try {
             //création des objets
-            r = ReadFiles.getCreatedObjects("src/test/test2.txt");
+            r = readFiles.getCreatedObjects("src/test/test2.txt");
             //récupération instance
             Instance i = r.getInstance();
             HashSet<Produit> ps;
